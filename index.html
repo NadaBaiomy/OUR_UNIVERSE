@@ -30,58 +30,52 @@ input,textarea,select{font-family:inherit;color:var(--ink)}
 .en{font-family:'Marhey',cursive;letter-spacing:.14em}
 #app{height:100dvh;display:flex;flex-direction:column;max-width:520px;margin:0 auto;position:relative;background:rgba(7,11,22,.72)}
 @media(min-width:560px){body{overflow:auto;padding:26px 0}#app{height:min(880px,calc(100dvh - 52px));border:1px solid var(--line);border-radius:36px;box-shadow:0 50px 120px #000c;overflow:hidden;background:rgba(9,13,26,.9)}}
-/* ===== الهيدر ===== */
 header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 10px;border-bottom:1px solid var(--line);flex:none}
 .brand{display:flex;gap:11px;align-items:center}
 .bt b{font-size:.95rem;display:block;color:var(--gold)}
 .bt small{color:var(--muted);font-size:.72rem}
-.pchip{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:6px 12px;transition:.2s}
+.hrow{display:flex;gap:8px;align-items:center;flex:none}
+.st{display:flex;align-items:center;gap:5px;font-size:.62rem;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:5px 10px}
+.st.net{color:#a8d8a0;border-color:#8fce7a55}
+.pchip{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:6px 12px}
 .pchip:active{transform:scale(.95)}
 .pchip.on{color:var(--ink)}
 .dot{width:8px;height:8px;border-radius:50%;background:#5a6785;flex:none}
 .dot.on{background:#8fce7a;box-shadow:0 0 0 0 #8fce7a88;animation:ping 2s infinite}
 @keyframes ping{70%{box-shadow:0 0 0 7px #8fce7a00}100%{box-shadow:0 0 0 0 #8fce7a00}}
-/* ===== المحتوى ===== */
 #main{flex:1;overflow-y:auto;overflow-x:hidden;padding:14px 16px 24px;scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
 #main::-webkit-scrollbar{width:4px}#main::-webkit-scrollbar-thumb{background:var(--line2);border-radius:4px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:13px}
-.card h3{font-family:'Marhey';font-size:1rem;font-weight:600;margin-bottom:8px;color:var(--ink)}
+.card h3{font-family:'Marhey';font-size:1rem;font-weight:600;margin-bottom:8px}
 .hint{color:var(--muted);font-size:.78rem;line-height:1.7}
-.scene-card{background:#05070f;border:1px solid var(--line);border-radius:22px;overflow:hidden;margin-bottom:13px;position:relative}
+.scene-card{background:#05070f;border:1px solid var(--line);border-radius:22px;overflow:hidden;margin-bottom:13px}
 .scene{display:block;width:100%;height:auto}
-/* ===== أزرار ===== */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:12px 20px;font-size:.92rem;font-weight:600;transition:transform .15s,box-shadow .2s;user-select:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:12px 20px;font-size:.92rem;font-weight:600;transition:transform .15s;user-select:none}
 .btn:active{transform:scale(.96)}
 .btn.primary{background:var(--gold);color:#241a08;box-shadow:0 8px 24px #f0c27426}
-.btn.primary:active{box-shadow:0 3px 10px #f0c27422}
 .btn.ghost{border:1px solid var(--line2);color:var(--gold)}
 .btn.wide{width:100%}
 .btn.sq{width:46px;height:46px;padding:0;flex:none}
 .btn svg{width:20px;height:20px}
-/* ===== المودات ===== */
 .moods{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .mood{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border-radius:14px;border:1px solid var(--line);background:var(--panel2);transition:.2s;font-size:.66rem;color:var(--muted)}
 .mood i{font-style:normal;font-size:1.35rem}
 .mood:active{transform:scale(.92)}
 .mood.on{border-color:var(--gold);color:var(--ink);box-shadow:inset 0 0 0 1px var(--gold)}
-/* ===== حضور ===== */
 .presence{display:flex;gap:12px;align-items:center}
 .presence b{font-size:.88rem}
 .presence small{color:var(--muted);display:block;font-size:.74rem;margin-top:2px}
-/* ===== tiny things ===== */
 .tinies{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .tiny{display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 4px;background:var(--panel2);border:1px solid var(--line);border-radius:14px;transition:.15s;font-size:.68rem;color:var(--muted)}
 .tiny i{font-style:normal;font-size:1.4rem}
 .tiny:active{transform:scale(.9);border-color:var(--gold)}
-/* ===== شريط التابات ===== */
 #tabs{display:flex;background:#0a101f;border-top:1px solid var(--line);padding:8px 10px calc(9px + env(safe-area-inset-bottom));flex:none}
-#tabs button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:#5f6c8d;font-size:.66rem;padding:5px 0;position:relative;transition:.2s}
+#tabs button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:#5f6c8d;font-size:.66rem;padding:5px 0;position:relative}
 #tabs button svg{width:22px;height:22px}
 #tabs button.on{color:var(--gold)}
 #tabs button.on::after{content:'';position:absolute;bottom:-8px;width:16px;height:2.5px;border-radius:3px;background:var(--gold)}
 #tabs .badge{position:absolute;top:-1px;inset-inline-start:calc(50% + 4px);width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:0;transition:.3s}
 #tabs .badge.on{opacity:1;animation:ping 2s infinite}
-/* ===== الحوار ===== */
 .duo{display:flex;justify-content:space-between;color:var(--muted);font-size:.72rem;margin:-6px 4px 12px}
 #main.view-chat{display:flex;flex-direction:column;overflow:hidden;padding:0}
 .chat-scroll{flex:1;overflow-y:auto;padding:16px 16px 8px;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin}
@@ -112,12 +106,11 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .nw-btn i{font-style:normal;font-size:1rem}
 .nw-btn:active{transform:scale(.93);border-color:var(--rose);color:var(--ink)}
 .tagsel{display:flex;gap:7px;margin-bottom:8px;flex-wrap:wrap}
-.tagchip{font-size:.68rem;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:4px 11px;transition:.15s}
+.tagchip{font-size:.68rem;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:4px 11px}
 .tagchip.on{border-color:var(--gold);color:var(--gold);background:#f0c27412}
 .inrow{display:flex;gap:9px}
-#chat-in{flex:1;background:var(--panel2);border:1px solid var(--line2);border-radius:14px;padding:11px 15px;font-size:.9rem;outline:none;transition:.2s}
+#chat-in{flex:1;background:var(--panel2);border:1px solid var(--line2);border-radius:14px;padding:11px 15px;font-size:.9rem;outline:none}
 #chat-in:focus{border-color:var(--gold)}
-/* ===== عالمنا ===== */
 .bar{height:9px;background:#0a1120;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
 .bar>i{display:block;height:100%;background:var(--gold);border-radius:9px;transition:width .7s cubic-bezier(.3,1,.3,1)}
 .bl{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
@@ -131,16 +124,12 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .dream b{font-size:.85rem;display:block}
 .dream small{color:var(--muted);font-size:.7rem;display:block;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px}
 .dream .go{margin-inline-start:auto;flex:none}
-/* ===== الرحلة ===== */
 .jr{display:flex;gap:12px;position:relative;padding-bottom:16px}
 .jr::before{content:'';position:absolute;inset-inline-start:15px;top:34px;bottom:0;width:1.5px;background:repeating-linear-gradient(#f0c27466 0 4px,transparent 4px 9px)}
 .jr:last-child::before{display:none}
 .jr-ic{width:32px;height:32px;border-radius:50%;background:var(--panel2);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex:none}
-.jr.first .jr-ic{border-color:var(--gold);box-shadow:0 0 0 3px #f0c27418}
 .jr b{font-size:.85rem;font-weight:500;display:block}
-.jr.first b{color:var(--gold)}
 .jr time{font-size:.66rem;color:#5f6c8d}
-/* ===== حديقة سرية ===== */
 .sfl{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}
 .sfl:last-of-type{border:none}
 .sfl .fl{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:var(--panel2);border:1px solid var(--line);flex:none}
@@ -148,7 +137,6 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .sfl b{font-size:.82rem;display:block}
 .sfl small{color:var(--muted);font-size:.7rem}
 .sfl .pr{margin-inline-start:auto;font-size:.7rem;color:var(--gold);flex:none}
-/* ===== التوست والمودال ===== */
 #toasts{position:fixed;top:14px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;z-index:90;width:min(92vw,420px);pointer-events:none}
 .toast{display:flex;gap:11px;align-items:center;background:#101a30f5;border:1px solid #2a3a5e;border-radius:15px;padding:11px 15px;box-shadow:0 14px 34px #000b;animation:tin .5s cubic-bezier(.2,1.2,.4,1) both;font-size:.82rem;line-height:1.6}
 .toast i{font-style:normal;font-size:1.3rem;flex:none}
@@ -161,16 +149,16 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 @media(min-width:560px){#modals{align-items:center}.sheet{border-radius:26px;margin:auto 26px}}
 @keyframes up{from{transform:translateY(70px);opacity:0}}
 .sheet h3{font-family:'Marhey';font-size:1.15rem;margin-bottom:6px}
-.sheet textarea,.sheet input[type=text],.sheet select{width:100%;background:var(--panel2);border:1px solid var(--line2);border-radius:14px;padding:12px 14px;font-size:.9rem;outline:none;margin:8px 0 14px;line-height:1.8;resize:vertical}
+.sheet textarea,.sheet input[type=text],.sheet input[type=date],.sheet select{width:100%;background:var(--panel2);border:1px solid var(--line2);border-radius:14px;padding:12px 14px;font-size:.9rem;outline:none;margin:8px 0 14px;line-height:1.8;resize:vertical;color:var(--ink)}
 .sheet textarea:focus,.sheet input:focus,.sheet select:focus{border-color:var(--gold)}
 .sheet label{font-size:.76rem;color:var(--muted)}
-.colors{display:flex;gap:13px;justify-content:center;margin:18px 0}
+.colors{display:flex;gap:13px;justify-content:center;margin:18px 0;flex-wrap:wrap}
 .csw{width:44px;height:44px;border-radius:50%;border:3px solid transparent;transition:.2s}
 .csw:active{transform:scale(.85)}
 .csw.sel{border-color:#fff}
 .syncbox{text-align:center}
 .syncbox .big{font-size:3.4rem;display:block;margin-bottom:4px}
-.sync-status{display:flex;justify-content:center;gap:10px;margin:14px 0;font-size:.8rem}
+.sync-status{display:flex;justify-content:center;gap:10px;margin:14px 0;font-size:.8rem;flex-wrap:wrap}
 .sync-status span{background:var(--panel2);border:1px solid var(--line);border-radius:99px;padding:7px 14px;color:var(--muted)}
 .sync-status span.ok{border-color:#8fce7a;color:#a8d8a0}
 .touchpad{width:170px;height:170px;margin:20px auto;border-radius:50%;border:2px dashed var(--line2);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.82rem;transition:.25s;touch-action:none;user-select:none}
@@ -179,13 +167,11 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .gbtn{width:62px;height:62px;border-radius:20px;background:var(--panel2);border:1px solid var(--line);font-size:1.6rem;transition:.15s}
 .gbtn:active{transform:scale(.88);border-color:var(--gold)}
 .result{font-size:2.6rem;animation:popIn .6s cubic-bezier(.2,1.4,.4,1) both;display:block}
-/* ===== تأثيرات FX ===== */
 #fx{position:fixed;inset:0;pointer-events:none;z-index:70;overflow:hidden}
 .shoot{position:absolute;width:90px;height:2px;background:linear-gradient(90deg,transparent,#ffd98a);animation:shoot 1.25s ease-out both}
 @keyframes shoot{from{transform:translate(0,0) rotate(-24deg);opacity:1}to{transform:translate(340px,-170px) rotate(-24deg);opacity:0}}
 .moonburst{position:absolute;left:50%;top:38%;width:14px;height:14px;margin:-7px;border-radius:50%;background:#f3ecd8;box-shadow:0 0 44px 20px #ffe9b066;animation:burst 2.1s ease-out both}
 @keyframes burst{0%{transform:scale(.2);opacity:0}25%{opacity:1}100%{transform:scale(10);opacity:0}}
-/* ===== سبلاش وأونبوردنج ===== */
 #splash{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .6s}
 #splash.bye{opacity:0;pointer-events:none}
 #splash .in{text-align:center;animation:tin 1s .2s both}
@@ -200,7 +186,19 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .ob-form input:focus{border-color:var(--gold)}
 .ob-form label{font-size:.74rem;color:var(--muted)}
 .err{color:#e88a8a;font-size:.74rem;min-height:1.2em;margin-bottom:6px}
-/* ===== أنيميشن عناصر المشاهد (SVG) ===== */
+.ob-btns{display:flex;flex-direction:column;gap:11px}
+.codebox{font-family:'Marhey';font-size:1.9rem;letter-spacing:.35em;color:var(--gold);background:var(--panel2);border:1px dashed var(--gold);border-radius:18px;padding:18px 10px;text-align:center;margin:14px 0;direction:ltr}
+.picknames{display:flex;gap:10px;justify-content:center;margin:16px 0}
+.pname{flex:1;max-width:160px;padding:16px 8px;border-radius:16px;border:1px solid var(--line);background:var(--panel2);font-size:.95rem}
+.pname:active{transform:scale(.95)}
+.ob-back{display:block;margin:16px auto 0;color:var(--muted);font-size:.78rem}
+.rulesbox{direction:ltr;text-align:left;font-family:monospace;font-size:.66rem;background:var(--panel2);border:1px dashed var(--line2);border-radius:12px;padding:10px;white-space:pre-wrap;color:var(--muted);margin:8px 0 12px;user-select:all}
+#invitebar{position:fixed;top:12px;left:50%;transform:translate(-50%,-140%);z-index:95;display:flex;align-items:center;gap:10px;background:#1a2440;border:1px solid #3a4c7a;border-radius:16px;padding:10px 12px;box-shadow:0 16px 40px #000b;transition:transform .5s cubic-bezier(.2,1.2,.4,1);max-width:92vw}
+#invitebar.in{transform:translate(-50%,0)}
+#invitebar i{font-style:normal;font-size:1.3rem;flex:none}
+#invitebar span{font-size:.78rem;flex:1}
+#invitebar .btn{padding:8px 14px;font-size:.78rem;flex:none}
+#invitebar .x{color:var(--muted);font-size:1.1rem;padding:4px;flex:none}
 .tw{animation:tw 3.2s ease-in-out infinite}
 @keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}
 .bigstar{animation:tw 2.2s infinite}
@@ -249,9 +247,8 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 
 <div id="onboard" hidden></div>
 
-<!-- شاشة البداية: نفس اللوجو المختار — هلال دهبي + نجوم، والاسم بالدهبي تحته -->
 <div id="splash"><div class="in">
-  <svg class="logo" viewBox="0 0 512 512" width="128" height="128" aria-label="OUR UNIVERSE">
+  <svg viewBox="0 0 512 512" width="128" height="128" aria-label="OUR UNIVERSE">
     <rect width="512" height="512" rx="118" fill="#070b16"/>
     <circle cx="256" cy="256" r="150" fill="#f0c274" opacity=".07"/>
     <circle cx="256" cy="256" r="128" fill="#f0c274"/>
@@ -265,13 +262,26 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
   <h1 class="en">OUR UNIVERSE</h1><small>عالمنا</small>
 </div></div>
 
+<div id="invitebar"></div>
 <div id="toasts"></div>
 <div id="modals"></div>
 <div id="fx"></div>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
 <script>
 'use strict';
-/* ============ أدوات عامة ============ */
+/* ═══════ الإعدادات ═══════
+   مش محتاج تعدلي حاجة هنا خالص!
+   كود Firebase بيتلصق من جوه التطبيق نفسه (زر 🔗 الربط)
+   وبيتحفظ على الموبايل. الحقول دي احتياطية بس.
+   ═══════════════════════ */
+const FB_CONFIG={apiKey:"___",authDomain:"___",databaseURL:"___",projectId:"___"};
+/* لو لصقتي الإعدادات من قبل، بترجع لوحدها */
+(function(){try{const s=localStorage.getItem('fbcfg');if(s){const o=JSON.parse(s);Object.assign(FB_CONFIG,o)}}catch(e){}})();
+
 const $=s=>document.querySelector(s);
 const ar=n=>Number(n).toLocaleString('ar-EG');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -282,44 +292,45 @@ function ago(t){const d=Date.now()-t,m=Math.floor(d/6e4);if(m<1)return'الآن'
 const fmt=t=>new Date(t).toLocaleTimeString('ar-EG',{hour:'numeric',minute:'2-digit'});
 function qpt(p0,c,p1,t){const u=1-t;return[u*u*p0[0]+2*u*t*c[0]+t*t*p1[0],u*u*p0[1]+2*u*t*c[1]+t*t*p1[1]]}
 
-/* ============ الإعدادات: المودات والعوالم ============ */
+/* ============ المودات ============ */
 const MOODS={
- happy:{e:'😊',label:'مبسوطة',desc:'الشمس طالعة والتلال دافية ☀️',sky:['#47739c','#1c3153'],hills:['#2f6b46','#1f4f33','#163a26'],orb:'sun',orbGlow:'#ffd98a',thread:'#f0c274',fam:'warm',stars:16},
- peaceful:{e:'🤍',label:'مرتاحة',desc:'ليل صافي… وقمر كبير ناعم',sky:['#15223f','#070d1c'],hills:['#1d2f4e','#14223b','#0d182a'],orb:'fullmoon',orbGlow:'#e9e2cc',thread:'#e9e2cc',fam:'warm',stars:30},
- loving:{e:'❤️',label:'حب',desc:'نجوم على شكل قلوب مليّانة السما ❤️',sky:['#3b2033','#190d17'],hills:['#33203a','#241529','#170f1c'],orb:'pinkmoon',orbGlow:'#f3b8c0',thread:'#e88a8a',fam:'warm',fx:'hearts',stars:22},
- excited:{e:'✨',label:'متحمسة',desc:'شهب بتلمع في كل حتة',sky:['#2b4462','#101a2b'],hills:['#22505a','#163741','#0f262e'],orb:'comet',orbGlow:'#ffe9b0',thread:'#ffd98a',fam:'warm',fx:'sparkles',stars:34},
- emotional:{e:'🥹',label:'متأثرة',desc:'مطر خفيف بيلمع تحت قمر وردي',sky:['#3a2540','#190f20'],hills:['#2c1e3c','#1e142a','#140d1b'],orb:'crescent',orbGlow:'#e8b0c0',thread:'#d8a8c8',fam:'cold',fx:'rain-soft',stars:18},
- drained:{e:'😴',label:'منهكة',desc:'ليل عميق وقمر باهت — العالم نفسه تعبان',sky:['#0c1122','#04060e'],hills:['#171d33','#101425','#0a0d19'],orb:'dimmoon',orbGlow:'#8f98b8',thread:'#8f98b8',fam:'cold',stars:10},
- overwhelmed:{e:'🫠',label:'مرهقة جدًا',desc:'عاصفة بتخش والبرق بيومض ⛈️',sky:['#20293b','#090d16'],hills:['#1a2333','#121826','#0c1019'],orb:null,orbGlow:'#9ab0d0',thread:'#9ab0d0',fam:'cold',fx:'storm',stars:8},
- annoyed:{e:'😡',label:'متضايقة',desc:'بركان صغير بيدخّن في الأرض 🌋',sky:['#47201c','#1a0b09'],hills:['#3a1c17','#291110','#190a09'],orb:null,orbGlow:'#ff9a70',thread:'#e07a5f',fam:'cold',fx:'volcano',stars:6},
+ happy:{e:'😊',label:'مبسوطة',lm:'مبسوط',desc:'الشمس طالعة والتلال دافية ☀️',sky:['#47739c','#1c3153'],hills:['#2f6b46','#1f4f33','#163a26'],orb:'sun',orbGlow:'#ffd98a',thread:'#f0c274',fam:'warm',stars:16},
+ peaceful:{e:'🤍',label:'مرتاحة',lm:'مرتاح',desc:'ليل صافي… وقمر كبير ناعم',sky:['#15223f','#070d1c'],hills:['#1d2f4e','#14223b','#0d182a'],orb:'fullmoon',orbGlow:'#e9e2cc',thread:'#e9e2cc',fam:'warm',stars:30},
+ loving:{e:'❤️',label:'حب',lm:'حب',desc:'نجوم على شكل قلوب مليّانة السما ❤️',sky:['#3b2033','#190d17'],hills:['#33203a','#241529','#170f1c'],orb:'pinkmoon',orbGlow:'#f3b8c0',thread:'#e88a8a',fam:'warm',fx:'hearts',stars:22},
+ excited:{e:'✨',label:'متحمسة',lm:'متحمس',desc:'شهب بتلمع في كل حتة',sky:['#2b4462','#101a2b'],hills:['#22505a','#163741','#0f262e'],orb:'comet',orbGlow:'#ffe9b0',thread:'#ffd98a',fam:'warm',fx:'sparkles',stars:34},
+ emotional:{e:'🥹',label:'متأثرة',lm:'متأثر',desc:'مطر خفيف بيلمع تحت قمر وردي',sky:['#3a2540','#190f20'],hills:['#2c1e3c','#1e142a','#140d1b'],orb:'crescent',orbGlow:'#e8b0c0',thread:'#d8a8c8',fam:'cold',fx:'rain-soft',stars:18},
+ drained:{e:'😴',label:'منهكة',lm:'منهك',desc:'ليل عميق وقمر باهت — العالم نفسه تعبان',sky:['#0c1122','#04060e'],hills:['#171d33','#101425','#0a0d19'],orb:'dimmoon',orbGlow:'#8f98b8',thread:'#8f98b8',fam:'cold',stars:10},
+ overwhelmed:{e:'🫠',label:'مرهقة جدًا',lm:'مرهق جدًا',desc:'عاصفة بتخش والبرق بيومض ⛈️',sky:['#20293b','#090d16'],hills:['#1a2333','#121826','#0c1019'],orb:null,orbGlow:'#9ab0d0',thread:'#9ab0d0',fam:'cold',fx:'storm',stars:8},
+ annoyed:{e:'😡',label:'متضايقة',lm:'متضايق',desc:'بركان صغير بيدخّن في الأرض 🌋',sky:['#47201c','#1a0b09'],hills:['#3a1c17','#291110','#190a09'],orb:null,orbGlow:'#ff9a70',thread:'#e07a5f',fam:'cold',fx:'volcano',stars:6},
 };
 const TINY=[
- {k:'flower',icon:'🌸',me:'بفكر فيك',him:'بفكر فيكي',reply:'وردتك وصلت… وخلّت يومي أجمل ❤️'},
- {k:'sun',icon:'☀️',me:'يومك يبقى أحسن',him:'يومك يبقى أحلى',reply:'حسّيت بيها فعلاً… شكرًا ☀️'},
- {k:'hug',icon:'🫂',me:'تعالى هنا',him:'تعالي هنا',reply:'جاي… جاي حالًا، احضني نفسي فيكي 🫂'},
- {k:'letter',icon:'💌',me:'رسالة من الخيال',him:'رسالة من الخيال',reply:'لقيتها جوه عالمي… أجمل حاجة شفتها النهاردة'},
- {k:'star',icon:'⭐',me:'فخورة بيك',him:'فخور بيكي',reply:'دي منك؟… مش مصدق نفسي ⭐'},
- {k:'song',icon:'🎵',me:'أغنية ليك',him:'أغنية ليكِ',reply:'سمعتها وأنا بفكر فيك… حفظتها في قلبي 🎵'},
+ {k:'flower',icon:'🌸',me:'بفكر فيك',him:'بفكر فيكي'},
+ {k:'sun',icon:'☀️',me:'يومك يبقى أحسن',him:'يومك يبقى أحلى'},
+ {k:'hug',icon:'🫂',me:'تعالى هنا',him:'تعالي هنا'},
+ {k:'letter',icon:'💌',me:'رسالة من الخيال',him:'رسالة من الخيال'},
+ {k:'star',icon:'⭐',me:'فخورة بيك',him:'فخور بيكي'},
+ {k:'song',icon:'🎵',me:'أغنية ليك',him:'أغنية ليكِ'},
 ];
 const NOWORDS=[
- {k:'here',icon:'🫶',label:'أنا موجودة',send:'🫶 أنا هنا',reply:'حسّيت بيكِ من غير ما تشوفي… أنا هنا كمان ❤️'},
- {k:'hug',icon:'🫂',label:'محتاجة حضن',send:'🫂 تعالى هنا',reply:'تعالي في حضني… مش هسيبك 🫂'},
- {k:'night',icon:'🌙',label:'تصبح على خير',send:'🌙 تصبح على خير',reply:'تصبحي على نور يا قمر… بحبك 🌙'},
- {k:'morning',icon:'☀️',label:'صباح الخير',send:'☀️ صباح الخير',reply:'صباح الفل… موبايلي نور لما شفت رسالتك ☀️'},
- {k:'need',icon:'🥺',label:'محتاجاك',send:'🥺 محتاجاك',reply:'أنا جاي… كل حاجة هتبقى أحسن ❤️'},
- {k:'quiet',icon:'🤍',label:'تمام بس ساكتة',send:'🤍 أنا كويسة، بس ساكتة',reply:'خلاص… هفضل جنبك على طول من غير كلام 🤍'},
+ {k:'here',icon:'🫶',label:'أنا هنا',send:'🫶 أنا هنا'},
+ {k:'hug',icon:'🫂',label:'محتاج/ة حضن',send:'🫂 تعالى هنا',sendM:'🫂 تعالي هنا'},
+ {k:'night',icon:'🌙',label:'تصبح على خير',send:'🌙 تصبح على خير'},
+ {k:'morning',icon:'☀️',label:'صباح الخير',send:'☀️ صباح الخير'},
+ {k:'need',icon:'🥺',label:'محتاج/ةك',send:'🥺 محتاجاك',sendM:'🥺 محتاجاكِ'},
+ {k:'quiet',icon:'🤍',label:'تمام بس ساكت/ة',send:'🤍 أنا كويسة، بس ساكتة',sendM:'🤍 أنا كويس، بس ساكت'},
 ];
 const REPLIES={
- comfort:['تعالي هنا… اطمني قلبي عليكي 🫂','معلش خلي اليوم يعدي… أنا معاكي على طول ❤️','ولا يهمك، بوظّي يومي بس انتِ تبقي كويسة ❤️'],
+ comfort:['تعالي هنا… اطمّني قلبي عليكي 🫂','معلش خلي اليوم يعدي… أنا معاكي على طول ❤️','ولا يهمك، بوظّي يومي بس انتِ تبقي كويسة ❤️'],
  love:['وأنا بحبك أكتر ❤️','لو الدنيا كلها نسيتني وأنتِ فاكراني… يبقى أنا أغنى واحد في الكون ❤️','بحبك… ولو مش شايفني بحس بيك ❤️'],
  happy:['ههههه حاسّة بحماسك من هنا ✨','فرحتك وصلتني من غير ما تشوفي 😊','خليكي كده… عالمك نور من مكاني ☀️'],
  sleep:['نامي بالراحة… وأنا هنا لو حاجة 🌙','تصبحي على نور يا قمر 🌙'],
  default:['كلامك بيوصل لقلبي قبل موبايلي ❤️','بحب إني أسمع منك… حتى لو كلمة 🤍','وأنا كنت هبعتلك… سبقتيني 🤍'],
 };
 const TAGS={comfort:{icon:'🫂',label:'محتاجة احتواء'},happy:{icon:'😊',label:'مبسوطة'},meh:{icon:'😐',label:'زهقانة شوية'}};
-const GUESS=[{k:'happy',e:'😊',t:'مبسوط'},{k:'calm',e:'😐',t:'عادي'},{k:'sad',e:'😔',t:'حزين'},{k:'angry',e:'😡',t:'متضايق'},{k:'tired',e:'😴',t:'تعبان'}];
+const GUESS=[{k:'happy',e:'😊'},{k:'calm',e:'😐'},{k:'sad',e:'😔'},{k:'angry',e:'😡'},{k:'tired',e:'😴'}];
 const GUESS_MAP={happy:'happy',excited:'happy',loving:'happy',peaceful:'calm',emotional:'sad',drained:'tired',annoyed:'angry',overwhelmed:'sad'};
-const ACTIVITIES=['بيبص للنجوم','قاعد يذاكر','بيسمع موسيقى هادية','بيرسم عالمكم','بيفكر فيك','بيرتّب زهورك'];
+const ACT_F=['بتتفرج على النجوم','قاعدة تذاكر','بتسمع أغاني هادية','بتفكر في التاني','بيرتب الزهور اللي جوا عالمها'];
+const ACT_M=['بيتفرج على النجوم','قاعد يذاكر','بيسمع أغاني هادية','بيفكر في التاني','بيرتب الزهور اللي جواه','بيشوف الجسر بينكم'];
 const SPOTS=[[40,278],[80,294],[122,270],[162,300],[205,284],[250,296],[296,276],[340,292],[366,308],[18,310],[232,312]];
 const STAGE_LIST=[
  {at:1,icon:'🌱',label:'أول بذرة'},
@@ -330,22 +341,45 @@ const STAGE_LIST=[
  {at:22,icon:'🔭',label:'مرصد صغير'},
 ];
 
-/* ============ الحالة والتخزين ============ */
+/* ============ الحالة ============ */
 const KEY='our-universe-v1';
-const DEF=()=>({v:1,setup:false,you:{name:'',mood:'peaceful'},partner:{name:'',mood:'happy',online:true,activity:'بيبص للنجوم',lastTiny:null},
- firstDay:Date.now(),bridge:42,growth:0,growthT:0,lastStage:0,journey:[],chat:[],secrets:[],dreams:[],giftsYou:[],giftsPartner:[],lastTinyIn:null,lastTinyOut:null,
+const DEF=()=>({v:2,setup:false,you:{name:'',mood:'peaceful',activity:''},partner:{name:'',mood:'happy',online:false,activity:'…'},
+ firstDay:Date.now(),bridge:42,growth:0,growthT:0,lastStage:0,tempRainbow:0,journey:[],chat:[],secrets:[],dreams:[],giftsYou:[],giftsPartner:[],lastTinyIn:null,lastTinyOut:null,
  counts:{tiny:0,sync:0,msgs:0,noWords:0,guess:0,secretsOpened:0,dreamsCreated:0},firsts:{}});
 let S;
 try{S=Object.assign(DEF(),JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){S=DEF()}
+S.you=Object.assign({name:'',mood:'peaceful',activity:''},S.you);
+S.partner=Object.assign({name:'',mood:'happy',online:false,activity:'…'},S.partner);
+S.journey.forEach(j=>{if(!j.id)j.id='j'+j.t});
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
 const dayN=()=>Math.max(1,Math.floor((Date.now()-S.firstDay)/864e5)+1);
 const warm=k=>MOODS[k].fam==='warm';
 const bothSunny=()=>['happy','excited'].includes(S.you.mood)&&['happy','excited'].includes(S.partner.mood);
+
+/* ============ الربط ============ */
+let MODE='demo',db=null,CODE=null,mySlot=null,FEM=true,netOnline=false,fbReady=false;
+let deviceId=localStorage.getItem('deviceId');
+if(!deviceId){deviceId='d'+Math.random().toString(36).slice(2,10);localStorage.setItem('deviceId',deviceId)}
+const otherSlot=()=>mySlot==='A'?'B':'A';
+const PARTNER_FEM=()=>MODE==='net'?!FEM:false;
+const mL=(k,fem)=>fem?MOODS[k].label:MOODS[k].lm;
+const w=(f,m)=>FEM?f:m;
 function threadInfo(){
  if(warm(S.you.mood)&&warm(S.partner.mood))return{c:'#f0c274',t:'الخيط دهبي — إحساسكم شغال على نفس الموجة'};
  if(!warm(S.you.mood)&&!warm(S.partner.mood))return{c:'#7ea3d8',t:'الخيط أزرق هادي — ساكتين، بس شايلين بعض'};
  return{c:'#a07ad4',t:'الخيط بنفسجي — إحساسكم مختلف… وده اللي بيعمل التوازن'};
 }
+function netAvailable(){return typeof firebase!=='undefined'&&FB_CONFIG.apiKey&&FB_CONFIG.apiKey!=='___'&&/^https/.test(FB_CONFIG.databaseURL||'')}
+function netInit(){
+ if(fbReady){MODE='net';return true}
+ try{
+  firebase.initializeApp(FB_CONFIG);
+  firebase.auth().signInAnonymously().catch(()=>{setTimeout(()=>toast('⚠️','لازم تفعّلي Anonymous في Firebase → Authentication (خطوة ٢ في شاشة الربط)'),1500)});
+  db=firebase.database();MODE='net';fbReady=true;return true
+ }catch(e){return false}
+}
+const P=p=>`unis/${CODE}/${p}`;
+function genCode(){const A='ABCDEFGHJKMNPQRSTUVWXYZ23456789';let c='';for(let i=0;i<6;i++)c+=A[Math.floor(Math.random()*A.length)];return c}
 
 /* ============ مكونات SVG ============ */
 let uidc=0;
@@ -363,27 +397,27 @@ const noteGlyph=c=>`<g fill="${c}"><ellipse cx="0" cy="7" rx="3" ry="2.2" transf
 const star4=(x,y,c,s,fresh)=>`<path class="${fresh?'pop':''}" transform="translate(${x},${y})" d="M0 ${-s} L${(s*.28).toFixed(1)} ${-s*.28} ${s} 0 ${s*.28} ${s*.28} 0 ${s} ${-s*.28} ${s*.28} ${-s} 0 ${-s*.28} ${-s*.28}Z" fill="${c}"/>`;
 function creature(kind,sleeping){
  const C=kind==='you'?['#e88a8a','#f2b3b3']:['#7ec8c3','#b2e2de'];
- if(sleeping)return`<g class="zzz-wrap"><ellipse cx="0" cy="0" rx="11" ry="7" fill="${C[0]}"/><circle cx="10" cy="-3" r="5.5" fill="${C[1]}"/><path d="M8.5 -4 q1 -1 2 0 M12 -4 q1 -1 2 0" stroke="#22303f" stroke-width=".9" fill="none" stroke-linecap="round"/><g class="zzz" fill="#f2ead8"><circle cx="20" cy="-12" r="1"/><circle cx="26" cy="-18" r="1.4"/><circle cx="33" cy="-24" r="1.8"/></g></g>`;
+ if(sleeping)return`<g><ellipse cx="0" cy="0" rx="11" ry="7" fill="${C[0]}"/><circle cx="10" cy="-3" r="5.5" fill="${C[1]}"/><path d="M8.5 -4 q1 -1 2 0 M12 -4 q1 -1 2 0" stroke="#22303f" stroke-width=".9" fill="none" stroke-linecap="round"/><g class="zzz" fill="#f2ead8"><circle cx="20" cy="-12" r="1"/><circle cx="26" cy="-18" r="1.4"/><circle cx="33" cy="-24" r="1.8"/></g></g>`;
  return`<g class="creature"><ellipse cx="0" cy="0" rx="8.5" ry="11" fill="${C[0]}"/><circle cx="0" cy="-16" r="7" fill="${C[1]}"/><circle cx="-2.6" cy="-17" r="1.1" fill="#22303f"/><circle cx="2.6" cy="-17" r="1.1" fill="#22303f"/><path d="M-2.4 -13.6 Q0 -11.8 2.4 -13.6" stroke="#22303f" stroke-width=".9" fill="none" stroke-linecap="round"/><circle cx="0" cy="-2" r="2.2" fill="#f2ead8" opacity=".35"/></g>`;
 }
 function orbMarkup(m,id){
  const glow=`<circle cx="308" cy="84" r="58" fill="url(#glow${id})"/>`;
  switch(m.orb){
-  case 'sun':return`<g class="orb">${glow}<g class="rays">${rayLines(308,84,33,44,12)}</g><circle cx="308" cy="84" r="24" fill="#ffdd8f"/><circle cx="308" cy="84" r="18" fill="#ffe9b0"/></g>`;
-  case 'fullmoon':return`<g class="orb">${glow}<circle cx="300" cy="88" r="34" fill="#f3ecd8"/><circle cx="288" cy="80" r="6" fill="#ddd2b4" opacity=".55"/><circle cx="308" cy="94" r="4.4" fill="#ddd2b4" opacity=".5"/><circle cx="303" cy="74" r="3" fill="#ddd2b4" opacity=".5"/></g>`;
-  case 'dimmoon':return`<g class="orb" opacity=".5">${glow}${crescent(308,80,24,'#d9d6c8','cr'+id)}</g>`;
-  case 'pinkmoon':return`<g class="orb">${glow}${crescent(306,80,27,'#f3c3cd','cr'+id)}</g>`;
-  case 'comet':return`<g class="orb">${glow}<path class="bigstar" d="M332 56 l1.4 3.8 3.8 1.4 -3.8 1.4 -1.4 3.8 -1.4 -3.8 -3.8 -1.4 3.8 -1.4z" fill="#ffe9b0"/></g>`;
+  case 'sun':return`<g>${glow}<g class="rays">${rayLines(308,84,33,44,12)}</g><circle cx="308" cy="84" r="24" fill="#ffdd8f"/><circle cx="308" cy="84" r="18" fill="#ffe9b0"/></g>`;
+  case 'fullmoon':return`<g>${glow}<circle cx="300" cy="88" r="34" fill="#f3ecd8"/><circle cx="288" cy="80" r="6" fill="#ddd2b4" opacity=".55"/><circle cx="308" cy="94" r="4.4" fill="#ddd2b4" opacity=".5"/><circle cx="303" cy="74" r="3" fill="#ddd2b4" opacity=".5"/></g>`;
+  case 'dimmoon':return`<g opacity=".5">${glow}${crescent(308,80,24,'#d9d6c8','cr'+id)}</g>`;
+  case 'pinkmoon':return`<g>${glow}${crescent(306,80,27,'#f3c3cd','cr'+id)}</g>`;
+  case 'comet':return`<g>${glow}<path class="bigstar" d="M332 56 l1.4 3.8 3.8 1.4 -3.8 1.4 -1.4 3.8 -1.4 -3.8 -3.8 -1.4 3.8 -1.4z" fill="#ffe9b0"/></g>`;
   default:return'';
  }
 }
 function fxMarkup(m,id){
  switch(m.fx){
   case 'hearts':{let s='<g>';[[62,190,0],[150,215,1.6],[250,195,3.1],[330,220,2.2],[200,235,4.4]].forEach(([x,y,d])=>{s+=`<g transform="translate(${x},${y})"><g class="flo" style="animation-delay:${d}s">${heartPath('#e88a8a')}</g></g>`});return s+'</g>'}
-  case 'sparkles':{let s='<g>';[[70,60],[180,40],[280,110],[120,120],[340,70]].forEach(([x,y],i)=>{s+=star4(x,y,'#ffe9b0',4)});return s+'</g>'+[0,1,2].map(i=>`<g class="comet" style="animation-delay:${i*2.1}s" transform="translate(0,0)"><line x1="60" y1="26" x2="120" y2="52" stroke="#ffe9b0" stroke-width="2" stroke-linecap="round"/><circle cx="60" cy="26" r="3" fill="#ffe9b0"/></g>`).join('')}
+  case 'sparkles':{let s='<g>';[[70,60],[180,40],[280,110],[120,120],[340,70]].forEach(([x,y])=>{s+=star4(x,y,'#ffe9b0',4)});return s+'</g>'+[0,1,2].map(i=>`<g class="comet" style="animation-delay:${i*2.1}s"><line x1="60" y1="26" x2="120" y2="52" stroke="#ffe9b0" stroke-width="2" stroke-linecap="round"/><circle cx="60" cy="26" r="3" fill="#ffe9b0"/></g>`).join('')}
   case 'rain-soft':return`<g class="rain">${rainLines(13,'#e8c8e8',.35)}</g>`;
   case 'storm':return`<g class="clouds"><ellipse cx="110" cy="64" rx="58" ry="18" fill="#0a0f1c"/><ellipse cx="252" cy="46" rx="66" ry="20" fill="#0b101f"/><ellipse cx="332" cy="84" rx="50" ry="15" fill="#0a0f1c"/></g><polyline class="bolt" points="238,72 222,110 238,106 224,146" stroke="#ffe9a8" stroke-width="2.5" fill="none" stroke-linejoin="round"/><g class="rain">${rainLines(20,'#9ab6d8',.4)}</g>`;
-  case 'volcano':return`<g class="volcano"><path d="M40 300 L95 214 L150 300Z" fill="#2b1210"/><path d="M83 232 L95 214 L107 232 L99 239 L91 237Z" fill="#3a1512"/><ellipse cx="95" cy="229" rx="9" ry="3.2" fill="#ff7a4d"/><g class="embers" fill="#ff9a5f"><circle cx="93" cy="224" r="2" style="animation-delay:.2s"/><circle cx="98" cy="221" r="1.6" fill="#ffc07a" style="animation-delay:1.1s"/><circle cx="94" cy="226" r="1.4" style="animation-delay:1.9s"/></g></g>`;
+  case 'volcano':return`<g><path d="M40 300 L95 214 L150 300Z" fill="#2b1210"/><path d="M83 232 L95 214 L107 232 L99 239 L91 237Z" fill="#3a1512"/><ellipse cx="95" cy="229" rx="9" ry="3.2" fill="#ff7a4d"/><g class="embers" fill="#ff9a5f"><circle cx="93" cy="224" r="2" style="animation-delay:.2s"/><circle cx="98" cy="221" r="1.6" fill="#ffc07a" style="animation-delay:1.1s"/><circle cx="94" cy="226" r="1.4" style="animation-delay:1.9s"/></g></g>`;
  }
  return'';
 }
@@ -402,7 +436,6 @@ function giftMark(g,i){
  }
  return'';
 }
-/* مشهد كون فردي كامل */
 function sceneMain(person){
  const isYou=person==='you';
  const m=MOODS[isYou?S.you.mood:S.partner.mood];
@@ -430,7 +463,6 @@ function sceneMain(person){
   ${avatar}
  </svg>`;
 }
-/* كوكب مصغّر داخل مشهد "عالمنا" */
 function miniWorld(m,side,id){
  const cx=side==='R'?462:-62;
  const gx0=side==='R'?288:0, gx1=side==='R'?400:112;
@@ -460,7 +492,6 @@ function miniWorld(m,side,id){
  </g>
  <circle cx="${cx}" cy="215" r="166" fill="none" stroke="#f0c274" stroke-opacity=".22" stroke-width="1.5"/>`;
 }
-/* عناصر النمو على الجزيرة المشتركة */
 function growthMarkup(){
  const g=S.growth;let s='';
  const fresh=k=>S.lastStage===k&&Date.now()-S.growthT<20000?'pop':'';
@@ -482,11 +513,10 @@ function dreamIsle(d,i){
   ${star4(0,-16,d.done?'#a8d8a0':'#ffd98a',d.done?4:5,false)}
  </g></g>`;
 }
-/* مشهد عالمنا: الكوكبان + الجسر + الخيط + الجزيرة */
 function sceneShared(){
  const id=++uidc;
  const p=S.bridge/100;
- const heavy=(MOODS[S.you.mood].fam==='cold'?1:0)+(MOODS[S.partner.mood].fam==='cold'?1:0);
+ const heavy=(warm(S.you.mood)?0:1)+(warm(S.partner.mood)?0:1);
  const fog=Math.min(.6,Math.max(0,(65-S.bridge)/65)*.5+heavy*.13);
  const ti=threadInfo();
  let posts='';for(let i=0;i<=12;i++){const t=i/12;const[x,y]=qpt([296,206],[200,154],[104,206],t);posts+=`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${x.toFixed(1)}" y2="${(y-14).toFixed(1)}"/>`}
@@ -504,25 +534,24 @@ function sceneShared(){
    <ellipse cx="200" cy="304" rx="54" ry="13" fill="#2a4636"/>
    ${growthMarkup()}
   </g>
-  <g class="bridge" style="opacity:${(.45+.55*p).toFixed(2)};${S.bridge>72?'filter:drop-shadow(0 0 5px rgba(240,194,116,.7))':''}">
+  <g style="opacity:${(.45+.55*p).toFixed(2)};${S.bridge>72?'filter:drop-shadow(0 0 5px rgba(240,194,116,.7))':''}">
    <path d="M296 206 Q200 154 104 206" stroke="#77502f" stroke-width="7" fill="none" stroke-linecap="round"/>
    <path d="M296 206 Q200 154 104 206" stroke="#93683e" stroke-width="3" fill="none"/>
    <path d="M296 192 Q200 140 104 192" stroke="#93683e" stroke-width="2.4" fill="none" opacity=".9"/>
    <g stroke="#7d5738" stroke-width="2.4">${posts}</g>
    ${lants}
   </g>
-  <g class="fog" style="opacity:${fog.toFixed(2)}">
+  <g style="opacity:${fog.toFixed(2)}">
    <ellipse cx="200" cy="206" rx="46" ry="12" fill="#6b7a95"/>
    <ellipse cx="170" cy="222" rx="38" ry="10" fill="#6b7a95"/>
    <ellipse cx="232" cy="220" rx="40" ry="11" fill="#6b7a95"/>
   </g>
   ${rainbow}
-  <path id="threadLine" d="M344 118 Q200 84 56 118" stroke="${ti.c}" stroke-width="1" opacity=".3" fill="none"/>
+  <path d="M344 118 Q200 84 56 118" stroke="${ti.c}" stroke-width="1" opacity=".3" fill="none"/>
   <path class="thread" d="M344 118 Q200 84 56 118" stroke="${ti.c}" stroke-width="2.6" stroke-linecap="round" fill="none" stroke-dasharray="0.5 8" opacity=".95"/>
   ${S.dreams.slice(0,4).map((d,i)=>dreamIsle(d,i)).join('')}
  </svg>`;
 }
-/* ===== اللوجو الرسمي المختار: هلال دهبي + نجوم على خلفية غامقة ===== */
 function logoSVG(size){
  return`<svg viewBox="0 0 512 512" width="${size}" height="${size}" aria-label="OUR UNIVERSE">
   <rect width="512" height="512" rx="118" fill="#070b16"/>
@@ -556,58 +585,84 @@ function threadPulse(dir){
  if(view!=='world')return;
  const svg=document.querySelector('#main svg.scene');if(!svg)return;
  const d=dir==='out'?'M344 118 Q200 84 56 118':'M56 118 Q200 84 344 118';
- svg.insertAdjacentHTML('beforeend',`<circle class="pulse-dot" r="4.5" fill="#ffe9b0"><animateMotion dur="1.5s" fill="freeze" path="${d}"/><animate attributeName="opacity" values="1;1;0" dur="1.5s" fill="freeze"/></circle>`);
- setTimeout(()=>svg.querySelectorAll('.pulse-dot').forEach(c=>c.remove()),1700);
+ svg.insertAdjacentHTML('beforeend',`<g class="pd"><circle r="4.5" fill="#ffe9b0"><animateMotion dur="1.5s" fill="freeze" path="${d}"/><animate attributeName="opacity" values="1;1;0" dur="1.5s" fill="freeze"/></circle></g>`);
+ setTimeout(()=>svg.querySelectorAll('.pd').forEach(g=>g.remove()),1700);
 }
 const markWorldDirty=()=>$('#badge-world')?.classList.add('on');
 const markChat=()=>{if(view!=='chat')$('#badge-chat')?.classList.add('on')};
 
-/* ============ الرحلة والنمو والجسر ============ */
+/* ============ الرحلة / الجسر / النمو ============ */
 function firstOrCount(k){S.firsts[k]=(S.firsts[k]||0)+1;return S.firsts[k]===1}
-function jlog(icon,title,sub){S.journey.unshift({t:Date.now(),icon,title,sub});save()}
-function addGrowth(n=1){
+function jlog(icon,title,sub){
+ const e={id:'j'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),icon,title,sub:sub||null,t:Date.now()};
+ S.journey.unshift(e);save();
+ if(MODE==='net'&&db){try{db.ref(P('journey')).push(e)}catch(err){}}
+}
+function addGrowthLocal(n){
  const before=S.growth;S.growth+=n;
  const st=STAGE_LIST.find(x=>x.at<=S.growth&&x.at>before);
  if(st){S.lastStage=st.at;S.growthT=Date.now();toast(st.icon,`عالمنا كبر: ${st.label}`);jlog(st.icon,`عالمنا كبر — ${st.label}`);markWorldDirty()}
  save();
 }
-const bridgeAdd=n=>{S.bridge=Math.max(0,Math.min(100,S.bridge+n));save()};
+function txGrowth(n=1){
+ if(MODE!=='net'){addGrowthLocal(n);return}
+ const before=S.growth;S.growth+=n;
+ try{db.ref(P('shared')).transaction(v=>{v=v||{};v.growth=(v.growth||0)+n;return v})}catch(e){}
+ const st=STAGE_LIST.find(x=>x.at<=S.growth&&x.at>before);
+ if(st){S.lastStage=st.at;S.growthT=Date.now();toast(st.icon,`عالمنا كبر: ${st.label}`);jlog(st.icon,`عالمنا كبر — ${st.label}`);markWorldDirty()}
+ save();
+}
+function txBridge(d){
+ S.bridge=Math.max(0,Math.min(100,S.bridge+d));save();
+ if(MODE==='net'&&db){try{db.ref(P('shared/bridge')).transaction(v=>Math.max(0,Math.min(100,(v||0)+d)))}catch(e){}}
+ if(view==='world')render();
+}
 function checkRainbow(){
  if(bothSunny()&&firstOrCount('rainbow')){jlog('🌈','اتنينكم مبسوطين — قوس قزح ظهر على الجسر');toast('🌈','قوس قزح ظهر على جسركم!');markWorldDirty();save()}
 }
 
-/* ============ الأفعال ============ */
+/* ============ أفعالك ============ */
 function setMood(k){
  if(S.you.mood===k)return;
- S.you.mood=k;bridgeAdd(2);
+ S.you.mood=k;txBridge(2);
  toast(MOODS[k].e,`عالمك اتغيّر: ${MOODS[k].desc}`);
- if(firstOrCount('mood')){jlog('💭','أول مود شكّل عالمك — '+MOODS[k].label);addGrowth(1)}
+ if(firstOrCount('mood')){jlog('💭','أول مود شكّل عالمكم — '+mL(k,FEM));txGrowth(1)}
+ if(MODE==='net')pushMe({mood:k});
  checkRainbow();save();render();
-}
-function upliftPartner(){
- const order=['annoyed','overwhelmed','drained','emotional','peaceful','happy','loving'];
- const i=order.indexOf(S.partner.mood);
- if(i>=0&&i<4){S.partner.mood=order[Math.min(i+2,order.length-1)];toast(MOODS[S.partner.mood].e,`${S.partner.name} مزاجه اتحسّن بيهديتك`);checkRainbow()}
 }
 function sendTiny(k){
  const t=TINY.find(x=>x.k===k);if(!t)return;
- S.giftsPartner.push({kind:k==='sun'?'sunpop':k==='letter'?'letter':(k==='song'?'notes':k),t:Date.now()});
- S.lastTinyOut={icon:t.icon,text:t.me,t:Date.now()};
- S.counts.tiny++;bridgeAdd(4);
- toast(t.icon,`وصلت لعالمه… "${t.me}"`);
+ const myTxt=w(t.me,t.him), seesTxt=w(t.him,t.me);
+ const kind=k==='sun'?'sunpop':k==='letter'?'letter':(k==='song'?'notes':k);
+ S.giftsPartner.push({kind,t:Date.now()});
+ S.lastTinyOut={icon:t.icon,text:myTxt,t:Date.now()};
+ S.counts.tiny++;txBridge(4);
+ toast(t.icon,`وصلت ${w('لعالمه','لعالمها')}… "${myTxt}"`);
  threadPulse('out');markWorldDirty();
- if(firstOrCount('tiny')){jlog('🎁','أول هدية صغيرة وصلت عالمه');addGrowth(1)}
+ if(firstOrCount('tiny')){jlog('🎁','أول هدية صغيرة عبرت الجسر');txGrowth(1)}
  checkSecrets();save();render();
- setTimeout(()=>{
-  pushMsg({from:'him',text:t.reply});
-  if(view==='chat'){renderChat();scrollChat()}else toast('💬',`${S.partner.name} رد على هديتك`);
- },2200+Math.random()*2200);
- upliftPartner();save();
+ if(MODE==='net'){
+  const gid='g'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+  try{db.ref(P(`gifts/${otherSlot()}`)).push({gid,kind,t:Date.now(),note:seesTxt})}catch(e){}
+ }else{
+  setTimeout(()=>{
+   pushMsg({from:'him',text:['وردتك وصلت… وخلّت يومي أجمل ❤️','حسّيت بيها فعلاً… شكرًا ☀️','لقيتها جوه عالمي… أجمل حاجة شفتها النهاردة'][Math.min(TINY.indexOf(t),2)]});
+   if(view==='chat'){renderChat();scrollChat()}else toast('💬','رد على هديتك');
+   upliftPartner();
+  },2200+Math.random()*2200);
+ }
+}
+function upliftPartner(){
+ if(MODE==='net')return;
+ const order=['annoyed','overwhelmed','drained','emotional','peaceful','happy','loving'];
+ const i=order.indexOf(S.partner.mood);
+ if(i>=0&&i<4){S.partner.mood=order[Math.min(i+2,order.length-1)];checkRainbow()}
 }
 function partnerSendsTiny(){
  const t=pick(TINY);
- S.giftsYou.push({kind:t.k==='sun'?'sunpop':t.k==='letter'?'letter':t.k==='song'?'notes':t.k,t:Date.now()});
- S.lastTinyIn={icon:t.icon,text:t.him,t:Date.now()};bridgeAdd(2);
+ const kind=t.k==='sun'?'sunpop':t.k==='letter'?'letter':t.k==='song'?'notes':t.k;
+ S.giftsYou.push({kind,t:Date.now()});
+ S.lastTinyIn={icon:t.icon,text:t.him,t:Date.now()};txBridge(2);
  toast(t.icon,`${S.partner.name} بعتلك: "${t.him}" — ظهرت في عالمك`);
  if(firstOrCount('giftin')){jlog('🎁',`أول هدية منه تزرع في عالمك: ${t.icon}`)}
  threadPulse('in');markWorldDirty();save();
@@ -615,25 +670,48 @@ function partnerSendsTiny(){
 }
 function sendNoWord(k){
  const n=NOWORDS.find(x=>x.k===k);if(!n)return;
- pushMsg({from:'you',kind:'noword',noWord:k,text:n.send});
- S.counts.noWords++;bridgeAdd(3);threadPulse('out');markWorldDirty();
+ const txt=w(n.send,n.sendM||n.send);
+ const m={from:'you',kind:'noword',noWord:k,text:txt};
+ S.counts.noWords++;txBridge(3);threadPulse('out');markWorldDirty();
  if(k==='night'&&firstOrCount('night'))jlog('🌙','أول "تصبح على خير" بينكم');
- if(firstOrCount('noword')){jlog('🫶','أول "من غير كلام" — وجود من غير رسائل');addGrowth(1)}
- toast(n.icon,'وصلته… من غير ولا كلمة');
- checkSecrets();save();renderChat();scrollChat();
- setTimeout(()=>{
-  pushMsg({from:'him',text:n.reply});
-  if(view==='chat'){renderChat();scrollChat()}else toast('💬',`${S.partner.name} رد`);
- },1700+Math.random()*1800);
+ if(firstOrCount('noword')){jlog('🫶','أول "من غير كلام" — وجود من غير رسائل');txGrowth(1)}
+ toast(n.icon,w('وصلته… من غير ولا كلمة','وصلها… من غير ولا كلمة'));
+ checkSecrets();
+ sendMessage(m);renderChat();scrollChat();
+ if(MODE==='demo'){
+  setTimeout(()=>{
+   pushMsg({from:'him',text:['حسّيت بيكِ من غير ما تشوفي… أنا هنا كمان ❤️','تعالي في حضني… مش هسيبك 🫂','تصبحي على نور يا قمر 🌙','صباح الفل… موبايلي نور لما شفت رسالتك ☀️','أنا جاي… كل حاجة هتبقى أحسن ❤️','خلاص… هفضل جنبك على طول من غير كلام 🤍'][NOWORDS.findIndex(x=>x.k===k)]||'أنا هنا 🤍'});
+   if(view==='chat'){renderChat();scrollChat()}else toast('💬',`${S.partner.name} رد`);
+  },1700+Math.random()*1800);
+ }
 }
+
 /* ============ الشات ============ */
 let draft='',currentTag=null;
 function pushMsg(m){
  m.t=m.t||Date.now();m.id='m'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
  S.chat.push(m);S.counts.msgs++;
- if(m.from==='him')markChat();else bridgeAdd(1);
- if(S.counts.msgs%5===0)addGrowth(1);
+ if(m.from==='him')markChat();else txBridge(1);
+ if(S.counts.msgs%5===0)txGrowth(1);
  checkSecrets();save();
+}
+function sendMessage(m){
+ if(MODE!=='net'){pushMsg(m);return}
+ m.id='m'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+ m.t=Date.now();
+ if((S.chat.length+1)%5===0)txGrowth(1);
+ if(firstOrCount('chat')){jlog('💬','أول رسالة في عالمكم');txGrowth(1)}
+ try{db.ref(P('chat')).push({id:m.id,from:mySlot,text:m.text||'',tag:m.tag||null,kind:m.kind||null,noWord:m.noWord||null,t:m.t})}
+ catch(e){toast('⚠️','مش متصلة بالنت دلوقتي')}
+}
+function sendText(){
+ const inp=$('#chat-in');const txt=(inp?inp.value:draft).trim();
+ if(!txt)return;draft='';if(inp)inp.value='';
+ sendMessage({from:'you',text:txt,tag:currentTag});
+ if(/❤️|بحب/.test(txt)){S.giftsPartner.push({kind:'heart',t:Date.now()});toast('❤️',`قلب ظهر ${w('في عالمه','في عالمها')}`);markWorldDirty();if(MODE==='net'&&db){try{db.ref(P(`gifts/${otherSlot()}`)).push({gid:'g'+Date.now(),kind:'heart',t:Date.now(),note:'❤️'})}catch(e){}}}
+ currentTag=null;
+ renderChat();scrollChat();
+ if(MODE==='demo')partnerRespond({from:'you',text:txt});
 }
 function partnerRespond(msg){
  const delay=1600+Math.random()*2400;
@@ -641,7 +719,7 @@ function partnerRespond(msg){
  setTimeout(()=>{
   document.querySelector('#chat-list .typing')?.remove();
   let pool=REPLIES.default;
-  if(msg.noWord){const n=NOWORDS.find(x=>x.k===msg.noWord);pool=[n.reply]}
+  if(msg.noWord){const i=NOWORDS.findIndex(x=>x.k===msg.noWord);pool=[['حسّيت بيكِ… أنا هنا كمان ❤️'],REPLIES.default,REPLIES.sleep,REPLIES.default,REPLIES.comfort,REPLIES.default][i]||REPLIES.default}
   else if(msg.tag==='comfort')pool=REPLIES.comfort;
   else{const txt=msg.text||'';
    if(/❤️|بحب/.test(txt))pool=REPLIES.love;
@@ -653,29 +731,21 @@ function partnerRespond(msg){
   if(view==='chat'){renderChat();scrollChat()}else toast('💬',`${S.partner.name} رد عليك`);
  },delay);
 }
-function sendText(){
- const inp=$('#chat-in');const txt=(inp?inp.value:draft).trim();
- if(!txt)return;draft='';if(inp)inp.value='';
- const m={from:'you',text:txt,tag:currentTag};
- pushMsg(m);currentTag=null;
- if(/❤️|بحب/.test(txt)){S.giftsPartner.push({kind:'heart',t:Date.now()});toast('❤️','قلب ظهر في عالمه');markWorldDirty()}
- if(firstOrCount('chat')){jlog('💬','أول رسالة في عالمكم');addGrowth(1)}
- renderChat();scrollChat();partnerRespond(m);
-}
 const typingHTML=()=>`<div class="msg him typing"><div class="bub dots"><i class="d"></i><i class="d"></i><i class="d"></i></div></div>`;
 function msgHTML(m){
- const dreamBtn=m.kind==null?`<div class="tools"><button data-action="dream-save" data-id="${m.id}">✈️ احفظي كحلم</button></div>`:'';
+ const dreamBtn=m.kind==null?`<div class="tools"><button data-action="dream-save" data-id="${m.id}">✈️ احفظوا كحلم</button></div>`:'';
  const meta=`<time>${fmt(m.t)}</time>`;
- if(m.kind==='noword'){const n=NOWORDS.find(x=>x.k===m.noWord);return`<div class="msg you"><div class="nw"><i>${n.icon}</i><b>${esc(m.text)}</b><small>من غير كلام</small></div>${meta}</div>`}
- if(m.kind==='secret'){return`<div class="msg you"><div class="sec"><b>🔐 سر من حديقتك اتفتح له</b><span>${esc(m.text)}</span></div>${meta}</div>`}
+ if(m.kind==='noword'){const n=NOWORDS.find(x=>x.k===m.noWord);return`<div class="msg ${m.from}"><div class="nw"><i>${n.icon}</i><b>${esc(m.text)}</b><small>من غير كلام</small></div>${meta}</div>`}
+ if(m.kind==='secret'){return`<div class="msg ${m.from}"><div class="sec"><b>🔐 سرّ من الحديقة السرية اتفتح</b><span>${esc(m.text)}</span></div>${meta}</div>`}
  const tag=m.tag?`<small class="tag">${TAGS[m.tag].icon} ${TAGS[m.tag].label}</small>`:'';
  return`<div class="msg ${m.from}"><div class="bub">${esc(m.text)}${tag}</div>${meta}${dreamBtn}</div>`;
 }
-/* ============ الأسرار ============ */
+
+/* ============ الحديقة السرية ============ */
 function openSecret(){
- openModal(`<h3>🔐 ازرعي سرًا في حديقتك</h3>
- <p class="hint">هو مش هيشوفه غير لما الشرط يتحقق… وساعتها هيوصله من جوه عالمك.</p>
- <textarea id="sec-txt" rows="4" maxlength="220" placeholder="اكتبي أي حاجة نفسك تقوليها له بعدين…"></textarea>
+ openModal(`<h3>🔐 ${w('ازرعي','ازرع')} سرًا في حديقتك</h3>
+ <p class="hint">${w('هو مش هيشوفه','هي مش هتشوفيه')} غير لما الشرط يتحقق… وساعتها هيوصله من جوه عالمك.</p>
+ <textarea id="sec-txt" rows="4" maxlength="220" placeholder="اكتبي أي حاجة نفسك تقوليها ليه بعدين…"></textarea>
  <label>يتفتح لما:</label>
  <select id="sec-cond">
   <option value="syncs:3">تكملوا 3 لحظات تزامن (عندكم ${ar(S.counts.sync)})</option>
@@ -683,100 +753,105 @@ function openSecret(){
   <option value="msgs:10">تكتبوا 10 رسالات (عندكم ${ar(S.counts.msgs)})</option>
   <option value="dreams:1">تسجّلوا أول حلم</option>
  </select>
- <button class="btn primary wide" data-action="secret-save">ازرعيه في عالمك 🌱</button>`);
+ <button class="btn primary wide" data-action="secret-save">${w('ازرعيه','ازرعه')} في عالمك 🌱</button>`);
 }
 function saveSecret(){
  const txt=$('#sec-txt').value.trim();if(!txt)return;
  const[type,n]=$('#sec-cond').value.split(':');
  const base={syncs:S.counts.sync,tiny:S.counts.tiny,msgs:S.counts.msgs,dreams:S.counts.dreamsCreated}[type]||0;
  S.secrets.push({text:txt,base,goal:base+ +n,type,opened:false,t:Date.now()});
- if(firstOrCount('plant'))jlog('🌱','زرعتي أول سر في حديقتك');
+ if(firstOrCount('plant'))jlog('🌱',w('زرعتي أول سر في حديقتك','زرعت أول سر في حديقتك'));
  toast('🔐','سرّك اتنزرع في حديقتك…');
  save();closeModal();render();
 }
 function progressOf(s){const cur={syncs:S.counts.sync,tiny:S.counts.tiny,msgs:S.counts.msgs,dreams:S.counts.dreamsCreated}[s.type]||0;return{cur:Math.min(cur,s.goal),goal:s.goal}}
 function checkSecrets(){
- S.secrets.forEach((s,i)=>{
+ S.secrets.forEach(s=>{
   if(s.opened)return;
   const{cur,goal}=progressOf(s);
   if(cur>=goal){
    s.opened=true;s.openedAt=Date.now();S.counts.secretsOpened++;
-   bridgeAdd(8);addGrowth(1);
-   jlog('🌸','سرّ من حديقتك السرية اتفتح له');
-   pushMsg({from:'you',kind:'secret',text:s.text});
-   toast('🌸','سرّك اتفتح… ووصله من جوه عالمك');
+   txBridge(8);txGrowth(1);
+   jlog('🌸','سرّ من الحديقة السرية اتفتح');
+   sendMessage({from:'you',kind:'secret',text:s.text});
+   toast('🌸','سرّك اتفتح… ووصل');
    if(view==='chat'){renderChat();scrollChat()}
    markWorldDirty();save();
   }
  });
 }
+
 /* ============ الأحلام ============ */
 function openDream(id){
  const m=S.chat.find(x=>x.id===id);if(!m)return;
- openModal(`<h3>✈️ احفظي الحلم في عالمنا</h3>
+ openModal(`<h3>✈️ احفظوا الحلم في عالمنا</h3>
  <p class="hint" style="margin-bottom:10px">"${esc((m.text||'').slice(0,70))}${(m.text||'').length>70?'…':''}"</p>
  <input type="text" id="dr-name" placeholder="اسم الحلم… مثلاً: إيطاليا ✈️" maxlength="24">
- <button class="btn primary wide" data-action="dream-create" data-id="${id}">خلّيه يطير فوق الجسر ✈️</button>`);
+ <button class="btn primary wide" data-action="dream-create" data-id="${id}">خلّوه يطير فوق الجسر ✈️</button>`);
 }
 function createDream(id){
  const m=S.chat.find(x=>x.id===id);const name=$('#dr-name').value.trim();
  if(!m||!name)return;
- S.dreams.push({name,quote:(m.text||'').slice(0,80),done:false,t:Date.now()});
- S.counts.dreamsCreated++;bridgeAdd(5);addGrowth(1);
+ const e={id:'d'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),name,quote:(m.text||'').slice(0,80),done:false,t:Date.now()};
+ S.dreams.push(e);S.counts.dreamsCreated++;txBridge(5);txGrowth(1);
  if(firstOrCount('dream'))jlog('✈️','أول حلم اتسجل — جزيرة جديدة ظهرت فوق الجسر');
  toast('✈️',`"${name}" بقت جزيرة فوق الجسر`);
  markWorldDirty();save();closeModal();
+ if(MODE==='net'&&db){try{const pr=db.ref(P('dreams')).push(e);const i=S.dreams.findIndex(x=>x.id===e.id);if(i>-1)S.dreams[i].key=pr.key;save()}catch(err){}}
  if(view==='world')render();
 }
 function realizeDream(i){
  const d=S.dreams[i];if(!d||d.done)return;
- d.done=true;d.doneAt=Date.now();
- bridgeAdd(10);addGrowth(1);S.counts.sync++;
+ d.done=true;d.doneAt=Date.now();d.notified=true;
+ txBridge(10);txGrowth(1);S.counts.sync++;
  jlog('🎉',`تحقق حلمكم: ${d.name}`);
  toast('⭐',`حلمكم تحقق: ${d.name}`);celebrate();save();render();
+ if(MODE==='net'&&db&&d.key){try{db.ref(P(`dreams/${d.key}`)).update({done:true})}catch(e){}}
 }
+
 /* ============ التخمين ============ */
 function openGuess(){
- openModal(`<h3>🧠 حاسة إنه إيه دلوقتي؟</h3>
- <p class="hint">خمّني مزاجه من غير ما تشوفي… واوعي لتوقّع قلبك.</p>
+ openModal(`<h3>🧠 ${w('حاسة إنه إيه دلوقتي؟','حاسس إنها إيه دلوقتي؟')}</h3>
+ <p class="hint">خمّني ${w('مزاجه','مزاجها')} من غير ما تشوفي… واوعي لتوقّع قلبك.</p>
  <div class="guessrow">${GUESS.map(g=>`<button class="gbtn" data-action="guess" data-k="${g.k}">${g.e}</button>`).join('')}</div>`);
 }
 function submitGuess(k){
  const real=GUESS_MAP[S.partner.mood];
- const gm=GUESS.find(x=>x.k===k),rm=MOODS[S.partner.mood];
+ const rm=MOODS[S.partner.mood],rl=mL(S.partner.mood,PARTNER_FEM());
  if(k===real){
-  S.counts.guess++;bridgeAdd(6);addGrowth(1);
-  if(firstOrCount('guess'))jlog('⭐','توقعتي مزاجه صح — تزامن حقيقي');
-  openModal(`<div class="syncbox"><span class="result">✨</span><h3>توقعتي صح!</h3>
-  <p class="hint">هو فعلًا ${rm.e} ${rm.label} — ${rm.desc}</p>
+  S.counts.guess++;txBridge(6);txGrowth(1);
+  if(firstOrCount('guess'))jlog('⭐','توقعتوا مزاج بعض صح — تزامن حقيقي');
+  openModal(`<div class="syncbox"><span class="result">✨</span><h3>${w('توقعتي صح!','توقعت صح!')}</h3>
+  <p class="hint">${w('هو','هي')} فعلًا ${rm.e} ${rl} — ${rm.desc}</p>
   <p style="margin:12px 0;color:var(--gold)">حصل تزامن بين العالمين… والجسر نوّر 🌉</p>
   <button class="btn primary" data-action="modal-close">جميل 🤍</button></div>`);
   celebrate();markWorldDirty();save();
  }else{
-  openModal(`<div class="syncbox"><span class="result">${rm.e}</span><h3>هو ${rm.label}</h3>
+  openModal(`<div class="syncbox"><span class="result">${rm.e}</span><h3>${w('هو','هي')} ${rl}</h3>
   <p class="hint">${rm.desc}</p>
-  <p style="margin:12px 0;color:var(--rose)">مش خسارة… يمكن اتفقّدي عليه 🤍</p>
-  <button class="btn primary" data-action="guess-gift">ابعتيله حاجة لطيفة 🌸</button></div>`);
+  <p style="margin:12px 0;color:var(--rose)">مش خسارة… ${w('يمكن اتفقّدي عليه 🤍','يمكن اتفقّد عليها 🤍')}</p>
+  <button class="btn primary" data-action="guess-gift">${w('ابعتيله','ابعتلها')} حاجة لطيفة 🌸</button></div>`);
  }
 }
+
 /* ============ لحظات التزامن ============ */
 function openSync(){
  openModal(`<h3 style="text-align:center">✨ لحظة تزامن</h3>
- <p class="hint" style="text-align:center">حاجة تعملوها مع بعض… في نفس اللحظة.</p>
+ <p class="hint" style="text-align:center">حاجة تعملوها مع بعض… في نفس اللحظة.${MODE==='net'?' لما تبدئيها هتوصل دعوة فورًا على موبايله.':''}</p>
  <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
-  <button class="btn ghost" data-action="sync-challenge" data-t="moon">🌙 شوفي القمر</button>
+  <button class="btn ghost" data-action="sync-challenge" data-t="moon">🌙 شوفوا القمر</button>
   <button class="btn ghost" data-action="sync-challenge" data-t="color">🎨 اختاروا نفس اللون</button>
   <button class="btn ghost" data-action="sync-challenge" data-t="touch">👆 لمسة في نفس اللحظة</button>
  </div>`);
 }
 let readyFn=null;
-function syncSuccess(detail,big){
- S.counts.sync++;bridgeAdd(big?10:7);addGrowth(1);
+function syncSuccessDemo(detail,big){
+ S.counts.sync++;txBridge(big?10:7);txGrowth(1);
  if(firstOrCount('sync'))jlog('✨','أول لحظة تزامن حقيقية بينكم');
- jlog('✨','لحظة تزامن جديدة',detail);
+ jlog('✨','لحظة تزامن',detail);
  closeModal();celebrate();markWorldDirty();save();render();
 }
-function chMoon(){
+function chMoonD(){
  let himAt=null,youAt=null;
  openModal(`<div class="syncbox"><span class="big">🌙</span><h3>شوفي القمر</h3>
  <p class="hint">في نفس اللحظة بالظبط… لما تحسّي إنكم جاهزين</p>
@@ -789,96 +864,168 @@ function chMoon(){
    const diff=Math.abs(himAt-youAt)/1000;
    const msg=diff<1?'في نفس اللحظة تقريبًا… ده توقيع قلب واحد ❤️':`كان بينكم ${diff.toFixed(1)} ثانية بس`;
    openModal(`<div class="syncbox"><span class="big">🌟</span><h3>حصل التزامن!</h3><p style="color:var(--gold);margin:8px 0">${msg}</p><p class="hint">الجسر نوّر… وعالمنا كبر شوية</p></div>`);
-   setTimeout(()=>syncSuccess('شوفي القمر 🌙',diff<1),1400);
-   readyFn=null;
+   setTimeout(()=>syncSuccessDemo('شوفي القمر 🌙',diff<1),1400);readyFn=null;
   }
  }
 }
 const CNAMES={'#e88a8a':'الوردي','#f0c274':'الدهبي','#a8d8a0':'الأخضر','#7ec8c3':'الفيروزي','#a07ad4':'البنفسجي'};
 const COLORS=['#e88a8a','#f0c274','#a8d8a0','#7ec8c3','#a07ad4'];
-function chColor(){
- openModal(`<div class="syncbox"><h3>🎨 اختاروا نفس اللون</h3>
- <p class="hint">اختاري دلوقتي… وهو هياخد قراره</p>
- <div class="colors">${COLORS.map(c=>`<button class="csw" style="background:${c}" data-action="color-pick" data-c="${c}"></button>`).join('')}</div>
- <div id="color-st" class="hint"></div></div>`);
+function chColorD(){
+ openModal(`<div class="syncbox"><h3>🎨 اختاروا نفس اللون</h3><p class="hint">اختاري دلوقتي… وهو هياخد قراره</p>
+ <div class="colors">${COLORS.map(c=>`<button class="csw" style="background:${c}" data-action="color-pick" data-c="${c}"></button>`).join('')}</div><div id="color-st" class="hint"></div></div>`);
 }
-function colorPick(c){
+function colorPickD(c){
  document.querySelectorAll('.csw').forEach(b=>b.classList.toggle('sel',b.dataset.c===c));
  const st=$('#color-st');st.textContent=`اختارتي ${CNAMES[c]}… هو بيفكر 🤍`;
  setTimeout(()=>{
-  const same=Math.random()<.42;
-  const his=same?c:pick(COLORS.filter(x=>x!==c));
-  if(same){
-   S.tempRainbow=Date.now()+30000;
-   st.innerHTML=`<b style="color:var(--gold)">وهو اختار ${CNAMES[his]} برضه!</b><br>نفس اللون… قوس قزح لمع على الجسر 🌈`;
-   setTimeout(()=>syncSuccess('نفس اللون — '+CNAMES[c],true),1500);
-  }else{
-   st.innerHTML=`هو اختار <b>${CNAMES[his]}</b>… قريبين أكتر مما تتخيلوا 🤍`;
-   setTimeout(()=>syncSuccess('اختيارين متجاورين — '+CNAMES[c],false),1500);
-  }
+  const same=Math.random()<.42;const his=same?c:pick(COLORS.filter(x=>x!==c));
+  if(same){S.tempRainbow=Date.now()+30000;st.innerHTML=`<b style="color:var(--gold)">وهو اختار ${CNAMES[his]} برضه!</b><br>نفس اللون… قوس قزح لمع على الجسر 🌈`;setTimeout(()=>syncSuccessDemo('نفس اللون — '+CNAMES[c],true),1500)}
+  else{st.innerHTML=`هو اختار <b>${CNAMES[his]}</b>… قريبين أكتر مما تتخيلوا 🤍`;setTimeout(()=>syncSuccessDemo('اختيارين متجاورين — '+CNAMES[c],false),1500)}
  },1500+Math.random()*1200);
 }
-function chTouch(){
- openModal(`<div class="syncbox"><h3>👆 لمسة في نفس اللحظة</h3>
- <p class="hint">اضغطي على الدايرة واستمري ضاغطة… وهو هيعمل نفس الشيء</p>
+function chTouchD(){
+ openModal(`<div class="syncbox"><h3>👆 لمسة في نفس اللحظة</h3><p class="hint">اضغطي على الدايرة واستمري ضاغطة… وهو هيعمل نفس الشيء</p>
  <div class="touchpad" id="tp"><span>اضغطي واستمري</span></div>
  <div class="sync-status"><span id="t-you">أنتِ سايبة</span><span id="t-him">هو سايب</span></div></div>`);
  let you=false,him=false,bothStart=null,done=false;
  const tp=$('#tp'),ys=$('#t-you'),hs=$('#t-him');
- const hisDelay=800+Math.random()*2500,hisDur=1500+Math.random()*2000;
- setTimeout(()=>{if(done)return;him=true;hs.textContent='هو ضاغط ✓';hs.classList.add('ok')},hisDelay);
+ const hd=800+Math.random()*2500,dur=1500+Math.random()*2000;
+ setTimeout(()=>{if(done)return;him=true;hs.textContent='هو ضاغط ✓';hs.classList.add('ok')},hd);
  setTimeout(()=>{if(done)return;him=false;hs.textContent='ساب';hs.classList.remove('ok');
-  if(!done&&!bothStart){done=true;openModal(`<div class="syncbox"><span class="big">🤍</span><h3>قربتوا!</h3><p class="hint">المساتكم مشيت في نفس الثانية تقريبًا… جربوا تاني</p><button class="btn primary" data-action="sync-challenge" data-t="touch">محاولة تانية</button></div>`)}
- },hisDelay+hisDur);
+  if(!bothStart){done=true;openModal(`<div class="syncbox"><span class="big">🤍</span><h3>قربتوا!</h3><p class="hint">جربوا تاني… المرة الجاية هتلمسوا نفس اللحظة</p><button class="btn primary" data-action="sync-challenge" data-t="touch">محاولة تانية</button></div>`)}},hd+dur);
  tp.addEventListener('pointerdown',e=>{e.preventDefault();you=true;tp.classList.add('hold');ys.textContent='أنتِ ضاغطة ✓';ys.classList.add('ok')});
  const up=()=>{you=false;bothStart=null;tp.classList.remove('hold');ys.textContent='أنتِ سايبة';ys.classList.remove('ok')};
  tp.addEventListener('pointerup',up);tp.addEventListener('pointerleave',up);tp.addEventListener('pointercancel',up);
  const iv=setInterval(()=>{
   if(done||!document.body.contains(tp)){clearInterval(iv);return}
-  if(you&&him){
-   if(!bothStart)bothStart=Date.now();
-   else if(Date.now()-bothStart>=800){
-    done=true;clearInterval(iv);up();
-    syncSuccess('لمسة واحدة في نفس اللحظة',true);
-   }
-  }else bothStart=null;
+  if(you&&him){if(!bothStart)bothStart=Date.now();else if(Date.now()-bothStart>=800){done=true;clearInterval(iv);up();syncSuccessDemo('لمسة واحدة في نفس اللحظة',true)}}
+  else bothStart=null;
  },100);
 }
-/* ============ محاكاة الشريك ============ */
-function partnerTick(){
- const r=Math.random();
- if(r<.2){
-  const prev=S.partner.mood;
-  S.partner.mood=pick(['happy','happy','loving','loving','excited','peaceful','peaceful','emotional','drained','annoyed','overwhelmed']);
-  if(S.partner.mood!==prev){
-   if(view==='partner'||view==='world')render();
-   if(MOODS[S.partner.mood].fam==='cold'&&Math.random()<.5)toast(MOODS[S.partner.mood].e,`${S.partner.name} ${MOODS[S.partner.mood].label} — ${MOODS[S.partner.mood].desc}`);
-   checkRainbow();save();
+/* — التزامن الحقيقي (مربوطين) — */
+function firebase_database_ts(){try{if(typeof firebase!=='undefined'&&firebase.database&&firebase.database.ServerValue)return firebase.database.ServerValue.TIMESTAMP}catch(e){}return Date.now()}
+const SVTS=firebase_database_ts();
+const seenIds=new Set(),finished=new Set();let seenInvites=new Set();
+function netStartChallenge(type){
+ const key=Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+ try{
+  db.ref(P('invite')).set({type,from:mySlot,key,t:Date.now()});
+  openNetChallenge(type,key);
+ }catch(e){toast('⚠️','مش متصلة بالنت')}
+}
+function watchInvite(){
+ db.ref(P('invite')).on('value',s=>{
+  const v=s.val();if(!v||v.from===mySlot)return;
+  if(Date.now()-v.t>45000)return;
+  if(seenInvites.has(v.key))return;seenInvites.add(v.key);
+  const bar=$('#invitebar');
+  bar.innerHTML=`<i>${({moon:'🌙',color:'🎨',touch:'👆'})[v.type]}</i><span>${esc(S.partner.name)} ${w('بدأت لحظة تزامن! انضمي','بدأ لحظة تزامن! انضم')}</span>
+   <button class="btn primary" data-action="invite-join" data-type="${v.type}" data-key="${v.key}">انضم 🤍</button>
+   <button class="x" data-action="invite-no">×</button>`;
+  requestAnimationFrame(()=>bar.classList.add('in'));
+  clearTimeout(bar._t);bar._t=setTimeout(()=>{bar.classList.remove('in');bar.innerHTML=''},45000);
+ });
+}
+function openNetChallenge(type,key){
+ if(type==='moon'){
+  openModal(`<div class="syncbox"><span class="big">🌙</span><h3>شوفوا القمر</h3>
+  <p class="hint">في نفس اللحظة بالظبط… لما تحسّوا إنكم جاهزين</p>
+  <div class="sync-status"><span id="you-st">${w('أنتِ…','أنت…')}</span><span id="him-st">${esc(S.partner.name)}…</span></div>
+  <button class="btn primary" data-action="net-ready" data-key="${key}">${w('أنا جاهزة','أنا جاهز')}</button></div>`);
+ }else if(type==='color'){
+  openModal(`<div class="syncbox"><h3>🎨 اختاروا نفس اللون</h3><p class="hint">اختاروا في نفس الوقت… وشوفوا قلوبكم</p>
+  <div class="colors">${COLORS.map(c=>`<button class="csw" style="background:${c}" data-action="net-color" data-c="${c}" data-key="${key}"></button>`).join('')}</div><div id="color-st" class="hint"></div></div>`);
+ }else{
+  openModal(`<div class="syncbox"><h3>👆 لمسة في نفس اللحظة</h3><p class="hint">اضغطوا على الدايرة واستمروا ضاغطين مع بعض</p>
+  <div class="touchpad" id="tp"><span>اضغط واستمر</span></div>
+  <div class="sync-status"><span id="t-you">${w('أنتِ سايبة','أنت سايب')}</span><span id="t-him">${esc(S.partner.name)} سايب</span></div></div>`);
+  netTouch(key);
+ }
+ netWatch(type,key);
+}
+function netWatch(type,key){
+ db.ref(P(`sync/${key}`)).on('value',s=>{
+  const v=s.val()||{};
+  if(type==='moon'){
+   if(v[mySlot]!=null){const el=$('#you-st');if(el){el.textContent=w('أنتِ جاهزة ✓','أنت جاهز ✓');el.classList.add('ok')}}
+   if(v[otherSlot()]!=null){const el=$('#him-st');if(el){el.textContent=`${S.partner.name} جاهز ✓`;el.classList.add('ok')}}
+   if(v.A!=null&&v.B!=null){
+    const diff=Math.abs(v.A-v.B);
+    finishChallenge(key,'🌟',diff<2500,'حصل التزامن!',diff<2500?'في نفس اللحظة بالظبط… ده توقيع قلب واحد ❤️':`كان بينكم ${(diff/1000).toFixed(1)} ثانية بس — وعالمنا كبر برضو 🤍`,'شوفي القمر 🌙',diff<2500);
+   }
   }
- }else if(r<.42){
-  S.partner.online=!S.partner.online;S.partner.activity=pick(ACTIVITIES);
-  if(view==='partner'||view==='home'||view==='chat')render();save();
- }else if(r<.58&&S.partner.online){partnerSendsTiny()}
+  if(type==='color'&&v.A&&v.B){
+   const same=v.A===v.B;
+   if(same){try{db.ref(P('shared/rainbowUntil')).set(Date.now()+30000)}catch(e){}}
+   finishChallenge(key,same?'🌈':'🤍',same,'نفس اللون!','قوس قزح لمع على الجسر بينكم 🌈','اختيارين متجاورين — '+CNAMES[v.A],same);
+  }
+  if(type==='touch')netTouchEval(v,key);
+ });
 }
+function netTouch(key){
+ const tp=$('#tp');
+ let hold=false;
+ tp.addEventListener('pointerdown',e=>{e.preventDefault();hold=true;tp.classList.add('hold');const el=$('#t-you');if(el){el.textContent=w('أنتِ ضاغطة ✓','أنت ضاغط ✓');el.classList.add('ok')}
+  try{db.ref(P(`sync/${key}/${mySlot}/s`)).set(SVTS);db.ref(P(`sync/${key}/${mySlot}/e`)).remove()}catch(e){}});
+ const up=()=>{if(!hold)return;hold=false;tp.classList.remove('hold');const el=$('#t-you');if(el){el.textContent=w('أنتِ سايبة','أنت سايب');el.classList.remove('ok')}
+  try{db.ref(P(`sync/${key}/${mySlot}/e`)).set(SVTS)}catch(e){}};
+ tp.addEventListener('pointerup',up);tp.addEventListener('pointerleave',up);tp.addEventListener('pointercancel',up);
+}
+function netTouchEval(v,key){
+ const A=v.A||{},B=v.B||{};
+ if(A.s==null||B.s==null)return;
+ const end=Math.min(A.e??Date.now(),B.e??Date.now());
+ const ov=end-Math.max(A.s,B.s);
+ if(ov>=800){finishChallenge(key,'🤍',true,'لمستوا نفس اللحظة!','المساتكم مشيت على الجسر في نفس الثانية ❤️','لمسة واحدة في نفس اللحظة',true)}
+ else if(A.e!=null&&B.e!=null&&!finished.has(key)){
+  finished.add(key);
+  openModal(`<div class="syncbox"><span class="big">🤍</span><h3>قربتوا!</h3><p class="hint">جربوا تاني… المرة الجاية هتلمسوا نفس اللحظة</p><button class="btn primary" data-action="modal-close">تمام</button></div>`);
+ }
+}
+function finishChallenge(key,icon,big,heading,sub,detail,bigReward){
+ if(finished.has(key))return;finished.add(key);
+ openModal(`<div class="syncbox"><span class="big">${icon}</span><h3>${heading}</h3><p style="color:var(--gold);margin:8px 0">${sub}</p><p class="hint">الجسر نوّر… وعالمنا كبر شوية</p></div>`);
+ celebrate();S.counts.sync++;save();
+ try{db.ref(P(`sync/${key}/done`)).transaction(cur=>cur===true?undefined:true).then(r=>{
+  if(r.committed){
+   txBridge(bigReward?10:7);txGrowth(1);
+   if(firstOrCount('sync'))jlog('✨','أول لحظة تزامن حقيقية بينكم');
+   jlog('✨','لحظة تزامن',detail);
+  }
+ }).catch(()=>{});
+  db.ref(P('invite')).remove();}catch(e){}
+ markWorldDirty();
+}
+
 /* ============ الواجهات ============ */
-let view='home';
+let view='home',focusChat=false;
 function headerHTML(){
+ const st=MODE==='net'?(netOnline?'<span class="st net">🔗 متصلين</span>':'<span class="st">📡…</span>'):'<span class="st">تجريبي 🧪</span>';
  return`<div class="brand">${logoSVG(34)}<div class="bt"><b class="en">OUR UNIVERSE</b><small>اليوم ${ar(dayN())} مع بعض 🤍</small></div></div>
- <button class="pchip ${S.partner.online?'on':''}" data-action="go" data-view="partner"><span class="dot ${S.partner.online?'on':''}"></span>${esc(S.partner.name)}</button>`;
+ <div class="hrow">${st}<button class="pchip ${S.partner.online?'on':''}" data-action="go" data-view="partner"><span class="dot ${S.partner.online?'on':''}"></span>${esc(S.partner.name||'…')}</button></div>`;
 }
+const renderHeader=()=>{$('#top').innerHTML=headerHTML()};
+function renderIfSafe(){if(view==='chat')renderHeader();else render()}
 function renderHome(){
- const m=MOODS[S.you.mood];
- const onlineCard=S.partner.online?`<div class="card presence"><span class="dot on"></span><div><b>🧍‍♂️ ${esc(S.partner.name)} موجود في عالمك</b><small>${S.partner.activity} — من غير ما يتكلم</small></div></div>`:'';
- const tin=S.lastTinyIn?`<div class="card"><b style="font-size:.85rem">آخر حاجة وصلتك منه:</b><p class="hint" style="font-size:.85rem;color:var(--ink);margin-top:4px">${S.lastTinyIn.icon} "${S.lastTinyIn.text}" ${ago(S.lastTinyIn.t)}</p></div>`:'';
+ const pairCard=MODE==='net'
+  ?`<div class="card" style="border-color:#8fce7a44"><div class="bl"><b>🔗 مربوطين ببعض</b><span style="color:#a8d8a0">${netOnline?'متصلين الآن ✅':'بانتظار الاتصال…'}</span></div>
+    <p class="hint">كود الكون: <b class="en" style="color:var(--gold)">${CODE}</b> — كل حاجة بتتزامن لحظيًا بين الموبايلين، وعلى موبايله نفس الكود.</p>
+    <div style="display:flex;gap:8px;margin-top:10px"><button class="btn ghost" data-action="copy-cur-code" data-c="${CODE}">📋 كود الكون</button><button class="btn ghost" style="color:var(--muted)" data-action="unlink">فك الربط</button></div></div>`
+  :`<div class="card" style="border-color:#5a4a1f;background:#1a1608"><h3>🔗 ربط الموبايلين مع بعض</h3>
+    <p class="hint">دلوقتي التطبيق شغال على الموبايل ده بس (وضع تجريبي). عشان يتكلم بموبايله بجد — من غير أي تعديل كود، وبتتعمل مرة واحدة في ≈٥ دقايق:</p>
+    <button class="btn primary wide" style="margin-top:10px" data-action="p-open">ابدئي الربط 🔗</button></div>`;
+ const onlineCard=S.partner.online?`<div class="card presence"><span class="dot on"></span><div><b>🧍 ${esc(S.partner.name)} موجود في عالمك</b><small>${S.partner.activity} — من غير ما يتكلم</small></div></div>`:'';
+ const tin=S.lastTinyIn?`<div class="card"><b style="font-size:.85rem">آخر حاجة وصلتك ${w('منه','منها')}:</b><p class="hint" style="font-size:.85rem;color:var(--ink);margin-top:4px">${S.lastTinyIn.icon} "${esc(S.lastTinyIn.text)}" ${ago(S.lastTinyIn.t)}</p></div>`:'';
  return`<section>
   <div class="scene-card">${sceneMain('you')}</div>
+  ${pairCard}
   ${onlineCard}
-  <div class="card"><h3>إحساسك دلوقتي؟</h3><p class="hint">من غير كلمة واحدة — اختاري، وعالمك يتحوّل قدامه.</p>
-   <div class="moods" style="margin-top:12px">${Object.entries(MOODS).map(([k,v])=>`<button class="mood ${S.you.mood===k?'on':''}" data-action="mood" data-k="${k}"><i>${v.e}</i><span>${v.label}</span></button>`).join('')}</div></div>
+  <div class="card"><h3>إحساسك دلوقتي؟</h3><p class="hint">من غير كلمة واحدة — اختار، وعالمك يتحوّل ${w('قدامه','قدامها')}.</p>
+   <div class="moods" style="margin-top:12px">${Object.entries(MOODS).map(([k,v])=>`<button class="mood ${S.you.mood===k?'on':''}" data-action="mood" data-k="${k}"><i>${v.e}</i><span>${mL(k,FEM)}</span></button>`).join('')}</div></div>
   ${tin}
   <div class="card"><h3>🔐 حديقتك السرية</h3>
-   ${S.secrets.length?S.secrets.map(s=>{const{cur,goal}=progressOf(s);return`<div class="sfl ${s.opened?'open':''}"><div class="fl">${s.opened?'🌸':'🔒'}</div><div><b>${s.opened?'سرّك اتفتح ووصله':`سرّ مخبّي — باقي ${ar(goal-cur)}`}</b><small>${s.opened?ago(s.openedAt)+' اتفتح له':'هيوصله لما الشرط يتحقق'}</small></div>${s.opened?'':`<span class="pr">${ar(cur)} / ${ar(goal)}</span>`}</div>`}).join(''):'<p class="hint">حاجة نفسك تقوليها له… بس بعدين. ازرعيها هنا وهتفتحله في وقتها.</p>'}
-   <button class="btn ghost wide" style="margin-top:12px" data-action="secret-open">ازرعي سرًا جديدًا 🌱</button></div>
+   ${S.secrets.length?S.secrets.map(s=>{const{cur,goal}=progressOf(s);return`<div class="sfl ${s.opened?'open':''}"><div class="fl">${s.opened?'🌸':'🔒'}</div><div><b>${s.opened?'سرّك اتفتح ووصل':`سرّ مخبّي — باقي ${ar(goal-cur)}`}</b><small>${s.opened?ago(s.openedAt)+' اتفتح':'هيوصله لما الشرط يتحقق'}</small></div>${s.opened?'':`<span class="pr">${ar(cur)} / ${ar(goal)}</span>`}</div>`}).join(''):'<p class="hint">حاجة نفسك تقولها ${w('له','لها')}… بس بعدين. ازرعها هنا وهتفتحله في وقتها.</p>'}
+   <button class="btn ghost wide" style="margin-top:12px" data-action="secret-open">${w('ازرعي','ازرع')} سرًا جديدًا 🌱</button></div>
  </section>`;
 }
 function renderPartner(){
@@ -886,24 +1033,24 @@ function renderPartner(){
  return`<section>
   <div class="scene-card">${sceneMain('partner')}</div>
   <div class="card presence"><span class="dot ${S.partner.online?'on':''}"></span>
-   <div>${S.partner.online?`<b>🧍‍♂️ موجود دلوقتي</b><small>${S.partner.activity} — وجود من غير Chat</small>`:`<b>مش موجود دلوقتي</b><small>خليه يحس بيك… ابعتيله حاجة صغيرة 🌸</small>`}</div></div>
+   <div>${S.partner.online?`<b>🧍 موجود دلوقتي</b><small>${S.partner.activity} — وجود من غير Chat</small>`:`<b>مش موجود دلوقتي</b><small>خليه يحس بيك… ابعتله حاجة صغيرة 🌸</small>`}</div></div>
   <div class="card"><h3>عالمه دلوقتي</h3><p class="hint" style="font-size:.9rem;color:var(--ink)">${m.desc}</p>
-   <p style="margin-top:10px;font-size:.85rem;color:var(--gold)">${m.e} ${m.label}</p></div>
-  <div class="card"><h3>ابعتيله حاجة صغيرة</h3><p class="hint">بدل رسالة كاملة… حاجة تظهر جوّه عالمه.</p>
-   <div class="tinies" style="margin-top:12px">${TINY.map(t=>`<button class="tiny" data-action="tiny" data-k="${t.k}"><i>${t.icon}</i><span>${t.me}</span></button>`).join('')}</div>
-   ${S.lastTinyOut?`<p class="hint" style="margin-top:12px">آخر حاجة وصلته منك: ${S.lastTinyOut.icon} "${S.lastTinyOut.text}" ${ago(S.lastTinyOut.t)}</p>`:''}</div>
-  <button class="btn ghost wide" data-action="guess-open">🧠 حاسة إنه إيه دلوقتي؟</button>
+   <p style="margin-top:10px;font-size:.85rem;color:var(--gold)">${m.e} ${mL(S.partner.mood,PARTNER_FEM())}</p></div>
+  <div class="card"><h3>${w('ابعتيله','ابعتلها')} حاجة صغيرة</h3><p class="hint">بدل رسالة كاملة… حاجة تظهر جوّه ${w('عالمه','عالمها')}.</p>
+   <div class="tinies" style="margin-top:12px">${TINY.map(t=>`<button class="tiny" data-action="tiny" data-k="${t.k}"><i>${t.icon}</i><span>${w(t.me,t.him)}</span></button>`).join('')}</div>
+   ${S.lastTinyOut?`<p class="hint" style="margin-top:12px">آخر حاجة وصلته منك: ${S.lastTinyOut.icon} "${esc(S.lastTinyOut.text)}" ${ago(S.lastTinyOut.t)}</p>`:''}</div>
+  <button class="btn ghost wide" data-action="guess-open">🧠 ${w('حاسة إنه إيه دلوقتي؟','حاسس إنها إيه دلوقتي؟')}</button>
  </section>`;
 }
 function renderWorld(){
- const lvl=S.bridge>=80?{t:'الجسر نوره قوي الليلة ✨',c:'var(--gold)'}:S.bridge>=55?{t:'الجسر دافي ومتوهّج',c:'var(--gold)'}:S.bridge>=30?{t:'الجسر ثابت بس نوره خافت',c:'var(--muted)'}:{t:'الجسر محتاج لمسة… ابعتيله حاجة 🌸',c:'var(--rose)'};
+ const lvl=S.bridge>=80?{t:'الجسر نوره قوي الليلة ✨',c:'var(--gold)'}:S.bridge>=55?{t:'الجسر دافي ومتوهّج',c:'var(--gold)'}:S.bridge>=30?{t:'الجسر ثابت بس نوره خافت',c:'var(--muted)'}:{t:'الجسر محتاج لمسة… ابعتله حاجة 🌸',c:'var(--rose)'};
  const ti=threadInfo();
  return`<section>
   <div class="scene-card">${sceneShared()}</div>
-  <div class="duo"><span>${esc(S.you.name)} · ${MOODS[S.you.mood].e} ${MOODS[S.you.mood].label}</span><span>${MOODS[S.partner.mood].e} ${esc(S.partner.name)}</span></div>
+  <div class="duo"><span>${esc(S.you.name||'أنا')} · ${MOODS[S.you.mood].e} ${mL(S.you.mood,FEM)}</span><span>${MOODS[S.partner.mood].e} ${mL(S.partner.mood,PARTNER_FEM())} ${esc(S.partner.name)}</span></div>
   <div class="card"><div class="bl"><b>🌉 طاقة الجسر</b><span style="color:${lvl.c}">${ar(S.bridge)}%</span></div>
    <div class="bar"><i style="width:${S.bridge}%"></i></div>
-   <p class="hint" style="margin-top:9px">${lvl.t} — كل هدية، رسالة، ولحظة تزامن بتزوّد نوره.</p></div>
+   <p class="hint" style="margin-top:9px">${lvl.t} — كل هدية، رسالة، ولحظة تزامن بتزوّد نوره.${MODE==='net'?' والطاقة محفوظة على السيرفر — الاتنين شايفين نفس الجسر':''}</p></div>
   <div class="card threadbox"><span class="sw" style="background:${ti.c};color:${ti.c}"></span>
    <div><b style="font-size:.85rem">🧵 الخيط غير المرئي</b><p class="hint">${ti.t}</p></div></div>
   <div class="card"><h3>🌱 عالمنا بيكبر</h3><p class="hint">كل حاجة تعملوها مع بعض بتضيف حاجة للجزيرة اللي تحت الجسر.</p>
@@ -912,26 +1059,25 @@ function renderWorld(){
   <div class="card"><h3>✈️ أحلامكم</h3>
    ${S.dreams.length?S.dreams.map((d,i)=>`<div class="dream"><span style="font-size:1.4rem">${d.done?'⭐':'🪐'}</span>
     <div><b>${esc(d.name)} ${d.done?'— تحقق ⭐':''}</b><small>"${esc(d.quote)}"</small></div>
-    ${d.done?'':`<button class="btn ghost go" data-action="dream-done" data-i="${i}">حققناه 🎉</button>`}</div>`).join(''):'<p class="hint">لسه مفيش أحلام… من الحديث، اضغطي ✈️ جنب أي رسالة وخلّيها حلم يعيش فوق الجسر.</p>'}</div>
+    ${d.done?'':`<button class="btn ghost go" data-action="dream-done" data-i="${i}">حققناه 🎉</button>`}</div>`).join(''):'<p class="hint">لسه مفيش أحلام… من الحديث، اضغطوا ✈️ جنب أي رسالة وخلّوها حلم يعيش فوق الجسر.</p>'}</div>
   <div class="card"><h3>🧵 رحلتنا — Our Journey</h3>
-   ${S.journey.length?S.journey.slice(0,14).map(j=>`<div class="jr ${j.first?'first':''}"><div class="jr-ic">${j.icon}</div><div><b>${esc(j.title)}${j.sub?` — ${esc(j.sub)}`:''}</b><time>${ago(j.t)}</time></div></div>`).join(''):'<p class="hint">كل أول مرة هتتسجل هنا… أول رسالة، أول هدية، أول تزامن.</p>'}</div>
-  <div class="card"><h3>📲 حطّوا عالمنا على شاشتكم</h3>
-   <p class="hint">من قاائمة المتصفح اختاري <b style="color:var(--ink)">إضافة إلى الشاشة الرئيسية / Add to Home Screen</b> — هيظهر لوجو الهلال والنجوم بتاع <b class="en" style="color:var(--gold);font-size:.78rem">OUR UNIVERSE</b> على شاشتكم زي أي تطبيق، بفتحة كاملة واسمه تحت الأيقونة.</p></div>
+   ${S.journey.length?S.journey.slice(0,14).map(j=>`<div class="jr"><div class="jr-ic">${j.icon}</div><div><b>${esc(j.title)}${j.sub?` — ${esc(j.sub)}`:''}</b><time>${ago(j.t)}</time></div></div>`).join(''):'<p class="hint">كل أول مرة هتتسجل هنا… أول رسالة، أول هدية، أول تزامن.</p>'}</div>
+  <div class="card"><h3>📲 عالمنا على شاشتكم</h3>
+   <p class="hint">على الموبايل: افتحوا لينك التطبيق → قايمة المتصفح → <b style="color:var(--ink)">إضافة إلى الشاشة الرئيسية / Add to Home Screen</b> — هيظهر لوجو الهلال واسم <b class="en" style="color:var(--gold);font-size:.78rem">OUR UNIVERSE</b> زي أي تطبيق.</p></div>
  </section>`;
 }
 function renderChat(){
- const focused=document.activeElement===$('#chat-in');
  return`<div class="chat-scroll" id="chat-list">${S.chat.map(msgHTML).join('')||'<p class="hint" style="align-self:center;margin:auto;text-align:center">الكلام المهم مش بيضيع هنا… بيتحول لحاجات تعيش في عالمكم 🤍</p>'}</div>
  <div class="composer">
   <div class="nowords">${NOWORDS.map(n=>`<button class="nw-btn" data-action="noword" data-k="${n.k}"><i>${n.icon}</i><span>${n.label}</span></button>`).join('')}</div>
   <div class="tagsel"><span class="hint" style="font-size:.68rem;align-self:center">الإحساس ورا الرسالة:</span>${Object.entries(TAGS).map(([k,t])=>`<button class="tagchip ${currentTag===k?'on':''}" data-action="tag" data-k="${k}">${t.icon} ${t.label}</button>`).join('')}</div>
-  <div class="inrow"><input id="chat-in" placeholder="اكتبي له…" autocomplete="off" value="${esc(draft)}">
+  <div class="inrow"><input id="chat-in" placeholder="${w('اكتبي له…','اكتب لها…')}" autocomplete="off" value="${esc(draft)}">
   <button class="btn primary sq" data-action="send" aria-label="إرسال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5m0 0l6-6m-6 6l6 6"/></svg></button></div>
  </div>`;
 }
 function scrollChat(){const l=$('#chat-list');if(l)l.scrollTop=l.scrollHeight}
 function render(){
- $('#top').innerHTML=headerHTML();
+ renderHeader();
  const main=$('#main');
  main.className='view-'+view;
  main.innerHTML=({home:renderHome,partner:renderPartner,world:renderWorld,chat:renderChat})[view]();
@@ -943,15 +1089,275 @@ function render(){
  }
  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.view===view));
 }
-let focusChat=false;
 function go(v){
  view=v;
  if(v==='world')$('#badge-world').classList.remove('on');
- if(v==='chat')$('#badge-chat').classList.remove('on');
- if(v==='chat')focusChat=false;
+ if(v==='chat'){$('#badge-chat').classList.remove('on');focusChat=false}
  render();
 }
-/* ============ توجيه الأحداث ============ */
+
+/* ============ طبقة الربط ============ */
+function pushMe(extra){
+ if(MODE!=='net'||!db)return;
+ try{db.ref(P(`users/${mySlot}`)).update(Object.assign({name:S.you.name,mood:S.you.mood,fem:FEM,online:true,lastSeen:Date.now(),activity:S.you.activity},extra||{}))}catch(e){}
+}
+function bindUniverse(){
+ const o=otherSlot();
+ S.chat.forEach(m=>seenIds.add(m.id));
+ S.journey.forEach(j=>seenIds.add(j.id));
+ db.ref(P(`users/${mySlot}`)).once('value').then(s=>{const v=s.val()||{};if(v.name){S.you.name=v.name}if(v.mood)S.you.mood=v.mood;save();renderIfSafe()}).catch(()=>{});
+ let firstP=true,lastSig='';
+ db.ref(P(`users/${o}`)).on('value',s=>{
+  const v=s.val();if(!v)return;
+  S.partner.name=v.name||S.partner.name;
+  S.partner.mood=v.mood||S.partner.mood;
+  S.partner.activity=v.activity||'…';
+  S.partner.online=!!v.online&&(Date.now()-(v.lastSeen||0)<80000);
+  const sig=[S.partner.name,S.partner.mood,S.partner.online,S.partner.activity].join('|');
+  if(firstP){firstP=false;lastSig=sig;renderIfSafe();return}
+  if(sig!==lastSig){
+   const moodChanged=lastSig.split('|')[1]!==S.partner.mood;
+   lastSig=sig;save();
+   if(moodChanged){
+    if(view!=='partner')toast(MOODS[S.partner.mood].e,`${S.partner.name} ${mL(S.partner.mood,PARTNER_FEM())} — ${MOODS[S.partner.mood].desc}`);
+    checkRainbow();
+   }
+   renderIfSafe();
+  }
+ });
+ db.ref(P('shared')).on('value',s=>{
+  const v=s.val();if(!v)return;
+  let changed=false;
+  if(typeof v.bridge==='number'&&v.bridge!==S.bridge){S.bridge=v.bridge;changed=true}
+  if(typeof v.growth==='number'){
+   const before=S.growth;S.growth=v.growth;
+   const st=STAGE_LIST.find(x=>x.at<=v.growth&&x.at>before);
+   if(st){S.lastStage=st.at;S.growthT=v.growthT||Date.now();markWorldDirty();changed=true}
+  }
+  if(v.firstDay&&Math.abs(v.firstDay-S.firstDay)>5000){S.firstDay=v.firstDay;changed=true}
+  if(v.rainbowUntil&&v.rainbowUntil>Date.now()){S.tempRainbow=v.rainbowUntil;changed=true}
+  save();if(changed&&view==='world')render();else if(changed)renderHeader();
+ });
+ db.ref(P('chat')).on('child_added',s=>{
+  const m=s.val();if(!m||seenIds.has(m.id))return;seenIds.add(m.id);
+  m.from=m.from===mySlot?'you':'him';
+  S.chat.push(m);S.counts.msgs++;
+  if(m.from==='him'){
+   markChat();
+   if(view==='chat'){renderChat();scrollChat()}else toast('💬',`${S.partner.name} كتبلك`);
+   if(m.kind==='secret')toast('🌸',`${S.partner.name} فتحلك سرًا من حديقته`);
+  }else if(view==='chat'){renderChat();scrollChat()}
+  save();
+ });
+ db.ref(P(`gifts/${mySlot}`)).on('child_added',s=>{
+  const g=s.val();if(!g||seenIds.has(g.gid))return;seenIds.add(g.gid);
+  S.giftsYou.push({kind:g.kind,t:g.t||Date.now()});
+  S.lastTinyIn={icon:giftIcon(g.kind),text:g.note||'هدية صغيرة',t:g.t||Date.now()};
+  txBridge(2);
+  toast(giftIcon(g.kind),`${S.partner.name} بعتلك: "${g.note}" — ظهرت في عالمك`);
+  if(firstOrCount('giftin'))jlog('🎁',`أول هدية من ${S.partner.name} تزرع في عالمك: ${giftIcon(g.kind)}`);
+  threadPulse('in');markWorldDirty();save();renderIfSafe();
+ });
+ db.ref(P('journey')).on('child_added',s=>{const e=s.val();if(!e||!e.id||seenIds.has(e.id))return;seenIds.add(e.id);S.journey.unshift(e);save();if(view==='world')render()});
+ db.ref(P('dreams')).on('child_added',s=>{const d=s.val();if(!d||seenIds.has(d.id))return;seenIds.add(d.id);d.key=s.key;S.dreams.push(d);save();if(view==='world')render()});
+ db.ref(P('dreams')).on('child_changed',s=>{const d=s.val();const i=S.dreams.findIndex(x=>x.id===d.id);if(i>-1){S.dreams[i].done=d.done;if(d.done&&!S.dreams[i].notified){S.dreams[i].notified=true;toast('⭐',`حلمكم اتحقق: ${d.name}`);celebrate()}}save();if(view==='world')render()});
+ watchInvite();
+ db.ref('.info/connected').on('value',s=>{
+  netOnline=!!s.val();renderHeader();
+  if(netOnline){
+   const me=db.ref(P(`users/${mySlot}`));
+   me.onDisconnect().update({online:false,lastSeen:Date.now()}).then(()=>pushMe()).catch(()=>{});
+  }
+ });
+}
+const giftIcon=k=>({flower:'🌸',sun:'☀️',hug:'🫂',letter:'💌',star:'⭐',song:'🎵',heart:'❤️',notes:'🎵',sunpop:'☀️',glow:'✨'})[k]||'🎁';
+function enterApp(){
+ $('#onboard').hidden=true;$('#app').hidden=false;
+ S.you.activity=S.you.activity||pick(FEM?ACT_F:ACT_M);
+ if(MODE==='net'){S.setup=true;bindUniverse();pushMe()}
+ render();go('home');
+}
+
+/* ============ شاشة الربط — ظاهرة دايمًا ============ */
+function openPairing(){
+ if(MODE==='net'){
+  openModal(`<h3>🔗 الربط بين موبايلاتكم</h3>
+  <p class="hint">مربوطين دلوقتي ❤️ — كل حاجة بتتزامن لحظيًا بين الموبايلين.</p>
+  <div class="codebox">${CODE}</div>
+  <button class="btn ghost wide" data-action="copy-cur-code" data-c="${CODE}">📋 نسخ كود الكون</button>
+  <div style="height:10px"></div>
+  <button class="btn ghost wide" style="color:var(--rose);border-color:#e88a8a66" data-action="unlink">فك الربط (رجوع للتجريبي)</button>`);
+  return;
+ }
+ if(netAvailable()){
+  openModal(`<h3>🔗 ربط الموبايلين</h3>
+  <p class="hint">الإعدادات جاهزة على الموبايل ده ✅ — اختاري:</p>
+  <button class="btn primary wide" data-action="p-create" style="margin-bottom:10px">🌌 إنشاء كون (صاحب الموبايل ده)</button>
+  <button class="btn ghost wide" data-action="p-join">🔑 انضمام بكود (الموبايل التاني)</button>
+  <button class="ob-back" data-action="p-cfg-form">تعديل إعدادات Firebase</button>`);
+  return;
+ }
+ cfgForm();
+}
+function cfgForm(){
+ openModal(`<h3>🔗 ربط الموبايلين مع بعض</h3>
+ <p class="hint">عشان موبايلك يكلم موبايله بجد، محتاجين "نقطة لقاء" مجانية على النت اسمها Firebase — بتتعمل مرة واحدة في ≈٥ دقايق:</p>
+ <ol class="hint" style="padding-inline-start:18px;line-height:2.1">
+  <li>افتحي <b style="color:var(--ink)">console.firebase.google.com</b> → Add project (أي اسم → Create)</li>
+  <li>من Build: <b style="color:var(--ink)">Authentication</b> → Get started → اختاري <b style="color:var(--ink)">Anonymous</b> → Enable</li>
+  <li>من Build: <b style="color:var(--ink)">Realtime Database</b> → Create Database → أي منطقة → <b style="color:var(--ink)">Start in test mode</b></li>
+  <li>في تب Rules في نفس الصفحة، امسحي اللي فيه والصقي ده واعملي Publish:</li>
+ </ol>
+ <div class="rulesbox">{ "rules": { "unis": { "$code": { ".read": "auth != null", ".write": "auth != null" } } } }</div>
+ <label>٥) ⚙️ Project Settings → زر الويب <b style="color:var(--ink)">&lt;/&gt;</b> → Register app → انسخي بلوكة <b style="color:var(--ink)">firebaseConfig</b> كلها والصقيها هنا:</label>
+ <textarea id="p-cfg" rows="6" placeholder='const firebaseConfig = { apiKey: "AIza...", databaseURL: "https://...firebasedatabase.app", projectId: "..." };' style="direction:ltr;font-size:.72rem"></textarea>
+ <div class="err" id="p-err"></div>
+ <button class="btn primary wide" data-action="p-save-cfg">تسجيل الإعدادات وتفعيل الربط 🔗</button>
+ <p class="hint" style="margin-top:12px">💡 نفس الإعدادات لازم تتلزق على موبايله هو كمان — ابعتيله الكود اللي بتلصقيه هنا (واتساب مثلًا) وهو يفتح زر 🔗 الربط عنده ويلزقه.</p>`);
+}
+function parseCfg(txt){
+ if(!txt)return null;
+ const m=txt.match(/\{[\s\S]*\}/);if(!m)return null;
+ const body=m[0].replace(/,\s*\}/g,'}');
+ try{const o=JSON.parse(body);if(o&&o.apiKey)return o}catch(e){}
+ const out={};const re=/["']?([A-Za-z_$][\w$]*)["']?\s*:\s*["']([^"']+)["']/g;let r;
+ while((r=re.exec(body)))out[r[1]]=r[2];
+ return out.apiKey?out:null;
+}
+function pSaveCfg(){
+ const cfg=parseCfg($('#p-cfg').value);
+ if(!cfg){$('#p-err').textContent='مش لاقي الإعدادات — الصقي البلوكة اللي فيها apiKey و databaseURL زي ما هي';return}
+ if(!cfg.databaseURL||!/^https:\/\//.test(cfg.databaseURL)){$('#p-err').textContent='ناقص databaseURL — لازم تعملي Realtime Database (مش Firestore) وتاخدي الكود منه';return}
+ localStorage.setItem('fbcfg',JSON.stringify({apiKey:cfg.apiKey,authDomain:cfg.authDomain||(cfg.projectId?cfg.projectId+'.firebaseapp.com':''),databaseURL:cfg.databaseURL,projectId:cfg.projectId||''}));
+ toast('✅','الإعدادات اتحفظت! جاري التفعيل…');
+ setTimeout(()=>location.reload(),900);
+}
+function pCreateForm(){
+ const you=S.setup?S.you.name:'',him=S.setup?S.partner.name:'';
+ openModal(`<h3>🌌 إنشاء كون</h3>
+ <p class="hint">الموبايل ده هيكون صاحب الكون — هيتولدلك كود من 6 حروف تبعتيله للتاني.</p>
+ <label>اسمك</label><input type="text" id="p-you" value="${esc(you)}" maxlength="12">
+ <label>اسم التاني</label><input type="text" id="p-him" value="${esc(him)}" maxlength="12">
+ <label>أول يوم ليكم مع بعض</label><input type="date" id="p-date" value="${new Date(S.firstDay).toISOString().slice(0,10)}">
+ <div class="err" id="p-err"></div>
+ <button class="btn primary wide" data-action="p-create-go">أنشئي الكون وطلّعي الكود ✨</button>
+ <button class="ob-back" data-action="p-open">← رجوع</button>`);
+}
+async function pCreateGo(){
+ const you=$('#p-you').value.trim(),him=$('#p-him').value.trim();
+ if(!you||!him){$('#p-err').textContent='الاسمين مطلوبين 🌙';return}
+ let firstDay=Date.now();
+ const dv=$('#p-date').value;if(dv){const dt=new Date(dv+'T12:00:00');if(!isNaN(dt))firstDay=dt.getTime()}
+ if(!netInit()){$('#p-err').textContent='الإعدادات مش شغالة — راجعي شاشة الإعدادات';return}
+ const code=genCode();
+ try{
+  await db.ref(`unis/${code}/meta`).set({createdAt:Date.now(),firstDay,names:{A:you,B:him}});
+  await db.ref(`unis/${code}/users/A`).set({name:you,fem:true,mood:S.you.mood||'peaceful',online:true,lastSeen:Date.now(),activity:S.you.activity||'',owner:deviceId});
+  await db.ref(`unis/${code}/users/B`).set({name:him,fem:false,mood:'happy',online:false,lastSeen:0,activity:'',owner:''});
+  await db.ref(`unis/${code}/shared`).set({bridge:Math.max(S.bridge,20),growth:S.growth,firstDay});
+  for(const j of S.journey.slice(0,50)){try{await db.ref(`unis/${code}/journey`).push(j)}catch(e){}}
+ }catch(e){$('#p-err').textContent='تعذّر الإنشاء — اتأكدي من الإعدادات ومن النت';return}
+ S.you.name=you;S.partner.name=him;S.firstDay=firstDay;S.setup=true;save();
+ localStorage.setItem('pairCode',code);localStorage.setItem('mySlot','A');
+ openModal(`<div class="syncbox"><span class="big">🌌</span><h3>كونكم اتولد!</h3>
+ <p class="hint">دلوقتي على موبايل التاني:</p>
+ <p class="hint" style="text-align:right;margin-top:8px">
+ ١) يفتح نفس لينك التطبيق<br>
+ ٢) يضغط "🔗 الربط" ويلزق نفس إعدادات Firebase (ابعتيله إياه)<br>
+ ٣) يختار "🔑 انضمام بكود" ويكتب الكود ده:
+ </p>
+ <div class="codebox">${code}</div>
+ <button class="btn ghost wide" data-action="copy-cur-code" data-c="${code}">📋 نسخ الكود</button>
+ <div style="height:10px"></div>
+ <button class="btn primary wide" data-action="reload">ادخلي عالمكم ✨</button></div>`);
+}
+function pJoinForm(){
+ openModal(`<h3>🔑 انضمام بكود</h3>
+ <p class="hint">اكتب الكود اللي وصلك من التاني</p>
+ <input type="text" id="p-code" placeholder="مثلاً: K7M2XQ" maxlength="6" style="text-align:center;direction:ltr;font-size:1.2rem;letter-spacing:.3em">
+ <div class="err" id="p-err"></div>
+ <button class="btn primary wide" data-action="p-join-go">دخول للكون 🌉</button>
+ <button class="ob-back" data-action="p-open">← رجوع</button>`);
+}
+async function pJoinGo(){
+ const code=($('#p-code').value||'').trim().toUpperCase();
+ if(code.length<4){$('#p-err').textContent='الكود 6 حروف';return}
+ if(!netInit()){$('#p-err').textContent='الإعدادات مش شغالة — راجعي شاشة الإعدادات';return}
+ let snap;
+ try{snap=await db.ref(`unis/${code}/meta`).once('value')}catch(e){$('#p-err').textContent='مش قادر يوصل — راجعي النت والإعدادات';return}
+ if(!snap.exists()){$('#p-err').textContent='مفيش كون بالكود ده… اتأكدي منه';return}
+ const names=snap.val().names||{};
+ window._joinMeta={code,names,firstDay:snap.val().firstDay||Date.now()};
+ openModal(`<h3>إنت مين؟ 🌠</h3><p class="hint">كل واحد اسمه مرة واحدة — اختار اسمك:</p>
+ <div class="picknames">
+  <button class="pname" data-action="p-pick" data-slot="A">${esc(names.A||'—')}</button>
+  <button class="pname" data-action="p-pick" data-slot="B">${esc(names.B||'—')}</button>
+ </div><div class="err" id="p-err"></div>
+ <button class="ob-back" data-action="p-open">← رجوع</button>`);
+}
+async function pPick(slot){
+ const{code,names,firstDay}=window._joinMeta;
+ try{
+  const us=await db.ref(`unis/${code}/users/${slot}`).once('value');const v=us.val()||{};
+  if(v.owner&&v.owner!==deviceId&&Date.now()-(v.lastSeen||0)<2*864e5){$('#p-err').textContent='الاسم ده شغال على موبايل تاني';return}
+  await db.ref(`unis/${code}/users/${slot}`).update({owner:deviceId,online:true,lastSeen:Date.now()});
+ }catch(e){$('#p-err').textContent='حصلت مشكلة… جرب تاني';return}
+ localStorage.setItem('pairCode',code);localStorage.setItem('mySlot',slot);
+ S.setup=true;S.you.name=names[slot]||'';S.partner.name=names[slot==='A'?'B':'A']||'';S.firstDay=firstDay;save();
+ toast('🌌','جاري الدخول لعالمكم…');
+ setTimeout(()=>location.reload(),800);
+}
+function copyCode(c){
+ c=c||CODE;if(!c)return;
+ if(navigator.clipboard)navigator.clipboard.writeText(c).then(()=>toast('📋','الكود اتنسخ: '+c)).catch(()=>toast('🌙','انسخيه يدوي: '+c));
+ else toast('🌙','انسخيه يدوي: '+c);
+}
+function unlink(){
+ localStorage.removeItem('pairCode');localStorage.removeItem('mySlot');
+ toast('👋','تم فك الربط — رجوع للوضع التجريبي');
+ setTimeout(()=>location.reload(),800);
+}
+
+/* ============ الأونبوردنج ============ */
+function showNetOnboard(){
+ const ob=$('#onboard');ob.hidden=false;
+ ob.innerHTML=`<div class="ob-wrap">${logoSVG(110)}
+ <h1 class="en">OUR UNIVERSE</h1>
+ <p>عالمين… وجسر واحد بينهم.<br>اربطي موبايلك بموبايله بكون واحد مشترك.</p>
+ <div class="ob-btns">
+  <button class="btn primary" data-action="p-create">🌌 إنشاء كون (الموبايل الأول)</button>
+  <button class="btn ghost" data-action="p-join">🔑 انضمام بكود (الموبايل التاني)</button>
+ </div>
+ <button class="ob-back" data-action="p-cfg-form">⚙️ تعديل إعدادات Firebase</button>
+ </div>`;
+}
+function showDemoOnboard(){
+ const ob=$('#onboard');ob.hidden=false;
+ ob.innerHTML=`<div class="ob-wrap">
+  ${logoSVG(110)}
+  <h1 class="en">OUR UNIVERSE</h1>
+  <p>عالمين… وجسر واحد بينهم.<br>تقدري تبدئي لوحدك دلوقتي، وتربطي موبايله في أي وقت.</p>
+  <div class="ob-form">
+   <label>اسمك إيه؟</label><input id="ob-you" placeholder="اسمك" maxlength="12">
+   <label>وهو؟</label><input id="ob-him" placeholder="اسمه" maxlength="12">
+   <label>أول يوم لكم مع بعض</label><input id="ob-date" type="date" value="${new Date().toISOString().slice(0,10)}">
+   <div class="err" id="ob-err"></div>
+   <button class="btn primary wide" data-action="ob-go">نبدأ 🌙</button>
+   <div style="height:10px"></div>
+   <button class="btn ghost wide" data-action="p-open">🔗 ربط الموبايلين مع بعض</button>
+  </div></div>`;
+}
+function submitDemo(){
+ const y=$('#ob-you').value.trim(),h=$('#ob-him').value.trim();
+ if(!y||!h){$('#ob-err').textContent='اكتبوا اسمين بس كده… والكون يبقى جاهز 🌙';return}
+ S.you.name=y;S.partner.name=h;
+ const dv=$('#ob-date').value;if(dv){const dt=new Date(dv+'T12:00:00');if(!isNaN(dt))S.firstDay=dt.getTime()}
+ jlog('🌅','أول يوم في العالَم — يوم '+new Date(S.firstDay).toLocaleDateString('ar-EG'));
+ save();enterApp();
+ toast('🌌',`أهلاً ${y}… ده ${h} — عالمكم ابتدى (تجريبي)`);
+}
+
+/* ============ الأحداث ============ */
 document.addEventListener('input',e=>{if(e.target.id==='chat-in')draft=e.target.value});
 document.addEventListener('click',e=>{
  const t=e.target.closest('[data-action]');if(!t)return;
@@ -967,25 +1373,39 @@ document.addEventListener('click',e=>{
   case 'guess':submitGuess(d.k);break;
   case 'guess-gift':closeModal();go('partner');break;
   case 'sync-open':openSync();break;
-  case 'sync-challenge':({moon:chMoon,color:chColor,touch:chTouch})[d.t]();break;
+  case 'sync-challenge':MODE==='net'?netStartChallenge(d.t):({moon:chMoonD,color:chColorD,touch:chTouchD})[d.t]();break;
   case 'ready':readyFn&&readyFn();break;
-  case 'color-pick':colorPick(d.c);break;
+  case 'color-pick':colorPickD(d.c);break;
+  case 'net-ready':try{db.ref(P(`sync/${d.key}/${mySlot}`)).set(SVTS)}catch(err){}break;
+  case 'net-color':try{db.ref(P(`sync/${d.key}/${mySlot}`)).set(d.c);document.querySelectorAll('.csw').forEach(b=>b.classList.toggle('sel',b.dataset.c===d.c));const st=$('#color-st');if(st)st.textContent='اتسجل اختيارك… مستنين اختياره 🤍'}catch(err){}break;
+  case 'invite-join':$('#invitebar').classList.remove('in');$('#invitebar').innerHTML='';openNetChallenge(d.type,d.key);break;
+  case 'invite-no':$('#invitebar').classList.remove('in');$('#invitebar').innerHTML='';break;
   case 'secret-open':openSecret();break;
   case 'secret-save':saveSecret();break;
   case 'dream-save':openDream(d.id);break;
   case 'dream-create':createDream(d.id);break;
   case 'dream-done':realizeDream(+d.i);break;
   case 'modal-close':closeModal();break;
-  case 'ob-go':submitOnboard();break;
+  case 'ob-go':submitDemo();break;
+  case 'p-open':openPairing();break;
+  case 'p-cfg-form':cfgForm();break;
+  case 'p-save-cfg':pSaveCfg();break;
+  case 'p-create':pCreateForm();break;
+  case 'p-create-go':pCreateGo();break;
+  case 'p-join':pJoinForm();break;
+  case 'p-join-go':pJoinGo();break;
+  case 'p-pick':pPick(d.slot);break;
+  case 'copy-cur-code':copyCode(d.c);break;
+  case 'unlink':unlink();break;
+  case 'reload':location.reload();break;
  }
 });
 
-/* ============ PWA: اللوجو والاسم على الشاشة الرئيسية ============ */
+/* ============ PWA ============ */
 function roundRectPath(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath()}
 function star4C(x,cx,cy,s){x.beginPath();x.moveTo(cx,cy-s);x.lineTo(cx+s*.28,cy-s*.28);x.lineTo(cx+s,cy);x.lineTo(cx+s*.28,cy+s*.28);x.lineTo(cx,cy+s);x.lineTo(cx-s*.28,cy+s*.28);x.lineTo(cx-s,cy);x.lineTo(cx-s*.28,cy-s*.28);x.closePath();x.fill()}
 function buildPWA(){
  try{
-  /* نفس اللوجو المختار مرسوم على Canvas عشان أيقونة الشاشة الرئيسية */
   const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');
   roundRectPath(x,0,0,512,512,118);x.fillStyle='#070b16';x.fill();
   x.globalAlpha=.07;x.fillStyle='#f0c274';x.beginPath();x.arc(256,256,150,0,7);x.fill();x.globalAlpha=1;
@@ -1002,47 +1422,53 @@ function buildPWA(){
   $('#manifestLink').href=URL.createObjectURL(new Blob([JSON.stringify(man)],{type:'application/manifest+json'}));
  }catch(e){}
 }
+
 /* ============ الإقلاع ============ */
-function showOnboard(){
- const ob=$('#onboard');ob.hidden=false;
- const today=new Date().toISOString().slice(0,10);
- ob.innerHTML=`<div class="ob-wrap">
-  ${logoSVG(120)}
-  <h1 class="en">OUR UNIVERSE</h1>
-  <p>عالمين… وجسر واحد بينهم.<br>مش محتاجين كلام كتير عشان تحسوا ببعض.</p>
-  <div class="ob-form">
-   <label>اسمك إيه؟</label><input id="ob-you" placeholder="اسمك" maxlength="12">
-   <label>وهو؟</label><input id="ob-him" placeholder="اسمه" maxlength="12">
-   <label>أول يوم لكم مع بعض</label><input id="ob-date" type="date" value="${today}">
-   <div class="err" id="ob-err"></div>
-   <button class="btn primary wide" data-action="ob-go">نبدأ رحلتنا ✨</button>
-  </div></div>`;
-}
-function submitOnboard(){
- const y=$('#ob-you').value.trim(),h=$('#ob-him').value.trim();
- if(!y||!h){$('#ob-err').textContent='اكتبوا اسمين بس كده… والكون يبقى جاهز 🌙';return}
- S.you.name=y;S.partner.name=h;
- const dv=$('#ob-date').value;if(dv){const dt=new Date(dv+'T12:00:00');if(!isNaN(dt))S.firstDay=dt.getTime()}
- S.setup=true;
- jlog('🌅','أول يوم في العالَم — يوم '+new Date(S.firstDay).toLocaleDateString('ar-EG'));
- save();
- $('#onboard').hidden=true;$('#app').hidden=false;
- render();go('home');
- toast('🌌',`أهلاً ${y}… دول ${h} — عالمكم ابتدى`);
- setTimeout(()=>{pushMsg({from:'him',text:'أنا دخلت عالمي… ولقيت جسر بيننا ❤️'});toast('💬',`${h}: وصل لعالمه`);if(view==='chat')render()},4000);
-}
 buildPWA();
+async function boot(){
+ if(netAvailable()&&netInit()){
+  const code=localStorage.getItem('pairCode'),slot=localStorage.getItem('mySlot');
+  if(code&&slot){
+   try{
+    const snap=await db.ref(`unis/${code}/meta`).once('value');
+    if(snap.exists()){CODE=code;mySlot=slot;FEM=slot==='A';enterApp();return}
+   }catch(e){}
+   localStorage.removeItem('pairCode');localStorage.removeItem('mySlot');
+  }
+  showNetOnboard();
+ }else{
+  if(S.setup)enterApp();else showDemoOnboard();
+ }
+}
 setTimeout(()=>{
  const sp=$('#splash');sp.classList.add('bye');
  setTimeout(()=>sp.remove(),700);
- if(S.setup){$('#app').hidden=false;render();go('home')}
- else showOnboard();
+ boot();
 },2000);
-/* الشريك حي: نبضة كل شوية */
+function partnerTick(){
+ if(MODE!=='demo'||!S.setup)return;
+ const r=Math.random();
+ if(r<.2){
+  const prev=S.partner.mood;
+  S.partner.mood=pick(['happy','happy','loving','loving','excited','peaceful','peaceful','emotional','drained','annoyed','overwhelmed']);
+  if(S.partner.mood!==prev){
+   renderIfSafe();
+   if(MOODS[S.partner.mood].fam==='cold'&&Math.random()<.5)toast(MOODS[S.partner.mood].e,`${S.partner.name} ${mL(S.partner.mood,false)} — ${MOODS[S.partner.mood].desc}`);
+   checkRainbow();save();
+  }
+ }else if(r<.42){
+  S.partner.online=!S.partner.online;S.partner.activity=pick(ACT_M);
+  renderIfSafe();save();
+ }else if(r<.58&&S.partner.online){partnerSendsTiny()}
+}
 setTimeout(partnerTick,9000);
 setInterval(partnerTick,17000);
-/* تباطؤ الجسر بمرور الوقت لو مفيش تفاعل — عشان يحس إنه حي */
-setInterval(()=>{if(S.setup&&S.bridge>20){S.bridge-=1;save();if(view==='world')render()}},120000);
+setInterval(()=>{if(MODE==='net'&&netOnline)pushMe({lastSeen:Date.now()})},25000);
+setInterval(()=>{
+ if(!S.setup)return;
+ if(MODE==='net'){if(netOnline){try{db.ref(P('shared/bridge')).transaction(v=>v>20?v-1:v)}catch(e){}}}
+ else if(S.bridge>20){S.bridge-=1;save();if(view==='world')render()}
+},120000);
 </script>
 </body>
 </html>
