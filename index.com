@@ -10,8 +10,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="OUR UNIVERSE">
 <link id="manifestLink" rel="manifest">
-<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="118" fill="%230a0f1e"/><circle cx="256" cy="256" r="132" fill="%23f0c274"/><circle cx="212" cy="238" r="102" fill="%230a0f1e"/><circle cx="352" cy="330" r="40" fill="%23e88a8a"/><ellipse cx="352" cy="330" rx="62" ry="14" fill="none" stroke="%23f2ead8" stroke-width="6" transform="rotate(-16 352 330)"/><circle cx="150" cy="150" r="7" fill="%23f2ead8"/><circle cx="404" cy="130" r="5" fill="%23f2ead8"/></svg>'>
-<link rel="apple-touch-icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" fill="%230a0f1e"/><circle cx="256" cy="256" r="132" fill="%23f0c274"/><circle cx="212" cy="238" r="102" fill="%230a0f1e"/><circle cx="352" cy="330" r="40" fill="%23e88a8a"/><ellipse cx="352" cy="330" rx="62" ry="14" fill="none" stroke="%23f2ead8" stroke-width="6" transform="rotate(-16 352 330)"/><circle cx="150" cy="150" r="7" fill="%23f2ead8"/></svg>'>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="118" fill="%23070b16"/><circle cx="256" cy="256" r="128" fill="%23f0c274"/><circle cx="192" cy="250" r="104" fill="%23070b16"/><path d="M196 202l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="%23f0c274"/><circle cx="112" cy="132" r="7" fill="%23f2ead8"/><circle cx="398" cy="118" r="6" fill="%23f0c274"/><circle cx="424" cy="252" r="5" fill="%23f2ead8"/><circle cx="98" cy="316" r="5" fill="%23f0c274"/></svg>'>
+<link rel="apple-touch-icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="118" fill="%23070b16"/><circle cx="256" cy="256" r="128" fill="%23f0c274"/><circle cx="192" cy="250" r="104" fill="%23070b16"/><path d="M196 202l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="%23f0c274"/><circle cx="112" cy="132" r="7" fill="%23f2ead8"/><circle cx="398" cy="118" r="6" fill="%23f0c274"/><circle cx="424" cy="252" r="5" fill="%23f2ead8"/><circle cx="98" cy="316" r="5" fill="%23f0c274"/></svg>'>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marhey:wght@400;600;700&family=Alexandria:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -189,7 +189,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 #splash{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .6s}
 #splash.bye{opacity:0;pointer-events:none}
 #splash .in{text-align:center;animation:tin 1s .2s both}
-#splash h1{font-size:1.7rem;color:var(--gold);margin-top:20px}
+#splash h1{font-size:1.7rem;color:var(--gold);margin-top:22px}
 #splash small{color:var(--muted);letter-spacing:.5em;font-size:.8rem;display:block;margin-top:8px}
 #onboard{position:fixed;inset:0;z-index:60;overflow-y:auto;background:var(--bg);padding:40px 24px}
 .ob-wrap{max-width:400px;margin:auto;text-align:center}
@@ -200,8 +200,6 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .ob-form input:focus{border-color:var(--gold)}
 .ob-form label{font-size:.74rem;color:var(--muted)}
 .err{color:#e88a8a;font-size:.74rem;min-height:1.2em;margin-bottom:6px}
-.logo-thread{stroke-dasharray:220;stroke-dashoffset:220;animation:draw 1.8s .5s ease-out forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
 /* ===== أنيميشن عناصر المشاهد (SVG) ===== */
 .tw{animation:tw 3.2s ease-in-out infinite}
 @keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}
@@ -251,16 +249,18 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 
 <div id="onboard" hidden></div>
 
+<!-- شاشة البداية: نفس اللوجو المختار — هلال دهبي + نجوم، والاسم بالدهبي تحته -->
 <div id="splash"><div class="in">
-  <svg class="logo" viewBox="0 0 512 512" width="118" height="118">
-    <rect width="512" height="512" rx="118" fill="#0a0f1e"/>
-    <circle cx="256" cy="256" r="205" fill="none" stroke="#f0c274" stroke-opacity=".16"/>
-    <defs><mask id="spm"><rect width="512" height="512" fill="#fff"/><circle cx="212" cy="238" r="102" fill="#000"/></mask></defs>
-    <circle cx="256" cy="256" r="132" fill="#f0c274" mask="url(#spm)"/>
-    <path class="logo-thread" d="M198 300 Q268 352 316 336" stroke="#f0c274" stroke-width="6" fill="none" stroke-linecap="round"/>
-    <circle cx="352" cy="330" r="40" fill="#e88a8a"/>
-    <ellipse cx="352" cy="330" rx="62" ry="14" fill="none" stroke="#f2ead8" stroke-width="6" transform="rotate(-16 352 330)"/>
-    <circle cx="150" cy="150" r="7" fill="#f2ead8"/><circle cx="404" cy="130" r="5" fill="#f2ead8"/><circle cx="420" cy="250" r="4" fill="#f2ead8"/>
+  <svg class="logo" viewBox="0 0 512 512" width="128" height="128" aria-label="OUR UNIVERSE">
+    <rect width="512" height="512" rx="118" fill="#070b16"/>
+    <circle cx="256" cy="256" r="150" fill="#f0c274" opacity=".07"/>
+    <circle cx="256" cy="256" r="128" fill="#f0c274"/>
+    <circle cx="192" cy="250" r="104" fill="#070b16"/>
+    <circle class="tw" cx="112" cy="132" r="7" fill="#f2ead8"/>
+    <circle class="tw" cx="398" cy="118" r="6" fill="#f0c274" style="animation-delay:1.1s"/>
+    <circle class="tw" cx="424" cy="252" r="5" fill="#f2ead8" style="animation-delay:.6s"/>
+    <circle class="tw" cx="98" cy="316" r="5" fill="#f0c274" style="animation-delay:1.7s"/>
+    <path class="tw" d="M196 202l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="#f0c274" style="animation-delay:.9s"/>
   </svg>
   <h1 class="en">OUR UNIVERSE</h1><small>عالمنا</small>
 </div></div>
@@ -321,12 +321,6 @@ const GUESS=[{k:'happy',e:'😊',t:'مبسوط'},{k:'calm',e:'😐',t:'عادي'
 const GUESS_MAP={happy:'happy',excited:'happy',loving:'happy',peaceful:'calm',emotional:'sad',drained:'tired',annoyed:'angry',overwhelmed:'sad'};
 const ACTIVITIES=['بيبص للنجوم','قاعد يذاكر','بيسمع موسيقى هادية','بيرسم عالمكم','بيفكر فيك','بيرتّب زهورك'];
 const SPOTS=[[40,278],[80,294],[122,270],[162,300],[205,284],[250,296],[296,276],[340,292],[366,308],[18,310],[232,312]];
-const STAGES=[
- {at:1,k:'sprout',icon:'🌱',label:'أول بذرة نبتت في عالمنا'},
- {at:3,k:'sapling',icon:'🌿',label:'شجرة صغيرة كبرت'},
- {at:6,k:'tree',icon:'🌳',label:'شجرة كبيرة'});
-];
-/* (ملاحظة: تُعرَّف بقية المراحل أدناه بشكل صحيح) */
 const STAGE_LIST=[
  {at:1,icon:'🌱',label:'أول بذرة'},
  {at:3,icon:'🌿',label:'شتلة'},
@@ -394,16 +388,17 @@ function fxMarkup(m,id){
  return'';
 }
 function giftMark(g,i){
- const [x,y]=SPOTS[i%SPOTS.length];const fresh=Date.now()-g.t<15000?' pop':'';
+ const [x,y]=SPOTS[i%SPOTS.length];const fresh=Date.now()-g.t<15000?'pop':'';
  switch(g.kind){
   case 'flower':{const c=['#e88a8a','#f0c274','#f2ead8'][i%3];let petals='';for(let a=0;a<5;a++){const ang=a/5*Math.PI*2-Math.PI/2;petals+=`<circle cx="${(Math.cos(ang)*3).toFixed(1)}" cy="${(-11+Math.sin(ang)*3).toFixed(1)}" r="2.1" fill="${c}"/>`}
-   return`<g transform="translate(${x},${y})"><g class="${fresh.trim()}"><line y2="-9" stroke="#3f6b4a" stroke-width="1.4"/>${petals}<circle cy="-11" r="1.7" fill="#8a5a2a"/></g></g>`}
-  case 'star':return`<g transform="translate(${x},${y})">${star4(0,-7,'#ffd98a',5,fresh.trim()?true:false)}</g>`;
+   return`<g transform="translate(${x},${y})"><g class="${fresh}"><line y2="-9" stroke="#3f6b4a" stroke-width="1.4"/>${petals}<circle cy="-11" r="1.7" fill="#8a5a2a"/></g></g>`}
+  case 'star':return`<g transform="translate(${x},${y})">${star4(0,-7,'#ffd98a',5,fresh)}</g>`;
   case 'heart':return`<g transform="translate(${x},${y})"><g class="flo" style="animation-delay:${(i*1.2).toFixed(1)}s">${heartPath('#e88a8a')}</g></g>`;
   case 'notes':return`<g transform="translate(${x},${y})"><g class="flo" style="animation-delay:${(i*1.4).toFixed(1)}s">${noteGlyph('#f2ead8')}</g></g>`;
-  case 'glow':return`<ellipse class="glowpatch${fresh}" cx="${x}" cy="${y-3}" rx="15" ry="5" fill="#ffd98a" opacity=".22"/>`;
-  case 'sunpop':return`<g transform="translate(${x},${y-11})"><g class="${fresh.trim()}"><circle class="minisun" r="6" fill="#ffdd8f"/></g></g>`;
-  case 'letter':return`<g transform="translate(${x},${y})"><g class="${fresh.trim()}"><rect x="-5.5" y="-5" width="11" height="7.5" rx="1" fill="#f2ead8"/><path d="M-5.5 -5 L0 -.5 L5.5 -5" stroke="#c9bfa4" stroke-width="1" fill="none"/></g></g>`;
+  case 'glow':return`<ellipse class="glowpatch ${fresh}" cx="${x}" cy="${y-3}" rx="15" ry="5" fill="#ffd98a" opacity=".22"/>`;
+  case 'sunpop':return`<g transform="translate(${x},${y-11})"><g class="${fresh}"><circle class="minisun" r="6" fill="#ffdd8f"/></g></g>`;
+  case 'letter':return`<g transform="translate(${x},${y})"><g class="${fresh}"><rect x="-5.5" y="-5" width="11" height="7.5" rx="1" fill="#f2ead8"/><path d="M-5.5 -5 L0 -.5 L5.5 -5" stroke="#c9bfa4" stroke-width="1" fill="none"/></g></g>`;
+  case 'hug':return`<g transform="translate(${x},${y})"><g class="${fresh}"><circle cx="-4.5" cy="-9" r="4.2" fill="#e88a8a"/><circle cx="4.5" cy="-9" r="4.2" fill="#7ec8c3"/><rect x="-7" y="-6" width="14" height="6" rx="3" fill="#e8a8a0"/></g></g>`;
  }
  return'';
 }
@@ -468,9 +463,8 @@ function miniWorld(m,side,id){
 /* عناصر النمو على الجزيرة المشتركة */
 function growthMarkup(){
  const g=S.growth;let s='';
- const fresh=k=>S.lastStage===k&&Date.now()-S.growthT<20000?' pop':'';
+ const fresh=k=>S.lastStage===k&&Date.now()-S.growthT<20000?'pop':'';
  const W=(x,y,inner,k)=>`<g transform="translate(${x},${y})"><g class="${fresh(k)}">${inner}</g></g>`;
- if(g>=1)0,0&&0; // (شكلية)
  if(g>=1)s+=W(196,301,`<path d="M0 0V-7" stroke="#7fae6f" stroke-width="1.6" fill="none"/><path d="M0 -6 q-5 -2 -6 -7 q5 0 6 4z" fill="#8fc07f"/><path d="M0 -6 q5 -2 6 -7 q-5 0 -6 4z" fill="#8fc07f"/>`,1);
  if(g>=3)s+=W(196,300,`<path d="M0 0V-12" stroke="#6b4a30" stroke-width="2.4"/><circle cx="0" cy="-15" r="7" fill="#3f7a4f"/><circle cx="5" cy="-12" r="4.5" fill="#356b44"/>`,3);
  if(g>=6)s+=W(196,300,`<path d="M0 0V-16" stroke="#5d402a" stroke-width="4"/><circle cx="-6" cy="-19" r="8" fill="#3f7a4f"/><circle cx="6" cy="-18" r="7" fill="#356b44"/><circle cx="0" cy="-26" r="8.5" fill="#468556"/><circle cx="2" cy="-21" r="1.8" fill="#ffd98a"/><circle cx="-4" cy="-24" r="1.6" fill="#ffd98a"/>`,6);
@@ -481,8 +475,8 @@ function growthMarkup(){
 }
 function dreamIsle(d,i){
  const P=[[64,66],[338,58],[200,34],[128,92]][i%4];
- const fresh=Date.now()-d.t<20000?' pop':'';
- return`<g transform="translate(${P[0]},${P[1]})"><g class="${fresh.trim()}">
+ const fresh=Date.now()-d.t<20000?'pop':'';
+ return`<g transform="translate(${P[0]},${P[1]})"><g class="${fresh}">
   <path d="M-17 6 Q-19 -4 -9 -7 Q1 -11 9 -6 Q18 -3 16 5 Q7 10 -5 9 Z" fill="#2b3654"/>
   <path d="M-17 6 Q-4 12 16 5" fill="#1f2942"/>
   ${star4(0,-16,d.done?'#a8d8a0':'#ffd98a',d.done?4:5,false)}
@@ -528,17 +522,18 @@ function sceneShared(){
   ${S.dreams.slice(0,4).map((d,i)=>dreamIsle(d,i)).join('')}
  </svg>`;
 }
+/* ===== اللوجو الرسمي المختار: هلال دهبي + نجوم على خلفية غامقة ===== */
 function logoSVG(size){
- const id=++uidc;
  return`<svg viewBox="0 0 512 512" width="${size}" height="${size}" aria-label="OUR UNIVERSE">
-  <rect width="512" height="512" rx="118" fill="#0a0f1e"/>
-  <circle cx="256" cy="256" r="205" fill="none" stroke="#f0c274" stroke-opacity=".16"/>
-  <defs><mask id="lg${id}"><rect width="512" height="512" fill="#fff"/><circle cx="212" cy="238" r="102" fill="#000"/></mask></defs>
-  <circle cx="256" cy="256" r="132" fill="#f0c274" mask="url(#lg${id})"/>
-  <path class="logo-thread" d="M198 300 Q268 352 316 336" stroke="#f0c274" stroke-width="6" fill="none" stroke-linecap="round"/>
-  <circle cx="352" cy="330" r="40" fill="#e88a8a"/>
-  <ellipse cx="352" cy="330" rx="62" ry="14" fill="none" stroke="#f2ead8" stroke-width="6" stroke-opacity=".9" transform="rotate(-16 352 330)"/>
-  <circle cx="150" cy="150" r="7" fill="#f2ead8"/><circle cx="404" cy="130" r="5" fill="#f2ead8"/><circle cx="420" cy="250" r="4" fill="#f2ead8"/><circle cx="96" cy="330" r="4.5" fill="#f2ead8"/>
+  <rect width="512" height="512" rx="118" fill="#070b16"/>
+  <circle cx="256" cy="256" r="150" fill="#f0c274" opacity=".07"/>
+  <circle cx="256" cy="256" r="128" fill="#f0c274"/>
+  <circle cx="192" cy="250" r="104" fill="#070b16"/>
+  <circle class="tw" cx="112" cy="132" r="7" fill="#f2ead8"/>
+  <circle class="tw" cx="398" cy="118" r="6" fill="#f0c274" style="animation-delay:1.1s"/>
+  <circle class="tw" cx="424" cy="252" r="5" fill="#f2ead8" style="animation-delay:.6s"/>
+  <circle class="tw" cx="98" cy="316" r="5" fill="#f0c274" style="animation-delay:1.7s"/>
+  <path class="tw" d="M196 202l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="#f0c274" style="animation-delay:.9s"/>
  </svg>`;
 }
 
@@ -839,7 +834,7 @@ function chTouch(){
  const up=()=>{you=false;bothStart=null;tp.classList.remove('hold');ys.textContent='أنتِ سايبة';ys.classList.remove('ok')};
  tp.addEventListener('pointerup',up);tp.addEventListener('pointerleave',up);tp.addEventListener('pointercancel',up);
  const iv=setInterval(()=>{
-  if(done){clearInterval(iv);return}
+  if(done||!document.body.contains(tp)){clearInterval(iv);return}
   if(you&&him){
    if(!bothStart)bothStart=Date.now();
    else if(Date.now()-bothStart>=800){
@@ -921,7 +916,7 @@ function renderWorld(){
   <div class="card"><h3>🧵 رحلتنا — Our Journey</h3>
    ${S.journey.length?S.journey.slice(0,14).map(j=>`<div class="jr ${j.first?'first':''}"><div class="jr-ic">${j.icon}</div><div><b>${esc(j.title)}${j.sub?` — ${esc(j.sub)}`:''}</b><time>${ago(j.t)}</time></div></div>`).join(''):'<p class="hint">كل أول مرة هتتسجل هنا… أول رسالة، أول هدية، أول تزامن.</p>'}</div>
   <div class="card"><h3>📲 حطّوا عالمنا على شاشتكم</h3>
-   <p class="hint">من قاائمة المتصفح اختاري <b style="color:var(--ink)">إضافة إلى الشاشة الرئيسية / Add to Home Screen</b> — هيظهر لوجو <b class="en" style="color:var(--gold);font-size:.78rem">OUR UNIVERSE</b> على شاشتكم زي أي تطبيق، بفتحة كاملة واسمه تحت الأيقونة.</p></div>
+   <p class="hint">من قاائمة المتصفح اختاري <b style="color:var(--ink)">إضافة إلى الشاشة الرئيسية / Add to Home Screen</b> — هيظهر لوجو الهلال والنجوم بتاع <b class="en" style="color:var(--gold);font-size:.78rem">OUR UNIVERSE</b> على شاشتكم زي أي تطبيق، بفتحة كاملة واسمه تحت الأيقونة.</p></div>
  </section>`;
 }
 function renderChat(){
@@ -929,7 +924,7 @@ function renderChat(){
  return`<div class="chat-scroll" id="chat-list">${S.chat.map(msgHTML).join('')||'<p class="hint" style="align-self:center;margin:auto;text-align:center">الكلام المهم مش بيضيع هنا… بيتحول لحاجات تعيش في عالمكم 🤍</p>'}</div>
  <div class="composer">
   <div class="nowords">${NOWORDS.map(n=>`<button class="nw-btn" data-action="noword" data-k="${n.k}"><i>${n.icon}</i><span>${n.label}</span></button>`).join('')}</div>
-  <div class="tagsel"><span class="hint" style="font-size:.68rem;align-self:center">الإحساس ورا الرسالة:</span>${Object.entries(TAGS).map(([k,t])=>`<button class="tagchip ${currentTag===k?'on':''}" data-action="tag" data-k="${k}">${t.icon} ${t.label}</button>`).join('')||''}</div>
+  <div class="tagsel"><span class="hint" style="font-size:.68rem;align-self:center">الإحساس ورا الرسالة:</span>${Object.entries(TAGS).map(([k,t])=>`<button class="tagchip ${currentTag===k?'on':''}" data-action="tag" data-k="${k}">${t.icon} ${t.label}</button>`).join('')}</div>
   <div class="inrow"><input id="chat-in" placeholder="اكتبي له…" autocomplete="off" value="${esc(draft)}">
   <button class="btn primary sq" data-action="send" aria-label="إرسال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5m0 0l6-6m-6 6l6 6"/></svg></button></div>
  </div>`;
@@ -987,17 +982,18 @@ document.addEventListener('click',e=>{
 
 /* ============ PWA: اللوجو والاسم على الشاشة الرئيسية ============ */
 function roundRectPath(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath()}
+function star4C(x,cx,cy,s){x.beginPath();x.moveTo(cx,cy-s);x.lineTo(cx+s*.28,cy-s*.28);x.lineTo(cx+s,cy);x.lineTo(cx+s*.28,cy+s*.28);x.lineTo(cx,cy+s);x.lineTo(cx-s*.28,cy+s*.28);x.lineTo(cx-s,cy);x.lineTo(cx-s*.28,cy-s*.28);x.closePath();x.fill()}
 function buildPWA(){
  try{
+  /* نفس اللوجو المختار مرسوم على Canvas عشان أيقونة الشاشة الرئيسية */
   const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');
-  roundRectPath(x,0,0,512,512,118);x.fillStyle='#0a0f1e';x.fill();
-  x.strokeStyle='rgba(240,194,116,.16)';x.lineWidth=6;x.beginPath();x.arc(256,256,205,0,7);x.stroke();
-  x.fillStyle='#f0c274';x.beginPath();x.arc(256,256,132,0,7);x.fill();
-  x.fillStyle='#0a0f1e';x.beginPath();x.arc(212,238,102,0,7);x.fill();
-  x.strokeStyle='#f0c274';x.lineWidth=6;x.lineCap='round';x.beginPath();x.moveTo(198,300);x.quadraticCurveTo(268,352,316,336);x.stroke();
-  x.fillStyle='#e88a8a';x.beginPath();x.arc(352,330,40,0,7);x.fill();
-  x.strokeStyle='rgba(242,234,216,.9)';x.beginPath();x.ellipse(352,330,62,14,-0.28,0,7);x.stroke();
-  x.fillStyle='#f2ead8';[[150,150,7],[404,130,5],[420,250,4],[96,330,4.5]].forEach(([sx,sy,r])=>{x.beginPath();x.arc(sx,sy,r,0,7);x.fill()});
+  roundRectPath(x,0,0,512,512,118);x.fillStyle='#070b16';x.fill();
+  x.globalAlpha=.07;x.fillStyle='#f0c274';x.beginPath();x.arc(256,256,150,0,7);x.fill();x.globalAlpha=1;
+  x.fillStyle='#f0c274';x.beginPath();x.arc(256,256,128,0,7);x.fill();
+  x.fillStyle='#070b16';x.beginPath();x.arc(192,250,104,0,7);x.fill();
+  x.fillStyle='#f2ead8';[[112,132,7],[424,252,5]].forEach(([sx,sy,r])=>{x.beginPath();x.arc(sx,sy,r,0,7);x.fill()});
+  x.fillStyle='#f0c274';[[398,118,6],[98,316,5]].forEach(([sx,sy,r])=>{x.beginPath();x.arc(sx,sy,r,0,7);x.fill()});
+  star4C(x,196,224,22);
   const icon=c.toDataURL('image/png');
   const man={name:'OUR UNIVERSE — عالمنا',short_name:'OUR UNIVERSE',description:'عالمين… وجسر واحد بينهم',
    start_url:location.href,scope:location.href,display:'standalone',orientation:'portrait',
@@ -1033,7 +1029,7 @@ function submitOnboard(){
  $('#onboard').hidden=true;$('#app').hidden=false;
  render();go('home');
  toast('🌌',`أهلاً ${y}… دول ${h} — عالمكم ابتدى`);
- setTimeout(()=>{pushMsg({from:'him',text:`أنا دخلت عالمي… ولقيت جسر بيننا ${'❤️'}`});toast('💬',`${h}: وصل لعالمه`);if(view==='chat')render()},4000);
+ setTimeout(()=>{pushMsg({from:'him',text:'أنا دخلت عالمي… ولقيت جسر بيننا ❤️'});toast('💬',`${h}: وصل لعالمه`);if(view==='chat')render()},4000);
 }
 buildPWA();
 setTimeout(()=>{
