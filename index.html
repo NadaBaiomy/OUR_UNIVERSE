@@ -87,9 +87,13 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .msg.you .bub{background:#f0c2741f;border-color:#f0c27459;border-radius:18px 18px 5px 18px}
 .msg time{font-size:.62rem;color:#5f6c8d;margin:4px 6px 0}
 .tag{display:block;font-size:.7rem;color:var(--gold);margin-top:5px;border-top:1px dashed #f0c27433;padding-top:4px}
+.tag.fail{color:var(--rose)}
 .msg .tools{display:flex;gap:6px;margin-top:4px}
 .msg .tools button{font-size:.68rem;color:var(--muted);border:1px solid var(--line);border-radius:9px;padding:3px 9px;background:var(--panel)}
 .msg .tools button:active{color:var(--gold);border-color:var(--gold)}
+.bub.voice{direction:ltr;min-width:225px;text-align:right}
+.bub.voice audio{width:100%;height:38px;outline:none}
+.bub.voice small{display:block;color:var(--muted);font-size:.68rem;margin-top:5px;direction:rtl}
 .nw{background:#e88a8a14;border:1px solid #e88a8a55;border-radius:18px 18px 5px 18px;padding:10px 16px;text-align:center}
 .nw i{font-style:normal;font-size:1.5rem;display:block;margin-bottom:3px}
 .nw small{color:var(--muted);font-size:.68rem}
@@ -108,9 +112,15 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .tagsel{display:flex;gap:7px;margin-bottom:8px;flex-wrap:wrap}
 .tagchip{font-size:.68rem;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:4px 11px}
 .tagchip.on{border-color:var(--gold);color:var(--gold);background:#f0c27412}
-.inrow{display:flex;gap:9px}
+.inrow{display:flex;gap:9px;align-items:center}
 #chat-in{flex:1;background:var(--panel2);border:1px solid var(--line2);border-radius:14px;padding:11px 15px;font-size:.9rem;outline:none}
 #chat-in:focus{border-color:var(--gold)}
+.mic{width:46px;height:46px;border-radius:14px;border:1px solid var(--line2);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex:none;transition:.15s}
+.mic:active{transform:scale(.9)}
+.mic.rec{border-color:#e88a8a;color:#e88a8a;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.4}}
+.recbar{flex:1;display:flex;align-items:center;gap:9px;background:#e88a8a14;border:1px solid #e88a8a66;border-radius:14px;padding:11px 15px;font-size:.82rem;color:#e88a8a}
+.recdot{width:10px;height:10px;border-radius:50%;background:#e88a8a;flex:none;animation:blink 1s infinite}
 .bar{height:9px;background:#0a1120;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
 .bar>i{display:block;height:100%;background:var(--gold);border-radius:9px;transition:width .7s cubic-bezier(.3,1,.3,1)}
 .bl{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
@@ -273,14 +283,9 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 
 <script>
 'use strict';
-/* ═══════ الإعدادات ═══════
-   مش محتاج تعدلي حاجة هنا خالص!
-   كود Firebase بيتلصق من جوه التطبيق نفسه (زر 🔗 الربط)
-   وبيتحفظ على الموبايل. الحقول دي احتياطية بس.
-   ═══════════════════════ */
+/* الإعدادات — بيتلزق كود Firebase من جوه التطبيق (زر 🔗) */
 const FB_CONFIG={apiKey:"___",authDomain:"___",databaseURL:"___",projectId:"___"};
-/* لو لصقتي الإعدادات من قبل، بترجع لوحدها */
-(function(){try{const s=localStorage.getItem('fbcfg');if(s){const o=JSON.parse(s);Object.assign(FB_CONFIG,o)}}catch(e){}})();
+(function(){try{const s=localStorage.getItem('fbcfg');if(s){Object.assign(FB_CONFIG,JSON.parse(s))}}catch(e){}})();
 
 const $=s=>document.querySelector(s);
 const ar=n=>Number(n).toLocaleString('ar-EG');
@@ -351,13 +356,23 @@ try{S=Object.assign(DEF(),JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){
 S.you=Object.assign({name:'',mood:'peaceful',activity:''},S.you);
 S.partner=Object.assign({name:'',mood:'happy',online:false,activity:'…'},S.partner);
 S.journey.forEach(j=>{if(!j.id)j.id='j'+j.t});
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+/* حفظ ذكي: لو المساحة خلصت (بسبب الرسايل الصوتية) بنمسح الصوتيات القديمة ونحاول تاني */
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){
+ try{
+  const c1=JSON.parse(JSON.stringify(S));let kept=0;
+  for(const m of c1.chat){if(m.audio){if(kept<8)kept++;else m.audio=null}}
+  try{localStorage.setItem(KEY,JSON.stringify(c1));return}catch(e2){}
+  const c2=JSON.parse(JSON.stringify(S));c2.chat=c2.chat.slice(-60);
+  c2.chat.forEach(m=>{if(m.audio)m.audio=null});
+  try{localStorage.setItem(KEY,JSON.stringify(c2))}catch(e3){}
+ }catch(e2){}
+}};
 const dayN=()=>Math.max(1,Math.floor((Date.now()-S.firstDay)/864e5)+1);
 const warm=k=>MOODS[k].fam==='warm';
 const bothSunny=()=>['happy','excited'].includes(S.you.mood)&&['happy','excited'].includes(S.partner.mood);
 
 /* ============ الربط ============ */
-let MODE='demo',db=null,CODE=null,mySlot=null,FEM=true,netOnline=false,fbReady=false;
+let MODE='demo',db=null,CODE=null,mySlot=null,FEM=true,netOnline=false,fbReady=false,authOk=false;
 let deviceId=localStorage.getItem('deviceId');
 if(!deviceId){deviceId='d'+Math.random().toString(36).slice(2,10);localStorage.setItem('deviceId',deviceId)}
 const otherSlot=()=>mySlot==='A'?'B':'A';
@@ -374,7 +389,7 @@ function netInit(){
  if(fbReady){MODE='net';return true}
  try{
   firebase.initializeApp(FB_CONFIG);
-  firebase.auth().signInAnonymously().catch(()=>{setTimeout(()=>toast('⚠️','لازم تفعّلي Anonymous في Firebase → Authentication (خطوة ٢ في شاشة الربط)'),1500)});
+  firebase.auth().signInAnonymously().then(()=>{authOk=true}).catch(()=>{authOk=false;setTimeout(()=>toast('⚠️','التسجيل المجهول مقفول — من Firebase: Authentication → Anonymous → Enable'),2500)});
   db=firebase.database();MODE='net';fbReady=true;return true
  }catch(e){return false}
 }
@@ -646,10 +661,15 @@ function sendTiny(k){
   try{db.ref(P(`gifts/${otherSlot()}`)).push({gid,kind,t:Date.now(),note:seesTxt})}catch(e){}
  }else{
   setTimeout(()=>{
-   pushMsg({from:'him',text:['وردتك وصلت… وخلّت يومي أجمل ❤️','حسّيت بيها فعلاً… شكرًا ☀️','لقيتها جوه عالمي… أجمل حاجة شفتها النهاردة'][Math.min(TINY.indexOf(t),2)]});
-   if(view==='chat'){renderChat();scrollChat()}else toast('💬','رد على هديتك');
-   upliftPartner();
-  },2200+Math.random()*2200);
+   showTyping=true;refreshChat();
+   setTimeout(()=>{
+    showTyping=false;
+    pushMsg({from:'him',text:['وردتك وصلت… وخلّت يومي أجمل ❤️','حسّيت بيها فعلاً… شكرًا ☀️','لقيتها جوه عالمي… أجمل حاجة شفتها النهاردة'][Math.min(TINY.indexOf(t),2)]});
+    refreshChat();
+    if(view!=='chat')toast('💬','رد على هديتك');
+    upliftPartner();
+   },1200);
+  },1500+Math.random()*1800);
  }
 }
 function upliftPartner(){
@@ -677,17 +697,22 @@ function sendNoWord(k){
  if(firstOrCount('noword')){jlog('🫶','أول "من غير كلام" — وجود من غير رسائل');txGrowth(1)}
  toast(n.icon,w('وصلته… من غير ولا كلمة','وصلها… من غير ولا كلمة'));
  checkSecrets();
- sendMessage(m);renderChat();scrollChat();
+ sendMessage(m);refreshChat();
  if(MODE==='demo'){
   setTimeout(()=>{
-   pushMsg({from:'him',text:['حسّيت بيكِ من غير ما تشوفي… أنا هنا كمان ❤️','تعالي في حضني… مش هسيبك 🫂','تصبحي على نور يا قمر 🌙','صباح الفل… موبايلي نور لما شفت رسالتك ☀️','أنا جاي… كل حاجة هتبقى أحسن ❤️','خلاص… هفضل جنبك على طول من غير كلام 🤍'][NOWORDS.findIndex(x=>x.k===k)]||'أنا هنا 🤍'});
-   if(view==='chat'){renderChat();scrollChat()}else toast('💬',`${S.partner.name} رد`);
-  },1700+Math.random()*1800);
+   showTyping=true;refreshChat();
+   setTimeout(()=>{
+    showTyping=false;
+    pushMsg({from:'him',text:['حسّيت بيكِ من غير ما تشوفي… أنا هنا كمان ❤️','تعالي في حضني… مش هسيبك 🫂','تصبحي على نور يا قمر 🌙','صباح الفل… موبايلي نور لما شفت رسالتك ☀️','أنا جاي… كل حاجة هتبقى أحسن ❤️','خلاص… هفضل جنبك على طول من غير كلام 🤍'][NOWORDS.findIndex(x=>x.k===k)]||'أنا هنا 🤍'});
+    refreshChat();
+    if(view!=='chat')toast('💬',`${S.partner.name} رد`);
+   },1200);
+  },1200+Math.random()*1200);
  }
 }
 
-/* ============ الشات ============ */
-let draft='',currentTag=null;
+/* ============ الشات (حقيقي بينكم) ============ */
+let draft='',currentTag=null,showTyping=false;
 function pushMsg(m){
  m.t=m.t||Date.now();m.id='m'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
  S.chat.push(m);S.counts.msgs++;
@@ -695,14 +720,23 @@ function pushMsg(m){
  if(S.counts.msgs%5===0)txGrowth(1);
  checkSecrets();save();
 }
+/* الإرسال: بتظهر عندك فورًا + بتترفع للسيرفر فتوصل له فورًا */
 function sendMessage(m){
  if(MODE!=='net'){pushMsg(m);return}
  m.id='m'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
- m.t=Date.now();
- if((S.chat.length+1)%5===0)txGrowth(1);
+ m.t=Date.now();m.from='you';
+ seenIds.add(m.id);
+ S.chat.push(m);S.counts.msgs++;
+ if(S.counts.msgs%5===0)txGrowth(1);
  if(firstOrCount('chat')){jlog('💬','أول رسالة في عالمكم');txGrowth(1)}
- try{db.ref(P('chat')).push({id:m.id,from:mySlot,text:m.text||'',tag:m.tag||null,kind:m.kind||null,noWord:m.noWord||null,t:m.t})}
- catch(e){toast('⚠️','مش متصلة بالنت دلوقتي')}
+ checkSecrets();save();
+ try{
+  db.ref(P('chat')).push({id:m.id,from:mySlot,text:m.text||'',tag:m.tag||null,kind:m.kind||null,noWord:m.noWord||null,audio:m.audio||null,dur:m.dur||null,t:m.t})
+  .catch(()=>{
+   m.failed=true;save();refreshChat();
+   toast('⚠️',(!authOk)?'الرسالة مبعتتش — لازم تفعّلي Anonymous في Firebase':'الرسالة مبعتتش — اتأكدي من النت ومن Rules');
+  });
+ }catch(e){toast('⚠️','مش متصلة بالنت دلوقتي')}
 }
 function sendText(){
  const inp=$('#chat-in');const txt=(inp?inp.value:draft).trim();
@@ -710,14 +744,14 @@ function sendText(){
  sendMessage({from:'you',text:txt,tag:currentTag});
  if(/❤️|بحب/.test(txt)){S.giftsPartner.push({kind:'heart',t:Date.now()});toast('❤️',`قلب ظهر ${w('في عالمه','في عالمها')}`);markWorldDirty();if(MODE==='net'&&db){try{db.ref(P(`gifts/${otherSlot()}`)).push({gid:'g'+Date.now(),kind:'heart',t:Date.now(),note:'❤️'})}catch(e){}}}
  currentTag=null;
- renderChat();scrollChat();
+ refreshChat();
  if(MODE==='demo')partnerRespond({from:'you',text:txt});
 }
 function partnerRespond(msg){
  const delay=1600+Math.random()*2400;
- if(view==='chat'){$('#chat-list').insertAdjacentHTML('beforeend',typingHTML());scrollChat()}
+ showTyping=true;refreshChat();
  setTimeout(()=>{
-  document.querySelector('#chat-list .typing')?.remove();
+  showTyping=false;
   let pool=REPLIES.default;
   if(msg.noWord){const i=NOWORDS.findIndex(x=>x.k===msg.noWord);pool=[['حسّيت بيكِ… أنا هنا كمان ❤️'],REPLIES.default,REPLIES.sleep,REPLIES.default,REPLIES.comfort,REPLIES.default][i]||REPLIES.default}
   else if(msg.tag==='comfort')pool=REPLIES.comfort;
@@ -728,17 +762,67 @@ function partnerRespond(msg){
    else if(/مبسوط|فرحان|يلاي|ههه|😂/.test(txt))pool=REPLIES.happy;
   }
   pushMsg({from:'him',text:pick(pool)});
-  if(view==='chat'){renderChat();scrollChat()}else toast('💬',`${S.partner.name} رد عليك`);
+  refreshChat();
+  if(view!=='chat')toast('💬',`${S.partner.name} رد عليك`);
  },delay);
 }
 const typingHTML=()=>`<div class="msg him typing"><div class="bub dots"><i class="d"></i><i class="d"></i><i class="d"></i></div></div>`;
 function msgHTML(m){
  const dreamBtn=m.kind==null?`<div class="tools"><button data-action="dream-save" data-id="${m.id}">✈️ احفظوا كحلم</button></div>`:'';
  const meta=`<time>${fmt(m.t)}</time>`;
+ const failMark=m.failed?'<small class="tag fail">⚠️ مبعتتش — شوفی النت</small>':'';
+ if(m.kind==='voice'){
+  return`<div class="msg ${m.from}"><div class="bub voice">${m.audio?`<audio controls preload="metadata" src="${m.audio}"></audio>`:''}<small>🎙️ رسالة صوتية${m.dur?' · '+ar(Math.max(1,Math.round(m.dur)))+' ثانية':''}${m.audio?'':' · (الصوت محفوظ على السيرفر)'}${m.failed?' · ⚠️ مبعتتش':''}</small></div>${meta}</div>`;
+ }
  if(m.kind==='noword'){const n=NOWORDS.find(x=>x.k===m.noWord);return`<div class="msg ${m.from}"><div class="nw"><i>${n.icon}</i><b>${esc(m.text)}</b><small>من غير كلام</small></div>${meta}</div>`}
  if(m.kind==='secret'){return`<div class="msg ${m.from}"><div class="sec"><b>🔐 سرّ من الحديقة السرية اتفتح</b><span>${esc(m.text)}</span></div>${meta}</div>`}
  const tag=m.tag?`<small class="tag">${TAGS[m.tag].icon} ${TAGS[m.tag].label}</small>`:'';
- return`<div class="msg ${m.from}"><div class="bub">${esc(m.text)}${tag}</div>${meta}${dreamBtn}</div>`;
+ return`<div class="msg ${m.from}"><div class="bub">${esc(m.text)}${tag}${failMark}</div>${meta}${dreamBtn}</div>`;
+}
+/* ============ الرسايل الصوتية 🎙️ ============ */
+let recState=null;
+function canVoice(){return typeof MediaRecorder!=='undefined'&&navigator.mediaDevices&&!!navigator.mediaDevices.getUserMedia}
+async function toggleVoice(){
+ if(!canVoice()){toast('🎙️','المتصفح ده مش بيدعم التسجيل الصوتي — جربي كروم');return}
+ if(recState){ /* إيقاف وإرسال */
+  clearInterval(recState.timer);
+  const st=recState;recState=null;refreshChat();
+  try{st.rec.stop()}catch(e){}
+  return;
+ }
+ let stream;
+ try{stream=await navigator.mediaDevices.getUserMedia({audio:true})}
+ catch(e){toast('🎙️','محتاجين إذن الميكروفون — اسمحي للمتصفح وجرّبي تاني');return}
+ let mt='';
+ try{if(MediaRecorder.isTypeSupported('audio/webm;codecs=opus'))mt='audio/webm;codecs=opus';else if(MediaRecorder.isTypeSupported('audio/mp4'))mt='audio/mp4';else if(MediaRecorder.isTypeSupported('audio/webm'))mt='audio/webm'}catch(e){}
+ let rec;
+ try{rec=new MediaRecorder(stream,mt?{mimeType:mt}:undefined)}catch(e){stream.getTracks().forEach(t=>t.stop());toast('🎙️','مش قادر يبدأ التسجيل');return}
+ const chunks=[];
+ const st={rec,stream,chunks,t0:Date.now(),timer:null};
+ rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
+ rec.onstop=()=>{
+  stream.getTracks().forEach(t=>t.stop());
+  const dur=(Date.now()-st.t0)/1000;
+  if(dur<0.8||!chunks.length){toast('🎙️','التسجيل قصير أوي');return}
+  const blob=new Blob(chunks,{type:rec.mimeType||'audio/webm'});
+  const fr=new FileReader();
+  fr.onload=()=>{
+   const dataURL=fr.result;
+   if(dataURL.length>1400000){toast('⚠️','الرسالة طويلة أوي — قصّريها شوية (أقصى حد دقيقة)');return}
+   sendMessage({from:'you',kind:'voice',audio:dataURL,dur});
+   refreshChat();
+   if(MODE==='demo')setTimeout(()=>{showTyping=true;refreshChat();setTimeout(()=>{showTyping=false;pushMsg({from:'him',text:'وصلني صوتك… أحلى حاجة في يومي 🎙️❤️'});refreshChat()},1300)},1600);
+  };
+  fr.readAsDataURL(blob);
+ };
+ rec.start();
+ st.timer=setInterval(()=>{
+  const s=Math.floor((Date.now()-st.t0)/1000);
+  if(s>=60){if(recState===st){recState=null;refreshChat()}try{rec.stop()}catch(e){}}
+  else{const el=$('#rec-time');if(el)el.textContent=ar(s)+' ثانية'}
+ },300);
+ recState=st;
+ refreshChat();
 }
 
 /* ============ الحديقة السرية ============ */
@@ -775,7 +859,7 @@ function checkSecrets(){
    jlog('🌸','سرّ من الحديقة السرية اتفتح');
    sendMessage({from:'you',kind:'secret',text:s.text});
    toast('🌸','سرّك اتفتح… ووصل');
-   if(view==='chat'){renderChat();scrollChat()}
+   refreshChat();
    markWorldDirty();save();
   }
  });
@@ -1012,7 +1096,7 @@ function renderHome(){
     <p class="hint">كود الكون: <b class="en" style="color:var(--gold)">${CODE}</b> — كل حاجة بتتزامن لحظيًا بين الموبايلين، وعلى موبايله نفس الكود.</p>
     <div style="display:flex;gap:8px;margin-top:10px"><button class="btn ghost" data-action="copy-cur-code" data-c="${CODE}">📋 كود الكون</button><button class="btn ghost" style="color:var(--muted)" data-action="unlink">فك الربط</button></div></div>`
   :`<div class="card" style="border-color:#5a4a1f;background:#1a1608"><h3>🔗 ربط الموبايلين مع بعض</h3>
-    <p class="hint">دلوقتي التطبيق شغال على الموبايل ده بس (وضع تجريبي). عشان يتكلم بموبايله بجد — من غير أي تعديل كود، وبتتعمل مرة واحدة في ≈٥ دقايق:</p>
+    <p class="hint">دلوقتي التطبيق شغال على الموبايل ده بس (وضع تجريبي، والردود محاكاة). عشان تتكلموا بجد — من غير أي تعديل كود، وبتتعمل مرة واحدة في ≈٥ دقايق:</p>
     <button class="btn primary wide" style="margin-top:10px" data-action="p-open">ابدئي الربط 🔗</button></div>`;
  const onlineCard=S.partner.online?`<div class="card presence"><span class="dot on"></span><div><b>🧍 ${esc(S.partner.name)} موجود في عالمك</b><small>${S.partner.activity} — من غير ما يتكلم</small></div></div>`:'';
  const tin=S.lastTinyIn?`<div class="card"><b style="font-size:.85rem">آخر حاجة وصلتك ${w('منه','منها')}:</b><p class="hint" style="font-size:.85rem;color:var(--ink);margin-top:4px">${S.lastTinyIn.icon} "${esc(S.lastTinyIn.text)}" ${ago(S.lastTinyIn.t)}</p></div>`:'';
@@ -1067,36 +1151,54 @@ function renderWorld(){
  </section>`;
 }
 function renderChat(){
- return`<div class="chat-scroll" id="chat-list">${S.chat.map(msgHTML).join('')||'<p class="hint" style="align-self:center;margin:auto;text-align:center">الكلام المهم مش بيضيع هنا… بيتحول لحاجات تعيش في عالمكم 🤍</p>'}</div>
+ const mic=canVoice()?`<button class="mic ${recState?'rec':''}" data-action="voice" aria-label="رسالة صوتية">${recState?'⏹':'🎙️'}</button>`:'';
+ const inputRow=recState
+  ?`<div class="inrow">${mic}<div class="recbar"><span class="recdot"></span>جاري التسجيل… <b id="rec-time">٠ ثانية</b> — اضغطي ⏹ للإرسال</div></div>`
+  :`<div class="inrow">${mic}<input id="chat-in" placeholder="${w('اكتبي له…','اكتب لها…')}" autocomplete="off" value="${esc(draft)}">
+    <button class="btn primary sq" data-action="send" aria-label="إرسال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5m0 0l6-6m-6 6l6 6"/></svg></button></div>`;
+ return`<div class="chat-scroll" id="chat-list">${S.chat.map(msgHTML).join('')||'<p class="hint" style="align-self:center;margin:auto;text-align:center">الكلام المهم مش بيضيع هنا… بيتحول لحاجات تعيش في عالمكم 🤍</p>'}${showTyping?typingHTML():''}</div>
  <div class="composer">
   <div class="nowords">${NOWORDS.map(n=>`<button class="nw-btn" data-action="noword" data-k="${n.k}"><i>${n.icon}</i><span>${n.label}</span></button>`).join('')}</div>
   <div class="tagsel"><span class="hint" style="font-size:.68rem;align-self:center">الإحساس ورا الرسالة:</span>${Object.entries(TAGS).map(([k,t])=>`<button class="tagchip ${currentTag===k?'on':''}" data-action="tag" data-k="${k}">${t.icon} ${t.label}</button>`).join('')}</div>
-  <div class="inrow"><input id="chat-in" placeholder="${w('اكتبي له…','اكتب لها…')}" autocomplete="off" value="${esc(draft)}">
-  <button class="btn primary sq" data-action="send" aria-label="إرسال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5m0 0l6-6m-6 6l6 6"/></svg></button></div>
+  ${inputRow}
  </div>`;
 }
+function attachChatEvents(){
+ const inp=$('#chat-in');
+ if(inp){
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter')sendText()});
+  if(focusChat){inp.focus();focusChat=false}
+ }
+ scrollChat();
+}
 function scrollChat(){const l=$('#chat-list');if(l)l.scrollTop=l.scrollHeight}
+/* تحديث فعلي لشاشة الحديث (ده اللي كان ناقص) */
+function refreshChat(){
+ if(view!=='chat')return;
+ const act=document.activeElement;
+ const wasTyping=act&&act.id==='chat-in';
+ const pos=wasTyping?act.selectionStart:null;
+ $('#main').innerHTML=renderChat();
+ attachChatEvents();
+ const inp=$('#chat-in');
+ if(wasTyping&&inp){inp.focus();try{inp.setSelectionRange(pos,pos)}catch(e){}}
+}
 function render(){
  renderHeader();
  const main=$('#main');
  main.className='view-'+view;
  main.innerHTML=({home:renderHome,partner:renderPartner,world:renderWorld,chat:renderChat})[view]();
- if(view==='chat'){
-  const inp=$('#chat-in');
-  inp.addEventListener('keydown',e=>{if(e.key==='Enter')sendText()});
-  if(focusChat){inp.focus();focusChat=false}
-  scrollChat();
- }
+ if(view==='chat')attachChatEvents();
  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.view===view));
 }
 function go(v){
  view=v;
  if(v==='world')$('#badge-world').classList.remove('on');
- if(v==='chat'){$('#badge-chat').classList.remove('on');focusChat=false}
+ if(v==='chat'){$('#badge-chat').classList.remove('on');focusChat=true}
  render();
 }
 
-/* ============ طبقة الربط ============ */
+/* ============ طبقة الربط الحقيقي ============ */
 function pushMe(extra){
  if(MODE!=='net'||!db)return;
  try{db.ref(P(`users/${mySlot}`)).update(Object.assign({name:S.you.name,mood:S.you.mood,fem:FEM,online:true,lastSeen:Date.now(),activity:S.you.activity},extra||{}))}catch(e){}
@@ -1105,7 +1207,7 @@ function bindUniverse(){
  const o=otherSlot();
  S.chat.forEach(m=>seenIds.add(m.id));
  S.journey.forEach(j=>seenIds.add(j.id));
- db.ref(P(`users/${mySlot}`)).once('value').then(s=>{const v=s.val()||{};if(v.name){S.you.name=v.name}if(v.mood)S.you.mood=v.mood;save();renderIfSafe()}).catch(()=>{});
+ db.ref(P(`users/${mySlot}`)).once('value').then(s=>{const v=s.val()||{};if(v.name)S.you.name=v.name;if(v.mood)S.you.mood=v.mood;save();renderIfSafe()}).catch(()=>{});
  let firstP=true,lastSig='';
  db.ref(P(`users/${o}`)).on('value',s=>{
   const v=s.val();if(!v)return;
@@ -1138,15 +1240,25 @@ function bindUniverse(){
   if(v.rainbowUntil&&v.rainbowUntil>Date.now()){S.tempRainbow=v.rainbowUntil;changed=true}
   save();if(changed&&view==='world')render();else if(changed)renderHeader();
  });
+ /* الرسايل — نصية وصوتية، بتوصل فورًا للطرفين */
  db.ref(P('chat')).on('child_added',s=>{
-  const m=s.val();if(!m||seenIds.has(m.id))return;seenIds.add(m.id);
+  const m=s.val();if(!m)return;
+  if(seenIds.has(m.id)){
+   /* لو الصوتية القديمة اتمسحت محليًا، رجّعها من السيرفر */
+   const loc=S.chat.find(x=>x.id===m.id);
+   if(loc&&m.audio&&!loc.audio){loc.audio=m.audio;loc.dur=m.dur;save();if(view==='chat')refreshChat()}
+   return;
+  }
+  seenIds.add(m.id);
   m.from=m.from===mySlot?'you':'him';
   S.chat.push(m);S.counts.msgs++;
   if(m.from==='him'){
    markChat();
-   if(view==='chat'){renderChat();scrollChat()}else toast('💬',`${S.partner.name} كتبلك`);
+   if(m.kind==='voice')toast('🎙️',`${S.partner.name} بعتلك رسالة صوتية`);
+   else toast('💬',`${S.partner.name} كتبلك`);
    if(m.kind==='secret')toast('🌸',`${S.partner.name} فتحلك سرًا من حديقته`);
-  }else if(view==='chat'){renderChat();scrollChat()}
+   refreshChat();
+  }else refreshChat();
   save();
  });
  db.ref(P(`gifts/${mySlot}`)).on('child_added',s=>{
@@ -1178,11 +1290,11 @@ function enterApp(){
  render();go('home');
 }
 
-/* ============ شاشة الربط — ظاهرة دايمًا ============ */
+/* ============ شاشة الربط ============ */
 function openPairing(){
  if(MODE==='net'){
   openModal(`<h3>🔗 الربط بين موبايلاتكم</h3>
-  <p class="hint">مربوطين دلوقتي ❤️ — كل حاجة بتتزامن لحظيًا بين الموبايلين.</p>
+  <p class="hint">مربوطين دلوقتي ❤️ — الرسايل (نص وصوت) بتوصل فورًا بين الموبايلين.</p>
   <div class="codebox">${CODE}</div>
   <button class="btn ghost wide" data-action="copy-cur-code" data-c="${CODE}">📋 نسخ كود الكون</button>
   <div style="height:10px"></div>
@@ -1204,8 +1316,8 @@ function cfgForm(){
  <p class="hint">عشان موبايلك يكلم موبايله بجد، محتاجين "نقطة لقاء" مجانية على النت اسمها Firebase — بتتعمل مرة واحدة في ≈٥ دقايق:</p>
  <ol class="hint" style="padding-inline-start:18px;line-height:2.1">
   <li>افتحي <b style="color:var(--ink)">console.firebase.google.com</b> → Add project (أي اسم → Create)</li>
-  <li>من Build: <b style="color:var(--ink)">Authentication</b> → Get started → اختاري <b style="color:var(--ink)">Anonymous</b> → Enable</li>
-  <li>من Build: <b style="color:var(--ink)">Realtime Database</b> → Create Database → أي منطقة → <b style="color:var(--ink)">Start in test mode</b></li>
+  <li>من البحث: <b style="color:var(--ink)">Authentication</b> → Get started → اختاري <b style="color:var(--ink)">Anonymous</b> → Enable</li>
+  <li>من البحث: <b style="color:var(--ink)">Realtime Database</b> → Create Database → أي منطقة → <b style="color:var(--ink)">Start in test mode</b></li>
   <li>في تب Rules في نفس الصفحة، امسحي اللي فيه والصقي ده واعملي Publish:</li>
  </ol>
  <div class="rulesbox">{ "rules": { "unis": { "$code": { ".read": "auth != null", ".write": "auth != null" } } } }</div>
@@ -1368,6 +1480,7 @@ document.addEventListener('click',e=>{
   case 'tiny':sendTiny(d.k);break;
   case 'noword':sendNoWord(d.k);break;
   case 'send':sendText();break;
+  case 'voice':toggleVoice();break;
   case 'tag':currentTag=currentTag===d.k?null:d.k;document.querySelectorAll('.tagchip').forEach(b=>b.classList.toggle('on',b.dataset.k===currentTag));break;
   case 'guess-open':openGuess();break;
   case 'guess':submitGuess(d.k);break;
