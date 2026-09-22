@@ -244,6 +244,35 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 </head>
 <body>
 
+<!-- ═══ شبكة الأمان: لو حاجة باظت هتشوفي السبب مكتوب بدل الشاشة المعلقة ═══ -->
+<script>
+(function(){
+ var shown=false;
+ function show(txt){
+  if(shown)return;shown=true;
+  try{
+   var sp=document.getElementById('splash');
+   if(sp)sp.style.display='none';
+   var d=document.createElement('div');
+   d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:999;background:#8a2020;color:#fff;padding:12px 14px;text-align:center;font:13px sans-serif;direction:rtl;line-height:1.8';
+   d.textContent=txt;
+   document.body.appendChild(d);
+  }catch(x){}
+ }
+ window.addEventListener('error',function(e){
+  if(e.target&&e.target.tagName==='SCRIPT'&&e.target.src){
+   show('⚠️ تعذّر تحميل مكتبات جوجل (النت مش واصل ليها) — اقفلي الصفحة وافتحيها تاني، أو جرّبي شبكة تانية');
+  }else{
+   show('⚠️ الملف المرفوع على GitHub ناقص أو فيه خطأ — ارفعيه كامل تاني (آخر سطر لازم يكون </html>). '+(e.message||''));
+  }
+ },true);
+ /* لو التطبيق مبدأش خلال ٢٠ ثانية يبقى في مشكلة في الملف نفسه */
+ setTimeout(function(){
+  if(!window.__uniBooted)show('⚠️ التطبيق مش بيبدأ — غالبًا الملف المرفوع متقص على GitHub. امسحيه وارفعيه كامل تاني');
+ },20000);
+})();
+</script>
+
 <div id="app" hidden>
   <header id="top"></header>
   <main id="main"></main>
@@ -269,7 +298,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
     <circle class="tw" cx="98" cy="316" r="5" fill="#f0c274" style="animation-delay:1.7s"/>
     <path class="tw" d="M196 202l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="#f0c274" style="animation-delay:.9s"/>
   </svg>
-  <h1 class="en">OUR UNIVERSE</h1><small>عالمنا</small>
+  <h1 class="en">OUR UNIVERSE</h1><small>عالمنا · v5</small>
 </div></div>
 
 <div id="invitebar"></div>
@@ -356,7 +385,7 @@ try{S=Object.assign(DEF(),JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){
 S.you=Object.assign({name:'',mood:'peaceful',activity:''},S.you);
 S.partner=Object.assign({name:'',mood:'happy',online:false,activity:'…'},S.partner);
 S.journey.forEach(j=>{if(!j.id)j.id='j'+j.t});
-/* حفظ ذكي: لو المساحة خلصت (بسبب الرسايل الصوتية) بنمسح الصوتيات القديمة ونحاول تاني */
+/* حفظ ذكي: لو المساحة خلصت (بسبب الصوتيات) بنمسح القديمة ونحاول تاني */
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){
  try{
   const c1=JSON.parse(JSON.stringify(S));let kept=0;
@@ -784,7 +813,7 @@ let recState=null;
 function canVoice(){return typeof MediaRecorder!=='undefined'&&navigator.mediaDevices&&!!navigator.mediaDevices.getUserMedia}
 async function toggleVoice(){
  if(!canVoice()){toast('🎙️','المتصفح ده مش بيدعم التسجيل الصوتي — جربي كروم');return}
- if(recState){ /* إيقاف وإرسال */
+ if(recState){
   clearInterval(recState.timer);
   const st=recState;recState=null;refreshChat();
   try{st.rec.stop()}catch(e){}
@@ -1172,7 +1201,7 @@ function attachChatEvents(){
  scrollChat();
 }
 function scrollChat(){const l=$('#chat-list');if(l)l.scrollTop=l.scrollHeight}
-/* تحديث فعلي لشاشة الحديث (ده اللي كان ناقص) */
+/* تحديث فعلي لشاشة الحديث */
 function refreshChat(){
  if(view!=='chat')return;
  const act=document.activeElement;
@@ -1194,7 +1223,7 @@ function render(){
 function go(v){
  view=v;
  if(v==='world')$('#badge-world').classList.remove('on');
- if(v==='chat'){$('#badge-chat').classList.remove('on');focusChat=true}
+ if(v==='chat')$('#badge-chat').classList.remove('on');
  render();
 }
 
@@ -1240,11 +1269,10 @@ function bindUniverse(){
   if(v.rainbowUntil&&v.rainbowUntil>Date.now()){S.tempRainbow=v.rainbowUntil;changed=true}
   save();if(changed&&view==='world')render();else if(changed)renderHeader();
  });
- /* الرسايل — نصية وصوتية، بتوصل فورًا للطرفين */
+ /* الرسايل — نص وصوت، بتوصل فورًا للطرفين */
  db.ref(P('chat')).on('child_added',s=>{
   const m=s.val();if(!m)return;
   if(seenIds.has(m.id)){
-   /* لو الصوتية القديمة اتمسحت محليًا، رجّعها من السيرفر */
    const loc=S.chat.find(x=>x.id===m.id);
    if(loc&&m.audio&&!loc.audio){loc.audio=m.audio;loc.dur=m.dur;save();if(view==='chat')refreshChat()}
    return;
@@ -1539,6 +1567,7 @@ function buildPWA(){
 /* ============ الإقلاع ============ */
 buildPWA();
 async function boot(){
+ window.__uniBooted=true;
  if(netAvailable()&&netInit()){
   const code=localStorage.getItem('pairCode'),slot=localStorage.getItem('mySlot');
   if(code&&slot){
