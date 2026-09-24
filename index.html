@@ -1,3 +1,4 @@
+<!--L3-START-->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -144,7 +145,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 
 <div id="splash"><div class="in">
 <svg viewBox="0 0 512 512" width="120" height="120"><rect width="512" height="512" rx="118" fill="#070b16"/><circle cx="256" cy="256" r="150" fill="#f0c274" opacity=".07"/><circle cx="256" cy="256" r="128" fill="#f0c274"/><circle cx="192" cy="250" r="104" fill="#070b16"/><circle class="tw" cx="112" cy="132" r="7" fill="#f2ead8"/><circle class="tw" cx="398" cy="118" r="6" fill="#f0c274" style="animation-delay:1.1s"/><circle class="tw" cx="424" cy="252" r="5" fill="#f2ead8" style="animation-delay:.6s"/><circle class="tw" cx="98" cy="316" r="5" fill="#f0c274" style="animation-delay:1.7s"/><path class="tw" d="M196 202l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="#f0c274" style="animation-delay:.9s"/></svg>
-<h1 class="en">OUR UNIVERSE</h1><small>عالمنا · L2</small>
+<h1 class="en">OUR UNIVERSE</h1><small>عالمنا · L3</small>
 </div></div>
 
 <script>
@@ -168,7 +169,7 @@ setTimeout(function(){if(!window.__ok){var s=document.getElementById('splash');i
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 <script>
 'use strict';
@@ -178,39 +179,7 @@ const pick=a=>a[Math.floor(Math.random()*a.length)];
 const ago=t=>{const m=Math.floor((Date.now()-t)/6e4);if(m<1)return'الآن';if(m<60)return'منذ '+m+' دقيقة';const h=Math.floor(m/60);return h<24?'منذ '+h+' ساعة':'منذ '+Math.floor(h/24)+' يوم'};
 const fmt=t=>new Date(t).toLocaleTimeString('ar-EG',{hour:'numeric',minute:'2-digit'});
 
-const FB={apiKey:"const firebaseConfig = {
-  apiKey: "AIzaSyC_XVNP-OdZTFUgrpAJlHhgOaeb4Wzy6ss",
-  authDomain: "our-universe-590e1.firebaseapp.com",
-  databaseURL: "https://our-universe-590e1-default-rtdb.firebaseio.com",
-  projectId: "our-universe-590e1",
-  storageBucket: "our-universe-590e1.firebasestorage.app",
-  messagingSenderId: "306423036",
-  appId: "1:306423036:web:3f7f11675a17c6a4f62379"
-};",authDomain:"const firebaseConfig = {
-  apiKey: "AIzaSyC_XVNP-OdZTFUgrpAJlHhgOaeb4Wzy6ss",
-  authDomain: "our-universe-590e1.firebaseapp.com",
-  databaseURL: "https://our-universe-590e1-default-rtdb.firebaseio.com",
-  projectId: "our-universe-590e1",
-  storageBucket: "our-universe-590e1.firebasestorage.app",
-  messagingSenderId: "306423036",
-  appId: "1:306423036:web:3f7f11675a17c6a4f62379"
-};",databaseURL:"const firebaseConfig = {
-  apiKey: "AIzaSyC_XVNP-OdZTFUgrpAJlHhgOaeb4Wzy6ss",
-  authDomain: "our-universe-590e1.firebaseapp.com",
-  databaseURL: "https://our-universe-590e1-default-rtdb.firebaseio.com",
-  projectId: "our-universe-590e1",
-  storageBucket: "our-universe-590e1.firebasestorage.app",
-  messagingSenderId: "306423036",
-  appId: "1:306423036:web:3f7f11675a17c6a4f62379"
-};",projectId:"const firebaseConfig = {
-  apiKey: "AIzaSyC_XVNP-OdZTFUgrpAJlHhgOaeb4Wzy6ss",
-  authDomain: "our-universe-590e1.firebaseapp.com",
-  databaseURL: "https://our-universe-590e1-default-rtdb.firebaseio.com",
-  projectId: "our-universe-590e1",
-  storageBucket: "our-universe-590e1.firebasestorage.app",
-  messagingSenderId: "306423036",
-  appId: "1:306423036:web:3f7f11675a17c6a4f62379"
-};"};
+const FB={apiKey:"___",authDomain:"___",databaseURL:"___",projectId:"___"};
 try{const s=localStorage.getItem('fbcfg');if(s)Object.assign(FB,JSON.parse(s))}catch(e){}
 let MODE='demo',db=null,CODE=null,mySlot=null,FEM=true,netOn=false,fbReady=false,authP=null,typing=false,rec=null,view='home',draft='',tag=null;
 const seen=new Set();
@@ -227,7 +196,7 @@ peaceful:{e:'🤍',l:'مرتاحة',m:'مرتاح',d:'ليل صافي وقمر �
 loving:{e:'❤️',l:'حب',m:'حب',d:'قلوب مليّانة السما ❤️',sky:['#3b2033','#190d17'],h:['#33203a','#241529','#170f1c'],orb:'pink',g:'#f3b8c0',fam:'warm',fx:'hearts',st:22},
 excited:{e:'✨',l:'متحمسة',m:'متحمس',d:'شهب بتلمع في كل حتة',sky:['#2b4462','#101a2b'],h:['#22505a','#163741','#0f262e'],orb:'star',g:'#ffe9b0',fam:'warm',fx:'spark',st:34},
 emotional:{e:'🥹',l:'متأثرة',m:'متأثر',d:'مطر خفيف تحت قمر وردي',sky:['#3a2540','#190f20'],h:['#2c1e3c','#1e142a','#140d1b'],orb:'cres',g:'#e8b0c0',fam:'cold',fx:'rain',st:18},
-drained:{e:'😴',l:'منهكة',m:'منهك',d:'ليل عميق وقمر باهت — العالم نفسه تعبان',sky:['#0c1122','#04060e'],h:['#171d33','#101425','#0a0d19'],orb:'dim',g:'#8f98b8',fam:'cold',st:10},
+drained:{e:'😴',l:'منهكة',m:'منهك',d:'ليل عميق وقمر باهت — العالم نفسه تعبان',sky:['#0c1122','#04060e'],h:['171d33','101425','0a0d19'].map(x=>'#'+x),orb:'dim',g:'#8f98b8',fam:'cold',st:10},
 overwhelmed:{e:'🫠',l:'مرهقة جدًا',m:'مرهق جدًا',d:'عاصفة والبرق بيومض ⛈️',sky:['#20293b','#090d16'],h:['#1a2333','#121826','#0c1019'],orb:null,g:'#9ab0d0',fam:'cold',fx:'storm',st:8},
 annoyed:{e:'😡',l:'متضايقة',m:'متضايق',d:'بركان صغير بيدخّن 🌋',sky:['#47201c','#1a0b09'],h:['#3a1c17','#291110','#190a09'],orb:null,g:'#ff9a70',fam:'cold',fx:'volc',st:6}};
 const TINY=[
@@ -261,7 +230,6 @@ if(a&&b)return{c:'#f0c274',t:'الخيط دهبي — إحساسكم على نف
 if(!a&&!b)return{c:'#7ea3d8',t:'الخيط أزرق هادي — ساكتين بس شايلين بعض'};
 return{c:'#a07ad4',t:'الخيط بنفسجي — توازن إحساسكم المختلف'}}
 
-/* ===== الرسومات ===== */
 let uid=0;
 const hash=s=>{let h=9;for(const c of s)h=Math.imul(h^c.charCodeAt(0),387420489)>>>0;return h};
 function stars(seed,n){let a=hash(seed),s='';
@@ -310,13 +278,11 @@ let lant='';for(const t of[.28,.55]){const u=1-t;const x=u*u*296+2*u*t*200+t*t*1
 return '<svg class="scene" viewBox="0 0 400 340"><defs><clipPath id="ca'+id+'"><circle cx="-62" cy="215" r="166"/></clipPath><clipPath id="cb'+id+'"><circle cx="462" cy="215" r="166"/></clipPath></defs><g clip-path="url(#ca'+id+')">'+mini(S.p2.mood,'L')+'</g><g clip-path="url(#cb'+id+')">'+mini(S.you.mood,'R')+'</g><g transform="translate(348,288) scale(.8)">'+cr('y')+'</g><g transform="translate(54,288) scale(.8)">'+cr('h')+'</g><ellipse cx="200" cy="308" rx="54" ry="15" fill="#20362b"/><ellipse cx="200" cy="304" rx="54" ry="13" fill="#2a4636"/><g opacity="'+(.45+.55*p).toFixed(2)+'"><path d="M296 206 Q200 154 104 206" stroke="#77502f" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M296 206 Q200 154 104 206" stroke="#93683e" stroke-width="3" fill="none"/><path d="M296 192 Q200 140 104 192" stroke="#93683e" stroke-width="2.4" fill="none" opacity=".9"/><g stroke="#7d5738" stroke-width="2.4">'+posts+'</g>'+lant+'</g><path d="M344 118 Q200 84 56 118" stroke="'+ti.c+'" stroke-width="1" opacity=".3" fill="none"/><path class="thread" d="M344 118 Q200 84 56 118" stroke="'+ti.c+'" stroke-width="2.6" stroke-linecap="round" fill="none" stroke-dasharray="0.5 8"/></svg>'}
 const logo=s=>'<svg viewBox="0 0 512 512" width="'+s+'" height="'+s+'"><rect width="512" height="512" rx="118" fill="#070b16"/><circle cx="256" cy="256" r="128" fill="#f0c274"/><circle cx="192" cy="250" r="104" fill="#070b16"/><circle class="tw" cx="112" cy="132" r="7" fill="#f2ead8"/><circle class="tw" cx="398" cy="118" r="6" fill="#f0c274" style="animation-delay:1.1s"/><circle class="tw" cx="424" cy="252" r="5" fill="#f2ead8" style="animation-delay:.6s"/><circle class="tw" cx="98" cy="316" r="5" fill="#f0c274" style="animation-delay:1.7s"/><path class="tw" d="M196 202l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="#f0c274" style="animation-delay:.9s"/></svg>';
 
-/* ===== توست / مودال ===== */
 function toast(i,t){const e=document.createElement('div');e.className='toast';e.innerHTML='<i>'+i+'</i><span>'+t+'</span>';$('#toasts').appendChild(e);setTimeout(()=>{e.classList.add('out');setTimeout(()=>e.remove(),400)},3200)}
 function modal(h){$('#modals').innerHTML='<div class="sheet">'+h+'</div>'}
 function cmodal(){$('#modals').innerHTML=''}
  $('#modals').addEventListener('click',e=>{if(e.target.id==='modals')cmodal()});
 
-/* ===== الربط ===== */
 function netOK(){return typeof firebase!=='undefined'&&FB.apiKey&&FB.apiKey!=='___'&&/^https/.test(FB.databaseURL||'')}
 function initNet(){if(fbReady){MODE='net';return true}
 try{firebase.initializeApp(FB);authP=firebase.auth().signInAnonymously();authP.catch(()=>setTimeout(()=>toast('⚠️','فعّلي Anonymous من Firebase Authentication'),2500));db=firebase.database();MODE='net';fbReady=true;return true}catch(e){return false}}
@@ -347,7 +313,6 @@ toast(gi(g.kind),(S.p2.name||'هو')+' بعتلك: "'+(g.note||'')+'" — ظهر
 db.ref('.info/connected').on('value',s=>{netOn=!!s.val();rh();
 if(netOn){const me=db.ref('unis/'+CODE+'/users/'+mySlot);me.onDisconnect().update({online:false,ls:Date.now()}).then(()=>pushMe()).catch(()=>{})}})}
 
-/* ===== الواجهات ===== */
 function headHTML(){const st=MODE==='net'?(netOn?'<span class="chip" style="color:#a8d8a0">🔗 متصلين</span>':'<span class="chip">📡…</span>'):'<span class="chip">تجريبي 🧪</span>';
 return '<div class="brand">'+logo(34)+'<div><b class="en">OUR UNIVERSE</b><small>اليوم '+dayN()+' مع بعض 🤍</small></div></div>'+st+'<button class="chip" data-go="partner"><span class="dot'+(S.p2.online?' on':'')+'"></span>'+esc(S.p2.name||'…')+'</button>'}
 const rh=()=>{$('#top').innerHTML=headHTML()};
@@ -373,7 +338,7 @@ function chatHTML(){
 const mic=(typeof MediaRecorder!=='undefined'&&navigator.mediaDevices)?'<button class="mic'+(rec?' rec':'')+'" data-a="voice">'+(rec?'⏹':'🎙️')+'</button>':'';
 const row=rec?'<div class="inrow">'+mic+'<div class="recbar">جاري التسجيل… <b id="rt">0 ث</b> — اضغطي ⏹ للإرسال</div></div>'
 :'<div class="inrow">'+mic+'<input id="ci" placeholder="'+w('اكتبي له…','اكتب لها…')+'" value="'+esc(draft)+'" autocomplete="off"><button class="sendb" data-a="send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5m0 0l6-6m-6 6l6 6"/></svg></button></div>';
-return '<div class="cs" id="cl">'+(S.chat.map(msgHTML).join('')||'<p class="hint" style="margin:auto;text-align:center">الكلام هنا بيبقى بينكم بجد 🤍</p>')+(typing?typHTML:'')+'</div><div class="comp"><div class="nwrow">'+NW.map(n=>'<button class="nwb" data-a="nw" data-k="'+n.k+'"><i>'+n.i+'</i>'+n.l+'</button>').join('')+'</div><div class="tags"><span class="hint" style="font-size:.66rem">الإحساس وراها:</span>'+Object.keys(TAGS).map(k=>'<button class="tg'+(tag===k?' on':'')+'" data-a="tag" data-k="'+k+'">'+TAGS[k].i+' '+TAGS[k].l+'</button>').join('')+'</div>'+row+'</div>'}
+return '<div class="cs" id="cl">'+(S.chat.map(msgHTML).join('')||'<p class="hint" style="margin:auto;text-align:center">الكلام هنا بيبقى بينكم بجد 🤍</p>')+(typing?typHTML:'')+'</div><div class="comp"><div class="nwrow">'+NW.map(n=>'<button class="nwb" data-a="nw" data-k="'+n.k+'"><i>'+n.i+'</i>'+n.l+'</button>').join('')+'</div><div class="tags"><span class="hint" style="font→→→font-size:.66rem">الإحساس وراها:</span>'+Object.keys(TAGS).map(k=>'<button class="tg'+(tag===k?' on':'')+'" data-a="tag" data-k="'+k+'">'+TAGS[k].i+' '+TAGS[k].l+'</button>').join('')+'</div>'+row+'</div>'}
 function rc(){if(view!=='chat')return;const m=$('#main');m.className='chat';
 const a=document.activeElement,wt=a&&a.id==='ci',pos=wt?a.selectionStart:null;
 m.innerHTML=chatHTML();const ci=$('#ci');
@@ -386,7 +351,6 @@ if(view==='chat')rc();
 else m.innerHTML=({home:renderHome,partner:renderPartner,world:renderWorld})[view]()}
 function rd(){if(view==='chat'){rh();rc()}else render()}
 
-/* ===== أفعالك ===== */
 function setMood(k){if(S.you.mood===k)return;S.you.mood=k;bx(2);toast(MOODS[k].e,'عالمك اتغيّر: '+MOODS[k].d);save();if(MODE==='net')pushMe({mood:k});render()}
 function fake(t){typing=true;rc();setTimeout(()=>{typing=false;S.chat.push({from:'him',text:t,t:Date.now(),id:'m'+Date.now()});S.msgs++;save();mkChat();rc();if(view!=='chat')toast('💬',(S.p2.name||'هو')+' رد عليك')},1300+Math.random()*1500)}
 function push(m){S.chat.push(m);S.msgs++;save();rc()}
@@ -435,12 +399,11 @@ if(e>=60){if(rec===s){rec=null;rc()}try{r.stop()}catch(x){}}
 else{const el=$('#rt');if(el)el.textContent=e+' ث'}},400);
 rc()}
 
-/* ===== شاشة الربط ===== */
 function openPairing(){
 if(MODE==='net'){modal('<h3>🔗 الربط</h3><p class="hint">مربوطين ❤️ — الرسايل نص وصوت بتوصل فورًا بينكم.</p><div class="codebox">'+CODE+'</div><button class="btn g w" data-a="copycode" data-c="'+CODE+'">📋 نسخ كود الكون</button><div style="height:10px"></div><button class="btn g w" style="color:var(--rose);border-color:#e88a8a66" data-a="unlink">فك الربط</button>');return}
 if(netOK()){modal('<h3>🔗 ربط الموبايلين</h3><p class="hint">الإعدادات جاهزة على الموبايل ده ✅</p><button class="btn p w" style="margin-bottom:9px" data-a="pcreate">🌌 إنشاء كون (الموبايل ده)</button><button class="btn g w" data-a="pjoin">🔑 انضمام بكود (الموبايل التاني)</button><button class="back" data-a="cfg">تعديل إعدادات Firebase</button>');return}
 cfgForm()}
-function cfgForm(){modal('<h3>🔗 ربط الموبايلين مع بعض</h3><p class="hint">محتاجين Firebase مجاني — مرة واحدة في ٥ دقايق:</p><ol class="hint" style="padding-inline-start:18px;line-height:2"><li>افتحي <b style="color:var(--ink)">console.firebase.google.com</b> → Add project</li><li>من البحث: <b style="color:var(--ink)">Authentication</b> → Get started → <b style="color:var(--ink)">Anonymous</b> → Enable</li><li>من البحث: <b style="color:var(--ink)">Realtime Database</b> → Create → أي منطقة → <b style="color:var(--ink)">Start in test mode</b></li><li>تب Rules في الداتابيز: امسحي والصقي واعملي Publish:</li></ol><div style="direction:ltr;text-align:left;font-family:monospace;font-size:.62rem;background:var(--pn2);border:1px dashed #2c3d63;border-radius:10px;padding:9px;white-space:pre-wrap;color:var(--mu);user-select:all;margin:7px 0 11px">{ "rules": { "unis": { "$code": { ".read": "auth != null", ".write": "auth != null" } } } }</div><label>٥) ⚙️ Project Settings → زر الويب <b style="color:var(--ink)">&lt;/&gt;</b> → Register app → انسخي بلوكة firebaseConfig والصقيها:</label><textarea id="pccfg" rows="5" placeholder="const firebaseConfig = { apiKey: ... databaseURL: ... };" style="direction:ltr;font-size:.7rem"></textarea><div class="err"></div><button class="btn p w" data-a="savecfg">تسجيل وتفعيل 🔗</button><p class="hint" style="margin-top:10px">💡 نفس البلوكة لازم تتبعت لموبايله هو كمان.</p>')}
+function cfgForm(){modal('<h3>🔗 ربط الموباilen مع بعض</h3><p class="hint">محتاجين Firebase مجاني — مرة واحدة في ٥ دقايق:</p><ol class="hint" style="padding-inline-start:18px;line-height:2"><li>افتحي <b style="color:var(--ink)">console.firebase.google.com</b> → Add project</li><li>من البحث: <b style="color:var(--ink)">Authentication</b> → Get started → <b style="color:var(--ink)">Anonymous</b> → Enable</li><li>من البحث: <b style="color:var(--ink)">Realtime Database</b> → Create → أي منطقة → <b style="color:var(--ink)">Start in test mode</b></li><li>تب Rules في الداتابيز: امسحي والصقي واعملي Publish:</li></ol><div style="direction:ltr;text-align:left;font-family:monospace;font-size:.62rem;background:var(--pn2);border:1px dashed #2c3d63;border-radius:10px;padding:9px;white-space:pre-wrap;color:var(--mu);user-select:all;margin:7px 0 11px">{ "rules": { "unis": { "$code": { ".read": "auth != null", ".write": "auth != null" } } } }</div><label>٥) ⚙️ Project Settings → زر الويب <b style="color:var(--ink)">&lt;/&gt;</b> → Register app → انسخي بلوكة firebaseConfig والصقيها:</label><textarea id="pccfg" rows="5" placeholder="const firebaseConfig = { apiKey: ... databaseURL: ... };" style="direction:ltr;font-size:.7rem"></textarea><div class="err"></div><button class="btn p w" data-a="savecfg">تسجيل وتفعيل 🔗</button><p class="hint" style="margin-top:10px">💡 نفس البلوكة لازم تتبعت لموبايله هو كمان.</p>')}
 function parseCfg(t){if(!t)return null;const m=t.match(/\{[\s\S]*\}/);if(!m)return null;const b=m[0].replace(/,\s*\}/g,'}');
 try{const o=JSON.parse(b);if(o&&o.apiKey)return o}catch(e){}
 const o={};const re=/["']?(\w+)["']?\s*:\s*["']([^"']+)["']/g;let r;while((r=re.exec(b)))o[r[1]]=r[2];return o.apiKey?o:null}
@@ -484,7 +447,6 @@ toast('🌌','جاري الدخول لعالمكم…');setTimeout(()=>location.
 function copyCode(c){c=c||CODE;if(!c)return;if(navigator.clipboard)navigator.clipboard.writeText(c).then(()=>toast('📋','الكود: '+c)).catch(()=>toast('🌙',c));else toast('🌙',c)}
 function unlink(){localStorage.removeItem('pcode');localStorage.removeItem('pslot');toast('👋','تم فك الربط');setTimeout(()=>location.reload(),800)}
 
-/* ===== البداية ===== */
 function netOb(){const o=$('#ob');o.hidden=false;o.innerHTML='<div class="obw">'+logo(100)+'<h1 class="en">OUR UNIVERSE</h1><p>عالمين… وجسر واحد بينهم.</p><button class="btn p w" style="margin-bottom:9px" data-a="pcreate">🌌 إنشاء كون (الموبايل الأول)</button><button class="btn g w" data-a="pjoin">🔑 انضمام بكود (الموبايل التاني)</button><button class="back" data-a="cfg">⚙️ إعدادات Firebase</button></div>'}
 function demoOb(){const o=$('#ob');o.hidden=false;o.innerHTML='<div class="obw">'+logo(100)+'<h1 class="en">OUR UNIVERSE</h1><p>عالمين… وجسر واحد بينهم.<br>ابدئي لوحدك دلوقتي، واربطي موبايله في أي وقت.</p><div class="obf"><label>اسمك</label><input id="oby" maxlength="12"><label>وهو؟</label><input id="obh" maxlength="12"><label>أول يوم ليكم</label><input id="obd" type="date" value="'+new Date().toISOString().slice(0,10)+'"><div class="err"></div><button class="btn p w" data-a="obgo">نبدأ 🌙</button><div style="height:9px"></div><button class="btn g w" data-a="pair">🔗 ربط الموبايلين مع بعض</button></div></div>'}
 function obGo(){const y=$('#oby').value.trim(),h=$('#obh').value.trim();
@@ -496,7 +458,6 @@ S.you.act=S.you.act||pick(FEM?ACTF:ACTM);
 if(MODE==='net'){S.setup=true;save();bind();pushMe()}
 render()}
 
-/* ===== الأحداث ===== */
 document.addEventListener('input',e=>{if(e.target.id==='ci')draft=e.target.value});
 document.addEventListener('click',e=>{
 const g=e.target.closest('[data-go]');if(g){view=g.dataset.go;render();return}
@@ -521,7 +482,6 @@ case 'unlink':unlink();break;
 case 'reload':location.reload();break;
 case 'obgo':obGo();break}});
 
-/* ===== أيقونة التطبيق ===== */
 function buildPWA(){try{
 const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');
 x.beginPath();x.moveTo(118,0);x.arcTo(512,0,512,512,118);x.arcTo(512,512,0,512,118);x.arcTo(0,512,0,0,118);x.arcTo(0,0,512,0,118);x.closePath();x.fillStyle='#070b16';x.fill();
@@ -533,7 +493,6 @@ const ic=c.toDataURL('image/png');
 const man={name:'OUR UNIVERSE — عالمنا',short_name:'OUR UNIVERSE',start_url:location.href,display:'standalone',background_color:'#070b16',theme_color:'#070b16',icons:[{src:ic,sizes:'512x512',type:'image/png',purpose:'any'},{src:ic,sizes:'512x512',type:'image/png',purpose:'maskable'}]};
  $('#mf').href=URL.createObjectURL(new Blob([JSON.stringify(man)],{type:'application/manifest+json'}))}catch(e){}}
 
-/* ===== الإقلاع ===== */
 buildPWA();
 async function boot(){
 if(netOK()&&initNet()){
