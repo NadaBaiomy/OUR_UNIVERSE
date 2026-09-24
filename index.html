@@ -1,4 +1,3 @@
-<!--L3-START-->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -149,7 +148,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 </div></div>
 
 <script>
-setTimeout(function(){if(!window.__ok){var s=document.getElementById('splash');if(s)s.innerHTML='<div style="padding:28px;text-align:center;font-size:.85rem;line-height:2.1">⚠️ الملف وصل ناقص من جيت هاب<br>امسحي index.html وارفعيه تاني كامل<br>(آخر سطر لازم يكون &lt;/html&gt;)</div>'}},9000);
+setTimeout(function(){if(!window.__ok){var s=document.getElementById('splash');if(s)s.innerHTML='<div style="padding:28px;text-align:center;font-size:.85rem;line-height:2.1">⚠️ الملف وصل ناقص<br>امسح index.html وارفع النسخة الجديدة كاملة<br>(آخر سطر لازم يكون &lt;/html&gt;)</div>'}},9000);
 </script>
 
 <div id="app" hidden>
@@ -169,7 +168,7 @@ setTimeout(function(){if(!window.__ok){var s=document.getElementById('splash');i
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 <script>
 'use strict';
@@ -181,6 +180,12 @@ const fmt=t=>new Date(t).toLocaleTimeString('ar-EG',{hour:'numeric',minute:'2-di
 
 const FB={apiKey:"___",authDomain:"___",databaseURL:"___",projectId:"___"};
 try{const s=localStorage.getItem('fbcfg');if(s)Object.assign(FB,JSON.parse(s))}catch(e){}
+// لينك جاهز من التاني: بيظبط الإعدادات والكود لوحده — واللينك بيفضل في شريط العنوان عشان النسخ يدوي يشتغل كمان
+try{const h=location.hash||'';const fm=h.match(/fb=([^&]+)/);const cm=h.match(/code=([A-Za-z0-9]{4,8})/);
+if(fm){try{const j=decodeURIComponent(escape(atob(fm[1])));JSON.parse(j);localStorage.setItem('fbcfg',j);Object.assign(FB,JSON.parse(j))}catch(e){}}
+if(cm){const cc=cm[1].toUpperCase();if(localStorage.getItem('pcode')!==cc){localStorage.setItem('joincode',cc);localStorage.setItem('pendjoin','1')}}
+}catch(e){}
+
 let MODE='demo',db=null,CODE=null,mySlot=null,FEM=true,netOn=false,fbReady=false,authP=null,typing=false,rec=null,view='home',draft='',tag=null;
 const seen=new Set();
 let dev=localStorage.getItem('dev');if(!dev){dev='d'+Math.random().toString(36).slice(2,9);localStorage.setItem('dev',dev)}
@@ -213,8 +218,8 @@ const NW=[
 {k:'morning',i:'☀️',l:'صباح الخير',s:'☀️ صباح الخير',r:'صباح الفل ☀️'},
 {k:'need',i:'🥺',l:'محتاج/ةك',s:'🥺 محتاجاك',sm:'🥺 محتاجاكِ',r:'أنا جاي… كل حاجة هتبقى أحسن ❤️'},
 {k:'quiet',i:'🤍',l:'تمام بس ساكت/ة',s:'🤍 كويسة بس ساكتة',sm:'🤍 كويس بس ساكت',r:'هفضل جنبك من غير كلام 🤍'}];
-const REPL={love:['وأنا بحبك أكتر ❤️','بحبك… ولو مش شايفني بحس بيك ❤️'],comfort:['تعالي هنا… اطمّني قلبي عليكي 🫂','أنا معاكي على طول ❤️'],sleep:['نامي بالراحة… أنا هنا 🌙'],happy:['حاسّة بحماسك من هنا ✨','فرحتك وصلتني 😊'],def:['كلامك بيوصل لقلبي قبل موبايلي ❤️','وأنا كنت هبعتلك… سبقتيني 🤍']};
-const TAGS={comfort:{i:'🫂',l:'محتاجة احتواء'},happy:{i:'😊',l:'مبسوطة'},meh:{i:'😐',l:'زهقانة شوية'}};
+const REPL={love:['وأنا بحبك أكتر ❤️','بحبك… ولو مش شايفني بحس بيك ❤️'],comfort:['تعالى هنا… اطمّني قلبي عليكي 🫂','أنا معاكي على طول ❤️'],sleep:['نامي بالراحة… أنا هنا 🌙'],happy:['حاسّة بحماسك من هنا ✨','فرحتك وصلتني 😊'],def:['كلامك بيوصل لقلبي قبل موبايلي ❤️','وأنا كنت هبعتلك… سبقتيني 🤍']};
+const TAGS={comfort:{i:'🫂',l:'محتاج/ة احتواء'},happy:{i:'😊',l:'مبسوط/ة'},meh:{i:'😐',l:'زهقان/ة شوية'}};
 const ACTF=['بتتفرج على النجوم','قاعدة تذاكر','بتسمع أغاني هادية','بتفكر في التاني'];
 const ACTM=['بيتفرج على النجوم','قاعد يذاكر','بيسمع أغاني هادية','بيفكر في التاني','بيشوف الجسر بينكم'];
 const gi=k=>({flower:'🌸',sun:'☀️',hug:'🫂',letter:'💌',star:'⭐',song:'🎵',heart:'❤️',notes:'🎵',sunpop:'☀️',glow:'✨'})[k]||'🎁';
@@ -283,13 +288,13 @@ function modal(h){$('#modals').innerHTML='<div class="sheet">'+h+'</div>'}
 function cmodal(){$('#modals').innerHTML=''}
  $('#modals').addEventListener('click',e=>{if(e.target.id==='modals')cmodal()});
 
-function netOK(){return typeof firebase!=='undefined'&&FB.apiKey&&FB.apiKey!=='___'&&/^https/.test(FB.databaseURL||'')}
+function netOK(){return typeof firebase!=='undefined'&&typeof firebase.database==='function'&&FB.apiKey&&FB.apiKey!=='___'&&/^https/.test(FB.databaseURL||'')}
 function initNet(){if(fbReady){MODE='net';return true}
-try{firebase.initializeApp(FB);authP=firebase.auth().signInAnonymously();authP.catch(()=>setTimeout(()=>toast('⚠️','فعّلي Anonymous من Firebase Authentication'),2500));db=firebase.database();MODE='net';fbReady=true;return true}catch(e){return false}}
+try{firebase.initializeApp(FB);authP=firebase.auth().signInAnonymously();authP.catch(()=>setTimeout(()=>toast('⚠️','فعّل Anonymous من Firebase Authentication'),2500));db=firebase.database();MODE='net';fbReady=true;return true}catch(e){return false}}
 async function waitAuth(){try{if(authP)await authP}catch(e){}}
 function code6(){const A='ABCDEFGHJKMNPQRSTUVWXYZ23456789';let c='';for(let i=0;i<6;i++)c+=A[Math.floor(Math.random()*A.length)];return c}
 function bx(n){S.bridge=Math.max(5,Math.min(100,S.bridge+n));save();if(MODE==='net'&&db){try{db.ref('unis/'+CODE+'/shared/bridge').transaction(v=>Math.max(5,Math.min(100,(v||0)+n)))}catch(e){}}}
-function pushMe(x){if(MODE!=='net'||!db)return;try{db.ref('unis/'+CODE+'/users/'+mySlot).update(Object.assign({name:S.you.name,mood:S.you.mood,fem:FEM,online:true,ls:Date.now(),act:S.you.act},x||{}))}catch(e){}}
+function pushMe(x){if(MODE!=='net'||!db)return;try{db.ref('unis/'+CODE+'/users/'+mySlot).update(Object.assign({name:S.you.name,mood:S.you.mood,fem:FEM,online:true,ls:Date.now(),act:S.you.act||''},x||{}))}catch(e){}}
 const mkChat=()=>{if(view!=='chat'){const b=$('#bc');if(b)b.classList.add('on')}};
 function bind(){
 S.chat.forEach(m=>seen.add(m.id));
@@ -307,9 +312,11 @@ if(seen.has(m.id)){const l=S.chat.find(x=>x.id===m.id);if(l&&m.audio&&!l.audio){
 seen.add(m.id);m.from=m.from===mySlot?'you':'him';S.chat.push(m);S.msgs++;save();
 if(m.from==='him'){mkChat();toast(m.kind==='voice'?'🎙️':'💬',(S.p2.name||'هو')+(m.kind==='voice'?' بعتلك رسالة صوتية':' كتبلك'))}
 rc()});
-db.ref('unis/'+CODE+'/gifts/'+mySlot).on('child_added',s=>{const g=s.val();if(!g||seen.has(g.gid))return;seen.add(g.gid);
+const gr=db.ref('unis/'+CODE+'/gifts/'+mySlot);
+gr.once('value').then(snap=>{const v=snap.val()||{};Object.keys(v).forEach(k=>{if(v[k]&&v[k].gid)seen.add(v[k].gid)});
+gr.on('child_added',s=>{const g=s.val();if(!g||seen.has(g.gid))return;seen.add(g.gid);
 S.gIn.push({kind:g.kind,t:g.t||Date.now()});S.lastIn={icon:gi(g.kind),text:g.note||'هدية',t:g.t||Date.now()};bx(2);save();
-toast(gi(g.kind),(S.p2.name||'هو')+' بعتلك: "'+(g.note||'')+'" — ظهرت في عالمك');rd()});
+toast(gi(g.kind),(S.p2.name||'هو')+' بعتلك: "'+(g.note||'')+'" — ظهرت في عالمك');rd()})}).catch(()=>{});
 db.ref('.info/connected').on('value',s=>{netOn=!!s.val();rh();
 if(netOn){const me=db.ref('unis/'+CODE+'/users/'+mySlot);me.onDisconnect().update({online:false,ls:Date.now()}).then(()=>pushMe()).catch(()=>{})}})}
 
@@ -319,7 +326,7 @@ const rh=()=>{$('#top').innerHTML=headHTML()};
 function tabsUp(){document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.go===view))}
 function renderHome(){
 const pair=MODE==='net'
-?'<div class="card" style="border-color:#8fce7a55"><b>🔗 مربوطين'+(netOn?' — متصلين الآن ✅':'')+'</b><p class="hint">كود الكون: <b style="color:var(--gold)">'+CODE+'</b> — الرسايل نص وصوت بتوصل فورًا بين الموبايلين.</p><div style="display:flex;gap:8px;margin-top:9px"><button class="btn g" data-a="copycode" data-c="'+CODE+'">📋 الكود</button><button class="btn g" style="color:var(--mu)" data-a="unlink">فك الربط</button></div></div>'
+?'<div class="card" style="border-color:#8fce7a55"><b>🔗 مربوطين'+(netOn?' — متصلين الآن ✅':'')+'</b><p class="hint">كود الكون: <b style="color:var(--gold)">'+CODE+'</b> — الرسايل نص وصوت بتوصل فورًا بين الموبايلين.</p><div style="display:flex;gap:8px;margin-top:9px;flex-wrap:wrap"><button class="btn g" data-a="copycode" data-c="'+CODE+'">📋 الكود</button><button class="btn p" data-a="copylink">📤 لينك جاهز</button><button class="btn g" style="color:var(--mu)" data-a="unlink">فك الربط</button></div></div>'
 :'<div class="card" style="border-color:#5a4a1f;background:#1a1608"><h3>🔗 ربط الموبايلين مع بعض</h3><p class="hint">دلوقتي وضع تجريبي (الردود محاكاة). اربطي موبايلك بموبايله بجد — مرة واحدة في ٥ دقايق:</p><button class="btn p w" style="margin-top:9px" data-a="pair">ابدئي الربط 🔗</button></div>';
 const on=S.p2.online?'<div class="card" style="display:flex;gap:11px;align-items:center"><span class="dot on"></span><div><b style="font-size:.86rem">🧍 '+esc(S.p2.name)+' موجود في عالمك</b><div class="hint" style="font-size:.74rem">'+esc(S.p2.act)+' — من غير ما يتكلم</div></div></div>':'';
 const li=S.lastIn?'<div class="card"><b style="font-size:.84rem">آخر حاجة وصلتك:</b><p class="hint" style="color:var(--ink);font-size:.84rem;margin-top:3px">'+S.lastIn.icon+' "'+esc(S.lastIn.text)+'" '+ago(S.lastIn.t)+'</p></div>':'';
@@ -336,13 +343,14 @@ return '<div class="msg '+m.from+'"><div class="bub">'+esc(m.text)+tg+'</div>'+t
 const typHTML='<div class="msg him typing"><div class="bub" style="display:flex;gap:5px"><i class="td"></i><i class="td" style="animation-delay:.15s"></i><i class="td" style="animation-delay:.3s"></i></div></div>';
 function chatHTML(){
 const mic=(typeof MediaRecorder!=='undefined'&&navigator.mediaDevices)?'<button class="mic'+(rec?' rec':'')+'" data-a="voice">'+(rec?'⏹':'🎙️')+'</button>':'';
-const row=rec?'<div class="inrow">'+mic+'<div class="recbar">جاري التسجيل… <b id="rt">0 ث</b> — اضغطي ⏹ للإرسال</div></div>'
+const row=rec?'<div class="inrow">'+mic+'<div class="recbar">جاري التسجيل… <b id="rt">0 ث</b> — اضغط ⏹ للإرسال</div></div>'
 :'<div class="inrow">'+mic+'<input id="ci" placeholder="'+w('اكتبي له…','اكتب لها…')+'" value="'+esc(draft)+'" autocomplete="off"><button class="sendb" data-a="send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5m0 0l6-6m-6 6l6 6"/></svg></button></div>';
-return '<div class="cs" id="cl">'+(S.chat.map(msgHTML).join('')||'<p class="hint" style="margin:auto;text-align:center">الكلام هنا بيبقى بينكم بجد 🤍</p>')+(typing?typHTML:'')+'</div><div class="comp"><div class="nwrow">'+NW.map(n=>'<button class="nwb" data-a="nw" data-k="'+n.k+'"><i>'+n.i+'</i>'+n.l+'</button>').join('')+'</div><div class="tags"><span class="hint" style="font→→→font-size:.66rem">الإحساس وراها:</span>'+Object.keys(TAGS).map(k=>'<button class="tg'+(tag===k?' on':'')+'" data-a="tag" data-k="'+k+'">'+TAGS[k].i+' '+TAGS[k].l+'</button>').join('')+'</div>'+row+'</div>'}
+return '<div class="cs" id="cl">'+(S.chat.map(msgHTML).join('')||'<p class="hint" style="margin:auto;text-align:center">الكلام هنا بيبقى بينكم بجد 🤍</p>')+(typing?typHTML:'')+'</div><div class="comp"><div class="nwrow">'+NW.map(n=>'<button class="nwb" data-a="nw" data-k="'+n.k+'"><i>'+n.i+'</i>'+n.l+'</button>').join('')+'</div><div class="tags"><span class="hint" style="font-size:.66rem">الإحساس وراها:</span>'+Object.keys(TAGS).map(k=>'<button class="tg'+(tag===k?' on':'')+'" data-a="tag" data-k="'+k+'">'+TAGS[k].i+' '+TAGS[k].l+'</button>').join('')+'</div>'+row+'</div>'}
 function rc(){if(view!=='chat')return;const m=$('#main');m.className='chat';
 const a=document.activeElement,wt=a&&a.id==='ci',pos=wt?a.selectionStart:null;
 m.innerHTML=chatHTML();const ci=$('#ci');
 if(ci){ci.addEventListener('keydown',e=>{if(e.key==='Enter')sendText()});
+ci.addEventListener('input',()=>{draft=ci.value});
 if(wt){ci.focus();try{ci.setSelectionRange(pos,pos)}catch(e){}}}
 const cl=$('#cl');if(cl)cl.scrollTop=cl.scrollHeight;
 const b=$('#bc');if(b)b.classList.remove('on')}
@@ -380,9 +388,9 @@ toast(t.i,'وصلت '+w('لعالمه','لعالمها')+'… "'+mine+'"');save(
 if(MODE==='net'){try{db.ref('unis/'+CODE+'/gifts/'+oslot()).push({gid:'g'+Date.now(),kind,t:Date.now(),note:his})}catch(e){}}
 else fake(pick(['وصلتني… أحلى حاجة في يومي ❤️','حسّيت بيها فعلاً 🤍','لقيتها في عالمي… مش مصدق 😊']))}
 async function voice(){
-if(!(typeof MediaRecorder!=='undefined'&&navigator.mediaDevices))return toast('🎙️','المتصفح مش بيدعم التسجيل — جربي كروم');
+if(!(typeof MediaRecorder!=='undefined'&&navigator.mediaDevices))return toast('🎙️','المتصفح مش بيدعم التسجيل — جرّب كروم');
 if(rec){clearInterval(rec.tm);const s=rec;rec=null;rc();try{s.r.stop()}catch(e){}return}
-let st;try{st=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){return toast('🎙️','اسمحي للميكروفون وجرّبي تاني')}
+let st;try{st=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){return toast('🎙️','اسمح للميكروفون وجرّب تاني')}
 let mt='';try{for(const t of['audio/mp4','audio/webm;codecs=opus','audio/webm'])if(MediaRecorder.isTypeSupported(t)){mt=t;break}}catch(e){}
 let r;try{r=new MediaRecorder(st,mt?{mimeType:mt}:undefined)}catch(e){st.getTracks().forEach(t=>t.stop());return toast('🎙️','مش قادر يبدأ التسجيل')}
 const ch=[];r.ondataavailable=e=>{if(e.data&&e.data.size)ch.push(e.data)};
@@ -400,121 +408,119 @@ else{const el=$('#rt');if(el)el.textContent=e+' ث'}},400);
 rc()}
 
 function openPairing(){
-if(MODE==='net'){modal('<h3>🔗 الربط</h3><p class="hint">مربوطين ❤️ — الرسايل نص وصوت بتوصل فورًا بينكم.</p><div class="codebox">'+CODE+'</div><button class="btn g w" data-a="copycode" data-c="'+CODE+'">📋 نسخ كود الكون</button><div style="height:10px"></div><button class="btn g w" style="color:var(--rose);border-color:#e88a8a66" data-a="unlink">فك الربط</button>');return}
-if(netOK()){modal('<h3>🔗 ربط الموبايلين</h3><p class="hint">الإعدادات جاهزة على الموبايل ده ✅</p><button class="btn p w" style="margin-bottom:9px" data-a="pcreate">🌌 إنشاء كون (الموبايل ده)</button><button class="btn g w" data-a="pjoin">🔑 انضمام بكود (الموبايل التاني)</button><button class="back" data-a="cfg">تعديل إعدادات Firebase</button>');return}
+if(MODE==='net'){modal('<h3>🔗 الربط</h3><p class="hint">مربوطين ❤️ — الرسايل نص وصوت بتوصل فورًا بينكم.</p><div class="codebox">'+CODE+'</div><button class="btn p w" data-a="copylink">📤 لينك جاهز للموبايل التاني</button><div style="height:8px"></div><button class="btn g w" data-a="copycode" data-c="'+CODE+'">📋 نسخ كود الكون</button><div style="height:10px"></div><button class="btn g w" style="color:var(--rose);border-color:#e88a8a66" data-a="unlink">فك الربط</button>');return}
+if(netOK()){modal('<h3>🔗 ربط الموبايلين</h3><p class="hint">الإعدادات جاهزة على الموبايل ده ✅</p><button class="btn p w" style="margin-bottom:9px" data-a="pcreate">🌌 إنشاء كون (من الموبايل ده)</button><button class="btn g w" data-a="pjoin">🔑 انضمام بكود (الموبايل التاني)</button><div style="height:8px"></div><button class="back" data-a="cfg">تعديل إعدادات Firebase</button>');return}
 cfgForm()}
-function cfgForm(){modal('<h3>🔗 ربط الموباilen مع بعض</h3><p class="hint">محتاجين Firebase مجاني — مرة واحدة في ٥ دقايق:</p><ol class="hint" style="padding-inline-start:18px;line-height:2"><li>افتحي <b style="color:var(--ink)">console.firebase.google.com</b> → Add project</li><li>من البحث: <b style="color:var(--ink)">Authentication</b> → Get started → <b style="color:var(--ink)">Anonymous</b> → Enable</li><li>من البحث: <b style="color:var(--ink)">Realtime Database</b> → Create → أي منطقة → <b style="color:var(--ink)">Start in test mode</b></li><li>تب Rules في الداتابيز: امسحي والصقي واعملي Publish:</li></ol><div style="direction:ltr;text-align:left;font-family:monospace;font-size:.62rem;background:var(--pn2);border:1px dashed #2c3d63;border-radius:10px;padding:9px;white-space:pre-wrap;color:var(--mu);user-select:all;margin:7px 0 11px">{ "rules": { "unis": { "$code": { ".read": "auth != null", ".write": "auth != null" } } } }</div><label>٥) ⚙️ Project Settings → زر الويب <b style="color:var(--ink)">&lt;/&gt;</b> → Register app → انسخي بلوكة firebaseConfig والصقيها:</label><textarea id="pccfg" rows="5" placeholder="const firebaseConfig = { apiKey: ... databaseURL: ... };" style="direction:ltr;font-size:.7rem"></textarea><div class="err"></div><button class="btn p w" data-a="savecfg">تسجيل وتفعيل 🔗</button><p class="hint" style="margin-top:10px">💡 نفس البلوكة لازم تتبعت لموبايله هو كمان.</p>')}
+function cfgForm(){modal('<h3>🔗 إعدادات Firebase (مرة واحدة بس)</h3><ol class="hint" style="padding-inline-start:18px;line-height:2"><li>افتح <b style="color:var(--ink)">console.firebase.google.com</b> → Add project</li><li>من البحث: <b style="color:var(--ink)">Authentication</b> → Get started → <b style="color:var(--ink)">Anonymous</b> → Enable</li><li>من البحث: <b style="color:var(--ink)">Realtime Database</b> → Create → أي منطقة → <b style="color:var(--ink)">Start in test mode</b></li><li>من تب Rules في الداتابيز: امسح اللي فيها والصق دي واعمل Publish:</li></ol><div style="direction:ltr;text-align:left;font-family:monospace;font-size:.62rem;background:var(--pn2);border:1px dashed #2c3d63;border-radius:10px;padding:9px;white-space:pre-wrap;color:var(--mu);user-select:all;margin:7px 0 11px">{ "rules": { "unis": { "$code": { ".read": "auth != null", ".write": "auth != null" } } } }</div><label>٥) ⚙️ Project Settings → Your apps → زر الويب <b style="color:var(--ink)">&lt;/&gt;</b> → Register app → انسخ بلوكة firebaseConfig كلها والصقها هنا:</label><textarea id="pccfg" rows="5" placeholder="const firebaseConfig = { apiKey: ... databaseURL: ... };" style="direction:ltr;font-size:.7rem"></textarea><div class="err"></div><button class="btn p w" data-a="savecfg">تسجيل وتفعيل 🔗</button><p class="hint" style="margin-top:10px">💡 بعد التفعيل هتلاقي زر "📤 لينك جاهز" — يفتح واتساب مباشرة واللينك جوه فيه كل حاجة.</p>')}
 function parseCfg(t){if(!t)return null;const m=t.match(/\{[\s\S]*\}/);if(!m)return null;const b=m[0].replace(/,\s*\}/g,'}');
 try{const o=JSON.parse(b);if(o&&o.apiKey)return o}catch(e){}
 const o={};const re=/["']?(\w+)["']?\s*:\s*["']([^"']+)["']/g;let r;while((r=re.exec(b)))o[r[1]]=r[2];return o.apiKey?o:null}
 function saveCfg(){const c=parseCfg($('#pccfg').value);
-if(!c)return err('مش لاقي الإعدادات — الصقي البلوكة زي ما هي');
+if(!c)return err('مش لاقي الإعدادات — الصق البلوكة زي ما هي');
 if(!c.databaseURL||!/^https/.test(c.databaseURL))return err('ناقص databaseURL — لازم Realtime Database مش Firestore');
 localStorage.setItem('fbcfg',JSON.stringify({apiKey:c.apiKey,authDomain:c.authDomain||(c.projectId?c.projectId+'.firebaseapp.com':''),databaseURL:c.databaseURL,projectId:c.projectId||''}));
 toast('✅','اتحفظت! جاري التفعيل…');setTimeout(()=>location.reload(),800)}
-function pCreateForm(){modal('<h3>🌌 إنشاء كون</h3><p class="hint">هيتولدلك كود من 6 حروف تبعتيله للتاني.</p><label>اسمك</label><input id="pcyou" maxlength="12" value="'+esc(S.you.name||'')+'"><label>اسم التاني</label><input id="pchim" maxlength="12" value="'+esc(S.p2.name||'')+'"><label>أول يوم ليكم</label><input id="pcdate" type="date" value="'+new Date(S.day).toISOString().slice(0,10)+'"><div class="err"></div><button class="btn p w" data-a="pcreatego">أنشئي الكون ✨</button><button class="back" data-a="pair">← رجوع</button>')}
+function pCreateForm(){modal('<h3>🌌 إنشاء الكون</h3><p class="hint">هيتولد كود من 6 حروف تبعتله للتاني.</p><label>اسمك</label><input id="pcyou" maxlength="12" value="'+esc(S.you.name||'')+'"><label>اسم التاني</label><input id="pchim" maxlength="12" value="'+esc(S.p2.name||'')+'"><label>أول يوم ليكم (اختياري)</label><input id="pcdate" type="date" value="'+new Date(S.day).toISOString().slice(0,10)+'"><div class="err"></div><button class="btn p w" data-a="pcreatego">أنشئ الكون ✨</button><button class="back" data-a="pair">← رجوع</button>')}
 async function pCreateGo(){const y=$('#pcyou').value.trim(),h=$('#pchim').value.trim();
 if(!y||!h)return err('الاسمين مطلوبين 🌙');
-if(!initNet())return err('الإعدادات مش شغالة — راجعي شاشة الإعدادات');
+if(!initNet())return err('الإعدادات مش شغالة — راجع شاشة الإعدادات');
 await waitAuth();
 let day=Date.now();const dv=$('#pcdate').value;if(dv){const dt=new Date(dv+'T12:00:00');if(!isNaN(dt))day=dt.getTime()}
-const c=code6();
+const c=code6();CODE=c;MODE='net';
 try{
 await db.ref('unis/'+c+'/meta').set({day:day,names:{A:y,B:h}});
-await db.ref('unis/'+c+'/users/A').set({name:y,fem:true,mood:S.you.mood||'peaceful',online:true,ls:Date.now(),act:pick(ACTF),owner:dev});
+await db.ref('unis/'+c+'/users/A').set({name:y,fem:true,mood:S.you.mood||'peaceful',online:true,ls:Date.now(),act:S.you.act||pick(ACTF),owner:dev});
 await db.ref('unis/'+c+'/users/B').set({name:h,fem:false,mood:'happy',online:false,ls:0,act:'',owner:''});
 await db.ref('unis/'+c+'/shared').set({bridge:Math.max(S.bridge,30)});
-}catch(e){return err('تعذّر الإنشاء — راجعي الإعدادات والنت')}
+}catch(e){return err('تعذّر الإنشاء — راجع الإعدادات (خصوصًا Anonymous والـ Database) والنت')}
 localStorage.setItem('pcode',c);localStorage.setItem('pslot','A');
 S.you.name=y;S.p2.name=h;S.day=day;S.setup=true;save();
-modal('<div style="text-align:center"><div style="font-size:3rem">🌌</div><h3>كونكم اتولد!</h3><p class="hint">على موبايل التاني: يفتح نفس اللينك → 🔗 الربط → يلزق نفس إعدادات Firebase → 🔑 انضمام بكود:</p><div class="codebox">'+c+'</div><button class="btn g w" data-a="copycode" data-c="'+c+'">📋 نسخ الكود</button><div style="height:10px"></div><button class="btn p w" data-a="reload">ادخلي عالمكم ✨</button></div>')}
-function pJoinForm(){modal('<h3>🔑 انضمام بكود</h3><p class="hint">اكتب الكود اللي وصلك</p><input id="pjcode" maxlength="6" placeholder="K7M2XQ" style="text-align:center;direction:ltr;font-size:1.2rem;letter-spacing:.3em"><div class="err"></div><button class="btn p w" data-a="pjoingo">دخول للكون 🌉</button><button class="back" data-a="pair">← رجوع</button>')}
+modal('<div style="text-align:center"><div style="font-size:3rem">🌌</div><h3>كونكم اتولد!</h3><p class="hint">ابعت اللينك الجاهز للموبايل التاني — أول ما يفتحه هتظهر له شاشة الدعوة والكود جاهز:</p><div class="codebox">'+c+'</div><button class="btn p w" data-a="copylink">📤 ابعت لينك جاهز (واتساب)</button><div style="height:8px"></div><button class="btn g w" data-a="copycode" data-c="'+c+'">📋 نسخ الكود بس</button><div style="height:8px"></div><button class="btn p w" data-a="reload">ادخلي عالمكم ✨</button></div>')}
+function pJoinForm(){modal('<h3>🔑 انضمام بكود</h3><p class="hint">اكتب الكود اللي وصلك</p><input id="pjcode" maxlength="6" value="'+esc(localStorage.getItem('joincode')||'')+'" placeholder="K7M2XQ" style="text-align:center;direction:ltr;font-size:1.2rem;letter-spacing:.3em"><div class="err"></div><button class="btn p w" data-a="pjoingo">دخول للكون 🌉</button><button class="back" data-a="pair">← رجوع</button>')}
 async function pJoinGo(){const c=($('#pjcode').value||'').trim().toUpperCase();
 if(c.length<4)return err('الكود 6 حروف');
 if(!initNet())return err('الإعدادات مش شغالة');
 await waitAuth();
 let sn;try{sn=await db.ref('unis/'+c+'/meta').once('value')}catch(e){return err('مش قادر يوصل — النت أو الإعدادات')}
-if(!sn.exists())return err('مفيش كون بالكود ده… اتأكدي منه');
+if(!sn.exists())return err('مفيش كون بالكود ده… اتأكد منه');
 window._m={c:c,names:sn.val().names||{},day:sn.val().day||Date.now()};
-modal('<h3>إنت مين؟ 🌠</h3><p class="hint">اختار اسمك:</p><div class="picknames"><button class="pname" data-a="ppick" data-slot="A">'+esc(window._m.names.A||'—')+'</button><button class="pname" data-a="ppick" data-slot="B">'+esc(window._m.names.B||'—')+'</button></div><div class="err"></div>')}
+modal('<h3>إنت مين؟ 🌠</h3><p class="hint">اختار اسمك إنت — مش اسم اللي بعت الكود.</p><div class="picknames"><button class="pname" data-a="ppick" data-slot="A">'+esc(window._m.names.A||'—')+'</button><button class="pname" data-a="ppick" data-slot="B">'+esc(window._m.names.B||'—')+'</button></div><div class="err"></div>')}
 async function pPick(sl){const m=window._m;
 try{const us=await db.ref('unis/'+m.c+'/users/'+sl).once('value');const v=us.val()||{};
-if(v.owner&&v.owner!==dev&&Date.now()-(v.ls||0)<2*864e5)return err('الاسم ده شغال على موبايل تاني');
-await db.ref('unis/'+m.c+'/users/'+sl).update({owner:dev,online:true,ls:Date.now()})}catch(e){return err('حصلت مشكلة… جرب تاني')}
+if(v.owner&&v.owner!==dev&&Date.now()-(v.ls||0)<2*864e5)return err('الاسم ده شغال على موبايل تاني — اختار الاسم التاني');
+await db.ref('unis/'+m.c+'/users/'+sl).update({owner:dev,online:true,ls:Date.now()})}catch(e){return err('حصلت مشكلة… جرّب تاني')}
+localStorage.removeItem('joincode');localStorage.removeItem('pendjoin');
 localStorage.setItem('pcode',m.c);localStorage.setItem('pslot',sl);
 S.setup=true;S.you.name=m.names[sl]||'';S.p2.name=m.names[sl==='A'?'B':'A']||'';S.day=m.day;save();
 toast('🌌','جاري الدخول لعالمكم…');setTimeout(()=>location.reload(),700)}
 function copyCode(c){c=c||CODE;if(!c)return;if(navigator.clipboard)navigator.clipboard.writeText(c).then(()=>toast('📋','الكود: '+c)).catch(()=>toast('🌙',c));else toast('🌙',c)}
-function unlink(){localStorage.removeItem('pcode');localStorage.removeItem('pslot');toast('👋','تم فك الربط');setTimeout(()=>location.reload(),800)}
+function shareLink(code){let u=location.href.split('#')[0];const p=[];const c=localStorage.getItem('fbcfg');
+if(c){try{p.push('fb='+btoa(unescape(encodeURIComponent(c))))}catch(e){}}
+if(code)p.push('code='+code);return u+(p.length?'#'+p.join('&'):'')}
+function unlink(){
+if(!confirm('تفصل الربط؟ (الكلام المحلي على موبايلك هيتمسح — اللي عنده هيفضل عنده)'))return;
+try{if(db&&CODE){db.ref('unis/'+CODE+'/users/'+mySlot).update({online:false,ls:Date.now()});
+db.ref('unis/'+CODE+'/chat').off();db.ref('unis/'+CODE+'/gifts/'+mySlot).off();db.ref('unis/'+CODE+'/shared/bridge').off();db.ref('unis/'+CODE+'/users/'+oslot()).off();db.ref('.info/connected').off()}}catch(e){}
+const cfg=localStorage.getItem('fbcfg');
+localStorage.removeItem(KEY);localStorage.removeItem('pcode');localStorage.removeItem('pslot');localStorage.removeItem('joincode');localStorage.removeItem('pendjoin');
+if(cfg)localStorage.setItem('fbcfg',cfg);
+location.reload()}
 
-function netOb(){const o=$('#ob');o.hidden=false;o.innerHTML='<div class="obw">'+logo(100)+'<h1 class="en">OUR UNIVERSE</h1><p>عالمين… وجسر واحد بينهم.</p><button class="btn p w" style="margin-bottom:9px" data-a="pcreate">🌌 إنشاء كون (الموبايل الأول)</button><button class="btn g w" data-a="pjoin">🔑 انضمام بكود (الموبايل التاني)</button><button class="back" data-a="cfg">⚙️ إعدادات Firebase</button></div>'}
-function demoOb(){const o=$('#ob');o.hidden=false;o.innerHTML='<div class="obw">'+logo(100)+'<h1 class="en">OUR UNIVERSE</h1><p>عالمين… وجسر واحد بينهم.<br>ابدئي لوحدك دلوقتي، واربطي موبايله في أي وقت.</p><div class="obf"><label>اسمك</label><input id="oby" maxlength="12"><label>وهو؟</label><input id="obh" maxlength="12"><label>أول يوم ليكم</label><input id="obd" type="date" value="'+new Date().toISOString().slice(0,10)+'"><div class="err"></div><button class="btn p w" data-a="obgo">نبدأ 🌙</button><div style="height:9px"></div><button class="btn g w" data-a="pair">🔗 ربط الموبايلين مع بعض</button></div></div>'}
-function obGo(){const y=$('#oby').value.trim(),h=$('#obh').value.trim();
-if(!y||!h)return err('اكتبوا الاسمين 🌙');
-S.you.name=y;S.p2.name=h;const dv=$('#obd').value;if(dv){const dt=new Date(dv+'T12:00:00');if(!isNaN(dt))S.day=dt.getTime()}
-S.setup=true;save();enter();toast('🌌','أهلاً '+y+' — ده '+h+' (تجريبي)')}
-function enter(){$('#ob').hidden=true;$('#app').hidden=false;
-S.you.act=S.you.act||pick(FEM?ACTF:ACTM);
-if(MODE==='net'){S.setup=true;save();bind();pushMe()}
-render()}
+function joinWelcome(){const c=localStorage.getItem('joincode')||'';const bad=!netOK();
+ $('#app').hidden=true;$('#ob').hidden=false;
+ $('#ob').innerHTML='<div class="obw">'+logo(84)+'<h1 class="en">OUR UNIVERSE</h1><p>عندك دعوة لكون جديد 🌌<br>كود الكون:</p><div class="codebox">'+esc(c)+'</div>'+
+(bad?'<p class="hint" style="color:var(--rose)">⚠️ اللينك وصل ناقص — الإعدادات ماصفتش معاه. ظبطها مرة واحدة من هنا وكمّل:</p><button class="btn p w" data-a="cfg">⚙️ إعدادات Firebase</button>'
+:'<p class="hint">اضغط الزر واختار اسمك وهتدخل على طول 🌉</p><button class="btn p w" data-a="pjoin">🔑 دخول للكون</button>')+
+'<div style="height:8px"></div><button class="btn g w" style="color:var(--mu)" data-a="skipjoin">مش دلوقتي — افتح التطبيق عادي</button></div>'}
 
-document.addEventListener('input',e=>{if(e.target.id==='ci')draft=e.target.value});
-document.addEventListener('click',e=>{
-const g=e.target.closest('[data-go]');if(g){view=g.dataset.go;render();return}
-const t=e.target.closest('[data-a]');if(!t)return;const d=t.dataset;
-switch(d.a){
-case 'mood':setMood(d.k);break;
-case 'tiny':sendTiny(d.k);break;
-case 'nw':sendNW(d.k);break;
-case 'send':sendText();break;
-case 'voice':voice();break;
-case 'tag':tag=tag===d.k?null:d.k;document.querySelectorAll('.tg').forEach(b=>b.classList.toggle('on',b.dataset.k===tag));break;
-case 'pair':openPairing();break;
-case 'cfg':cfgForm();break;
-case 'savecfg':saveCfg();break;
-case 'pcreate':pCreateForm();break;
-case 'pcreatego':pCreateGo();break;
-case 'pjoin':pJoinForm();break;
-case 'pjoingo':pJoinGo();break;
-case 'ppick':pPick(d.slot);break;
-case 'copycode':copyCode(d.c);break;
-case 'unlink':unlink();break;
-case 'reload':location.reload();break;
-case 'obgo':obGo();break}});
+function showOB(){$('#ob').hidden=false;
+ $('#ob').innerHTML='<div class="obw">'+logo(84)+'<h1 class="en">OUR UNIVERSE</h1><p>عالمين صغيرين بيحسّوا ببعض من بعيد 🌉<br>اربط الموبايلين وابعتوا لبعض من غير كلام</p><div class="obf"><label>اسمك (هو اللي هيشوفه التاني)</label><input id="obname" maxlength="12" value="'+esc(S.you.name||'')+'" placeholder="اسمك"><div class="err"></div><button class="btn p w" data-a="obpair">🌌 اربط الموبايلين</button><div style="height:8px"></div><button class="btn g w" style="color:var(--mu)" data-a="obdemo">جرّب لوحدك الأول 🧪</button></div></div>'}
 
-function buildPWA(){try{
-const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');
-x.beginPath();x.moveTo(118,0);x.arcTo(512,0,512,512,118);x.arcTo(512,512,0,512,118);x.arcTo(0,512,0,0,118);x.arcTo(0,0,512,0,118);x.closePath();x.fillStyle='#070b16';x.fill();
-x.fillStyle='#f0c274';x.beginPath();x.arc(256,256,128,0,7);x.fill();
-x.fillStyle='#070b16';x.beginPath();x.arc(192,250,104,0,7);x.fill();
-x.fillStyle='#f2ead8';[[112,132,7],[424,252,5],[398,118,6],[98,316,5]].forEach(p=>{x.beginPath();x.arc(p[0],p[1],p[2],0,7);x.fill()});
-x.fillStyle='#f0c274';x.beginPath();x.moveTo(196,202);x.lineTo(202,218);x.lineTo(218,224);x.lineTo(202,230);x.lineTo(196,246);x.lineTo(190,230);x.lineTo(174,224);x.lineTo(190,218);x.closePath();x.fill();
-const ic=c.toDataURL('image/png');
-const man={name:'OUR UNIVERSE — عالمنا',short_name:'OUR UNIVERSE',start_url:location.href,display:'standalone',background_color:'#070b16',theme_color:'#070b16',icons:[{src:ic,sizes:'512x512',type:'image/png',purpose:'any'},{src:ic,sizes:'512x512',type:'image/png',purpose:'maskable'}]};
- $('#mf').href=URL.createObjectURL(new Blob([JSON.stringify(man)],{type:'application/manifest+json'}))}catch(e){}}
+document.addEventListener('click',function(e){
+const t=e.target;
+const g=t.closest?t.closest('[data-go]'):null;
+if(g){view=g.dataset.go;rd();return}
+const a=t.closest?t.closest('[data-a]'):null;
+if(!a)return;
+const k=a.dataset.a;
+if(k==='copycode')copyCode(a.dataset.c);
+else if(k==='copylink'){const l=shareLink(CODE);
+if(navigator.share){navigator.share({title:'عالمنا 🌉',text:'افتح اللينك ده من موبايلك وهيدخلك لعالمنا على طول 🌌',url:l}).catch(()=>{})}
+else if(navigator.clipboard){navigator.clipboard.writeText(l).then(()=>toast('📤','اللينك الكامل اتنسخ — ابعتيله في واتساب زي ما هو')).catch(()=>toast('⚠️','انسخ اللينك من شريط العنوان'))}
+else toast('⚠️','انسخ اللينك من شريط العنوان')}
+else if(k==='unlink')unlink();
+else if(k==='pair')openPairing();
+else if(k==='mood')setMood(a.dataset.k);
+else if(k==='tiny')sendTiny(a.dataset.k);
+else if(k==='nw')sendNW(a.dataset.k);
+else if(k==='tag'){tag=(tag===a.dataset.k)?null:a.dataset.k;rc()}
+else if(k==='send')sendText();
+else if(k==='voice')voice();
+else if(k==='cfg')cfgForm();
+else if(k==='savecfg')saveCfg();
+else if(k==='pcreate')pCreateForm();
+else if(k==='pjoin')pJoinForm();
+else if(k==='obpair'){const el=document.getElementById('obname');const n=(el?el.value:'').trim();if(!n)return err('اكتب اسمك الأول 🌙');S.you.name=n;save();$('#ob').hidden=true;openPairing()}
+else if(k==='obdemo'){const el=document.getElementById('obname');const n=(el?el.value:'').trim();S.you.name=n||'أنا';S.p2.name=FEM?'هو':'هي';S.setup=true;save();$('#ob').hidden=true;$('#app').hidden=false;render();toast('🧪','وضع تجريبي — الربط الحقيقي متاح من الزر الدهبي في الرئيسية')}
+else if(k==='skipjoin'){localStorage.removeItem('pendjoin');$('#ob').hidden=true;if(!S.setup)showOB();else{$('#app').hidden=false;render()}}
+else if(k==='reload')location.reload();
+else if(k==='pcreatego'||k==='pjoingo'||k==='ppick'){if(window._busy)return;window._busy=true;setTimeout(()=>{window._busy=false},5000);
+if(k==='pcreatego')pCreateGo();else if(k==='pjoingo')pJoinGo();else pPick(a.dataset.slot)}
+});
 
-buildPWA();
-async function boot(){
-if(netOK()&&initNet()){
-await waitAuth();
-const c=localStorage.getItem('pcode'),s=localStorage.getItem('pslot');
-if(c&&s){try{const sn=await db.ref('unis/'+c+'/meta').once('value');
-if(sn.exists()){CODE=c;mySlot=s;FEM=s==='A';return enter()}}catch(e){}
-localStorage.removeItem('pcode');localStorage.removeItem('pslot')}
-return netOb()}
-if(S.setup)return enter();
-demoOb()}
-setTimeout(()=>{const sp=$('#splash');sp.classList.add('bye');setTimeout(()=>sp.remove(),650);boot()},1800);
-function tick(){if(MODE!=='demo'||!S.setup)return;const r=Math.random();
-if(r<.35){S.p2.mood=pick(['happy','happy','loving','excited','peaceful','peaceful','emotional','drained','annoyed']);S.p2.act=pick(ACTM);rd()}
-else if(r<.6){S.p2.online=!S.p2.online;rd()}
-else if(S.p2.online){const t=pick(TINY);const kind=t.k==='sun'?'sunpop':t.k==='letter'?'letter':t.k==='song'?'notes':t.k;
-S.gIn.push({kind:kind,t:Date.now()});S.lastIn={icon:t.i,text:t.him,t:Date.now()};bx(2);
-toast(t.i,(S.p2.name||'هو')+' بعتلك: "'+t.him+'" — ظهرت في عالمك');rd()}
-save()}
-setTimeout(tick,8000);setInterval(tick,16000);
-setInterval(()=>{if(MODE==='net'&&netOn)pushMe({ls:Date.now()})},30000);
-window.__ok=true;
+async function boot(){window.__ok=true;
+const sp=$('#splash');if(sp){sp.classList.add('bye');setTimeout(()=>{if(sp)sp.remove()},700)}
+// دعوة معلّقة من لينك جاهز؟ دي أهم حاجة — بتظهر قبل أي حاجة تانية
+const jc=localStorage.getItem('joincode');
+if(localStorage.getItem('pendjoin')==='1'&&jc&&localStorage.getItem('pcode')!==jc){joinWelcome();return}
+try{const pc=localStorage.getItem('pcode'),ps=localStorage.getItem('pslot');
+if(S.setup&&pc&&ps&&netOK()){CODE=pc;mySlot=ps;FEM=(mySlot!=='B');
+if(!S.you.act)S.you.act=FEM?pick(ACTF):pick(ACTM);
+if(initNet()){MODE='net';await waitAuth();bind()}}}catch(e){}
+if(!S.setup)showOB();else{$('#app').hidden=false;render()}
+if(MODE==='net'){pushMe();setInterval(pushMe,45000)}}
+boot();
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&MODE==='net')pushMe()});
 </script>
 </body>
 </html>
