@@ -178,7 +178,39 @@ const pick=a=>a[Math.floor(Math.random()*a.length)];
 const ago=t=>{const m=Math.floor((Date.now()-t)/6e4);if(m<1)return'الآن';if(m<60)return'منذ '+m+' دقيقة';const h=Math.floor(m/60);return h<24?'منذ '+h+' ساعة':'منذ '+Math.floor(h/24)+' يوم'};
 const fmt=t=>new Date(t).toLocaleTimeString('ar-EG',{hour:'numeric',minute:'2-digit'});
 
-const FB={apiKey:"___",authDomain:"___",databaseURL:"___",projectId:"___"};
+const FB={apiKey:"const firebaseConfig = {
+  apiKey: "AIzaSyC_XVNP-OdZTFUgrpAJlHhgOaeb4Wzy6ss",
+  authDomain: "our-universe-590e1.firebaseapp.com",
+  databaseURL: "https://our-universe-590e1-default-rtdb.firebaseio.com",
+  projectId: "our-universe-590e1",
+  storageBucket: "our-universe-590e1.firebasestorage.app",
+  messagingSenderId: "306423036",
+  appId: "1:306423036:web:3f7f11675a17c6a4f62379"
+};",authDomain:"const firebaseConfig = {
+  apiKey: "AIzaSyC_XVNP-OdZTFUgrpAJlHhgOaeb4Wzy6ss",
+  authDomain: "our-universe-590e1.firebaseapp.com",
+  databaseURL: "https://our-universe-590e1-default-rtdb.firebaseio.com",
+  projectId: "our-universe-590e1",
+  storageBucket: "our-universe-590e1.firebasestorage.app",
+  messagingSenderId: "306423036",
+  appId: "1:306423036:web:3f7f11675a17c6a4f62379"
+};",databaseURL:"const firebaseConfig = {
+  apiKey: "AIzaSyC_XVNP-OdZTFUgrpAJlHhgOaeb4Wzy6ss",
+  authDomain: "our-universe-590e1.firebaseapp.com",
+  databaseURL: "https://our-universe-590e1-default-rtdb.firebaseio.com",
+  projectId: "our-universe-590e1",
+  storageBucket: "our-universe-590e1.firebasestorage.app",
+  messagingSenderId: "306423036",
+  appId: "1:306423036:web:3f7f11675a17c6a4f62379"
+};",projectId:"const firebaseConfig = {
+  apiKey: "AIzaSyC_XVNP-OdZTFUgrpAJlHhgOaeb4Wzy6ss",
+  authDomain: "our-universe-590e1.firebaseapp.com",
+  databaseURL: "https://our-universe-590e1-default-rtdb.firebaseio.com",
+  projectId: "our-universe-590e1",
+  storageBucket: "our-universe-590e1.firebasestorage.app",
+  messagingSenderId: "306423036",
+  appId: "1:306423036:web:3f7f11675a17c6a4f62379"
+};"};
 try{const s=localStorage.getItem('fbcfg');if(s)Object.assign(FB,JSON.parse(s))}catch(e){}
 let MODE='demo',db=null,CODE=null,mySlot=null,FEM=true,netOn=false,fbReady=false,authP=null,typing=false,rec=null,view='home',draft='',tag=null;
 const seen=new Set();
