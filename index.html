@@ -102,10 +102,11 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 .sheet textarea,.sheet input{width:100%;background:var(--pn2);border:1px solid #2c3d63;border-radius:13px;padding:11px 13px;font-size:.88rem;outline:none;margin:7px 0 12px;line-height:1.8}
 .sheet input:focus,.sheet textarea:focus{border-color:var(--gold)}
 .err{color:var(--rose);font-size:.72rem;min-height:1.2em}
-.codebox{font-size:1.8rem;letter-spacing:.3em;color:var(--gold);background:var(--pn2);border:1px dashed var(--gold);border-radius:16px;padding:16px 8px;text-align:center;margin:12px 0;direction:ltr}
 .picknames{display:flex;gap:10px;justify-content:center;margin:14px 0}
-.pname{flex:1;max-width:160px;padding:15px 8px;border-radius:15px;border:1px solid var(--ln);background:var(--pn2);font-size:.92rem}
+.pname{flex:1;max-width:170px;padding:20px 8px;border-radius:15px;border:1px solid var(--ln);background:var(--pn2);font-size:1rem}
+.pname:active{transform:scale(.95)}
 .back{display:block;margin:14px auto 0;color:var(--mu);font-size:.76rem}
+.rulesbox{direction:ltr;text-align:left;font-family:monospace;font-size:.64rem;background:var(--pn2);border:1px dashed #2c3d63;border-radius:10px;padding:10px;white-space:pre-wrap;color:var(--mu);margin:8px 0 12px;user-select:all}
 #splash{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .6s}
 #splash.bye{opacity:0;pointer-events:none}
 #splash .in{text-align:center;animation:tin 1s .2s both}
@@ -115,10 +116,6 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 .obw{max-width:380px;margin:auto;text-align:center}
 .obw>h1{font-size:1.7rem;color:var(--gold);margin:18px 0 6px}
 .obw>p{color:var(--mu);font-size:.83rem;line-height:2;margin-bottom:22px}
-.obf{text-align:right;background:var(--pn);border:1px solid var(--ln);border-radius:20px;padding:18px}
-.obf input{width:100%;background:var(--pn2);border:1px solid #2c3d63;border-radius:12px;padding:11px 13px;font-size:.9rem;outline:none;margin:4px 0 11px}
-.obf input:focus{border-color:var(--gold)}
-.obf label{font-size:.73rem;color:var(--mu)}
 .tw{animation:twk 3s infinite}
 @keyframes twk{0%,100%{opacity:.15}50%{opacity:1}}
 .drop{animation:fall 1s linear infinite}
@@ -144,11 +141,11 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 
 <div id="splash"><div class="in">
 <svg viewBox="0 0 512 512" width="120" height="120"><rect width="512" height="512" rx="118" fill="#070b16"/><circle cx="256" cy="256" r="150" fill="#f0c274" opacity=".07"/><circle cx="256" cy="256" r="128" fill="#f0c274"/><circle cx="192" cy="250" r="104" fill="#070b16"/><circle class="tw" cx="112" cy="132" r="7" fill="#f2ead8"/><circle class="tw" cx="398" cy="118" r="6" fill="#f0c274" style="animation-delay:1.1s"/><circle class="tw" cx="424" cy="252" r="5" fill="#f2ead8" style="animation-delay:.6s"/><circle class="tw" cx="98" cy="316" r="5" fill="#f0c274" style="animation-delay:1.7s"/><path class="tw" d="M196 202l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="#f0c274" style="animation-delay:.9s"/></svg>
-<h1 class="en">OUR UNIVERSE</h1><small>عالمنا · L4</small>
+<h1 class="en">OUR UNIVERSE</h1><small>عالمنا · L5</small>
 </div></div>
 
 <script>
-setTimeout(function(){if(!window.__ok){var s=document.getElementById('splash');if(s)s.innerHTML='<div style="padding:28px;text-align:center;font-size:.85rem;line-height:2.1">⚠️ الملف وصل ناقص من الموقع<br>امسحي index.html والصقيه تاني كامل<br>(آخر سطر لازم يكون &lt;/html&gt;)</div>'}},9000);
+setTimeout(function(){if(!window.__ok){var s=document.getElementById('splash');if(s)s.innerHTML='<div style="padding:28px;text-align:center;font-size:.85rem;line-height:2.1">⚠️ الملف وصل ناقص<br>امسحي index.html والصقيه تاني كامل<br>وامسحي دوس Commit changes الأخضر تحت خالص</div>'}},9000);
 </script>
 
 <div id="app" hidden>
@@ -167,21 +164,18 @@ setTimeout(function(){if(!window.__ok){var s=document.getElementById('splash');i
 <div id="modals"></div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 <script>
 'use strict';
-/* ═══ لينك الدعوة الذكي: لو حد فتح لينك فيه ?cfg=...&uc=... يتظبط لوحده ═══ */
-try{
-var _q=new URLSearchParams(location.search);
-var _c=_q.get('cfg');
-if(_c){var _o=JSON.parse(atob(_c));
-if(_o&&_o.apiKey&&_o.databaseURL)localStorage.setItem('fbcfg',JSON.stringify(_o));}
-var _u=_q.get('uc');
-if(_u)localStorage.setItem('ucode',_u.toUpperCase());
-if(_c||_u)history.replaceState(null,'',location.pathname);
-}catch(e){}
+/* ═══════════════════════════════════════════════════
+   الإعدادات — كل حاجة جاهزة، مش محتاجة تلزقي أي حاجة
+   (لو حبيتي تغيّري الأسماء يومًا: غيّري السطرين دول بس)
+   ═══════════════════════════════════════════════════ */
+const NAMES={A:'Nada',B:'Youssef'};
+const DB_URL='https://our-universe-590e1-default-rtdb.firebaseio.com';
+const CODE='ny-7k3v9x';
+/* ═══════════════ نهاية الإعدادات ═══════════════ */
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -189,16 +183,14 @@ const pick=a=>a[Math.floor(Math.random()*a.length)];
 const ago=t=>{const m=Math.floor((Date.now()-t)/6e4);if(m<1)return'الآن';if(m<60)return'منذ '+m+' دقيقة';const h=Math.floor(m/60);return h<24?'منذ '+h+' ساعة':'منذ '+Math.floor(h/24)+' يوم'};
 const fmt=t=>new Date(t).toLocaleTimeString('ar-EG',{hour:'numeric',minute:'2-digit'});
 
-const FB={apiKey:"___",authDomain:"___",databaseURL:"___",projectId:"___"};
-try{const s=localStorage.getItem('fbcfg');if(s)Object.assign(FB,JSON.parse(s))}catch(e){}
-let MODE='demo',db=null,CODE=null,mySlot=null,FEM=true,netOn=false,fbReady=false,authP=null,typing=false,rec=null,view='home',draft='',tag=null;
+let MODE='net',db=null,mySlot=null,FEM=true,netOn=false,fbReady=false,typing=false,rec=null,view='home',draft='',tag=null;
 const seen=new Set();
 let dev=localStorage.getItem('dev');if(!dev){dev='d'+Math.random().toString(36).slice(2,9);localStorage.setItem('dev',dev)}
 const oslot=()=>mySlot==='A'?'B':'A';
 const w=(f,m)=>FEM?f:m;
 const mL=k=>MOODS[k][FEM?'l':'m'];
 const pL=k=>MOODS[k][FEM?'m':'l'];
-const err=t=>document.querySelectorAll('.err').forEach(e=>e.textContent=t);
+const P=p=>'unis/'+CODE+'/'+p;
 
 const MOODS={
 happy:{e:'😊',l:'مبسوطة',m:'مبسوط',d:'الشمس طالعة والتلال دافية ☀️',sky:['#47739c','#1c3153'],h:['#2f6b46','#1f4f33','#163a26'],orb:'sun',g:'#ffd98a',fam:'warm',st:16},
@@ -217,12 +209,12 @@ const TINY=[
 {k:'star',i:'⭐',me:'فخورة بيك',him:'فخور بيكي'},
 {k:'song',i:'🎵',me:'أغنية ليك',him:'أغنية ليكِ'}];
 const NW=[
-{k:'here',i:'🫶',l:'أنا هنا',s:'🫶 أنا هنا',r:'حسّيت بيك… أنا هنا كمان ❤️'},
-{k:'hug',i:'🫂',l:'محتاج/ة حضن',s:'🫂 تعالى هنا',sm:'🫂 تعالي هنا',r:'تعالي في حضني… مش هسيبك 🫂'},
-{k:'night',i:'🌙',l:'تصبح على خير',s:'🌙 تصبح على خير',r:'تصبحي على نور يا قمر 🌙'},
-{k:'morning',i:'☀️',l:'صباح الخير',s:'☀️ صباح الخير',r:'صباح الفل ☀️'},
-{k:'need',i:'🥺',l:'محتاج/ةك',s:'🥺 محتاجاك',sm:'🥺 محتاجاكِ',r:'أنا جاي… كل حاجة هتبقى أحسن ❤️'},
-{k:'quiet',i:'🤍',l:'تمام بس ساكت/ة',s:'🤍 كويسة بس ساكتة',sm:'🤍 كويس بس ساكت',r:'هفضل جنبك من غير كلام 🤍'}];
+{k:'here',i:'🫶',l:'أنا هنا',s:'🫶 أنا هنا'},
+{k:'hug',i:'🫂',l:'محتاج/ة حضن',s:'🫂 تعالى هنا',sm:'🫂 تعالي هنا'},
+{k:'night',i:'🌙',l:'تصبح على خير',s:'🌙 تصبح على خير'},
+{k:'morning',i:'☀️',l:'صباح الخير',s:'☀️ صباح الخير'},
+{k:'need',i:'🥺',l:'محتاج/ةك',s:'🥺 محتاجاك',sm:'🥺 محتاجاكِ'},
+{k:'quiet',i:'🤍',l:'تمام بس ساكت/ة',s:'🤍 كويسة بس ساكتة',sm:'🤍 كويس بس ساكت'}];
 const REPL={love:['وأنا بحبك أكتر ❤️','بحبك… ولو مش شايفني بحس بيك ❤️'],comfort:['تعالي هنا… اطمّني قلبي عليكي 🫂','أنا معاكي على طول ❤️'],sleep:['نامي بالراحة… أنا هنا 🌙'],happy:['حاسّة بحماسك من هنا ✨','فرحتك وصلتني 😊'],def:['كلامك بيوصل لقلبي قبل موبايلي ❤️','وأنا كنت هبعتلك… سبقتيني 🤍']};
 const TAGS={comfort:{i:'🫂',l:'محتاجة احتواء'},happy:{i:'😊',l:'مبسوطة'},meh:{i:'😐',l:'زهقانة شوية'}};
 const ACTF=['بتتفرج على النجوم','قاعدة تذاكر','بتسمع أغاني هادية','بتفكر في التاني'];
@@ -293,38 +285,34 @@ function modal(h){$('#modals').innerHTML='<div class="sheet">'+h+'</div>'}
 function cmodal(){$('#modals').innerHTML=''}
  $('#modals').addEventListener('click',e=>{if(e.target.id==='modals')cmodal()});
 
-function netOK(){return typeof firebase!=='undefined'&&FB.apiKey&&FB.apiKey!=='___'&&/^https/.test(FB.databaseURL||'')}
 function initNet(){if(fbReady){MODE='net';return true}
-try{firebase.initializeApp(FB);authP=firebase.auth().signInAnonymously();authP.catch(()=>setTimeout(()=>toast('⚠️','فعّلي Anonymous من Firebase Authentication'),2500));db=firebase.database();MODE='net';fbReady=true;return true}catch(e){return false}}
-async function waitAuth(){try{if(authP)await authP}catch(e){}}
-function code6(){const A='ABCDEFGHJKMNPQRSTUVWXYZ23456789';let c='';for(let i=0;i<6;i++)c+=A[Math.floor(Math.random()*A.length)];return c}
-/* ═══ لينك الدعوة ═══ */
-function invLink(){try{return location.origin+location.pathname+'?cfg='+btoa(JSON.stringify({apiKey:FB.apiKey,authDomain:FB.authDomain,databaseURL:FB.databaseURL,projectId:FB.projectId}))+'&uc='+(CODE||'')}catch(e){return ''}}
-function copyTxt(t,msg){if(!t)return;if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast('📋',msg||'اتنسخ')).catch(()=>toast('🌙',t));else toast('🌙',t)}
-function bx(n){S.bridge=Math.max(5,Math.min(100,S.bridge+n));save();if(MODE==='net'&&db){try{db.ref('unis/'+CODE+'/shared/bridge').transaction(v=>Math.max(5,Math.min(100,(v||0)+n)))}catch(e){}}}
-function pushMe(x){if(MODE!=='net'||!db)return;try{db.ref('unis/'+CODE+'/users/'+mySlot).update(Object.assign({name:S.you.name,mood:S.you.mood,fem:FEM,online:true,ls:Date.now(),act:S.you.act},x||{}))}catch(e){}}
+try{firebase.initializeApp({databaseURL:DB_URL});db=firebase.database();MODE='net';fbReady=true;return true}catch(e){return false}}
+function bx(n){S.bridge=Math.max(5,Math.min(100,S.bridge+n));save();if(db){try{db.ref(P('shared/bridge')).transaction(v=>Math.max(5,Math.min(100,(v||0)+n)))}catch(e){}}}
+function pushMe(x){if(!db||!mySlot)return;try{db.ref(P('users/'+mySlot)).update(Object.assign({name:NAMES[mySlot],mood:S.you.mood,fem:FEM,online:true,ls:Date.now(),act:S.you.act},x||{}))}catch(e){}}
 const mkChat=()=>{if(view!=='chat'){const b=$('#bc');if(b)b.classList.add('on')}};
 function bind(){
 S.chat.forEach(m=>seen.add(m.id));
-db.ref('unis/'+CODE+'/users/'+mySlot).once('value').then(s=>{const v=s.val()||{};if(v.name)S.you.name=v.name;if(v.mood)S.you.mood=v.mood;save();rd()}).catch(()=>{});
+db.ref(P('meta')).once('value').then(s=>{const v=s.val();
+if(!v){db.ref(P('meta')).set({day:S.day||Date.now(),names:{A:NAMES.A,B:NAMES.B}})}
+else if(v.day){S.day=v.day;save();rd()}}).catch(()=>{});
 let first=true,ls='';
-db.ref('unis/'+CODE+'/users/'+oslot()).on('value',s=>{const v=s.val();if(!v)return;
+db.ref(P('users/'+oslot())).on('value',s=>{const v=s.val();if(!v)return;
 S.p2.name=v.name||S.p2.name;S.p2.mood=v.mood||S.p2.mood;S.p2.act=v.act||'…';S.p2.online=!!v.online&&(Date.now()-(v.ls||0)<90000);
 const sig=[S.p2.name,S.p2.mood,S.p2.online].join('|');
 if(first){first=false;ls=sig;rd();return}
 if(sig!==ls){const mc=ls.split('|')[1]!==S.p2.mood;ls=sig;save();
 if(mc&&view!=='partner')toast(MOODS[S.p2.mood].e,(S.p2.name||'هو')+' '+pL(S.p2.mood)+' — '+MOODS[S.p2.mood].d);rd()}});
-db.ref('unis/'+CODE+'/shared/bridge').on('value',s=>{const v=s.val();if(typeof v==='number'){S.bridge=v;save();if(view==='world')rd()}});
-db.ref('unis/'+CODE+'/chat').on('child_added',s=>{const m=s.val();if(!m)return;
+db.ref(P('shared/bridge')).on('value',s=>{const v=s.val();if(typeof v==='number'){S.bridge=v;save();if(view==='world')rd()}});
+db.ref(P('chat')).on('child_added',s=>{const m=s.val();if(!m)return;
 if(seen.has(m.id)){const l=S.chat.find(x=>x.id===m.id);if(l&&m.audio&&!l.audio){l.audio=m.audio;l.dur=m.dur;save();rc()}return}
 seen.add(m.id);m.from=m.from===mySlot?'you':'him';S.chat.push(m);S.msgs++;save();
 if(m.from==='him'){mkChat();toast(m.kind==='voice'?'🎙️':'💬',(S.p2.name||'هو')+(m.kind==='voice'?' بعتلك رسالة صوتية':' كتبلك'))}
 rc()});
-db.ref('unis/'+CODE+'/gifts/'+mySlot).on('child_added',s=>{const g=s.val();if(!g||seen.has(g.gid))return;seen.add(g.gid);
+db.ref(P('gifts/'+mySlot)).on('child_added',s=>{const g=s.val();if(!g||seen.has(g.gid))return;seen.add(g.gid);
 S.gIn.push({kind:g.kind,t:g.t||Date.now()});S.lastIn={icon:gi(g.kind),text:g.note||'هدية',t:g.t||Date.now()};bx(2);save();
 toast(gi(g.kind),(S.p2.name||'هو')+' بعتلك: "'+(g.note||'')+'" — ظهرت في عالمك');rd()});
 db.ref('.info/connected').on('value',s=>{netOn=!!s.val();rh();
-if(netOn){const me=db.ref('unis/'+CODE+'/users/'+mySlot);me.onDisconnect().update({online:false,ls:Date.now()}).then(()=>pushMe()).catch(()=>{})}})}
+if(netOn){const me=db.ref(P('users/'+mySlot));me.onDisconnect().update({online:false,ls:Date.now()}).then(()=>pushMe()).catch(()=>{})}})}
 
 function headHTML(){const st=MODE==='net'?(netOn?'<span class="chip" style="color:#a8d8a0">🔗 متصلين</span>':'<span class="chip">📡…</span>'):'<span class="chip">تجريبي 🧪</span>';
 return '<div class="brand">'+logo(34)+'<div><b class="en">OUR UNIVERSE</b><small>اليوم '+dayN()+' مع بعض 🤍</small></div></div>'+st+'<button class="chip" data-go="partner"><span class="dot'+(S.p2.online?' on':'')+'"></span>'+esc(S.p2.name||'…')+'</button>'}
@@ -332,15 +320,15 @@ const rh=()=>{$('#top').innerHTML=headHTML()};
 function tabsUp(){document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.go===view))}
 function renderHome(){
 const pair=MODE==='net'
-?'<div class="card" style="border-color:#8fce7a55"><b>🔗 مربوطين'+(netOn?' — متصلين الآن ✅':'')+'</b><p class="hint">كود الكون: <b style="color:var(--gold)">'+CODE+'</b> — الرسايل نص وصوت بتوصل فورًا بين الموبايلين.</p><div style="display:flex;gap:6px;margin-top:9px;flex-wrap:wrap"><button class="btn g" data-a="copyinv" data-l="'+invLink()+'">🔗 لينك الدعوة</button><button class="btn g" data-a="copycode" data-c="'+CODE+'">📋 الكود</button><button class="btn g" style="color:var(--mu)" data-a="unlink">فك الربط</button></div></div>'
-:'<div class="card" style="border-color:#5a4a1f;background:#1a1608"><h3>🔗 ربط الموبايلين مع بعض</h3><p class="hint">دلوقتي وضع تجريبي (الردود محاكاة). اربطي موبايلك بموبايله بجد — مرة واحدة في ٥ دقايق:</p><button class="btn p w" style="margin-top:9px" data-a="pair">ابدئي الربط 🔗</button></div>';
+?'<div class="card" style="border-color:#8fce7a55"><b>🔗 عالمكم متوصل'+(netOn?' — متصلين الآن ✅':' — بانتظار النت…')+'</b><p class="hint">التاني يفتح نفس اللينك واختار اسمه — من غير أي أكواد. لو بدّلتي الموبايلات يومًا: زرار التبديل تحت.</p><button class="btn g" style="margin-top:8px" data-a="switch">🔄 تبديل المستخدم على الموبايل ده</button></div>'
+:'<div class="card" style="border-color:#5a4a1f;background:#1a1608"><h3>📡 مش قادر يوصل لعالمكم</h3><p class="hint">اتأكدي من النت، وإن Rules في Firebase متغيرة (الخطوة ١).</p></div>';
 const on=S.p2.online?'<div class="card" style="display:flex;gap:11px;align-items:center"><span class="dot on"></span><div><b style="font-size:.86rem">🧍 '+esc(S.p2.name)+' موجود في عالمك</b><div class="hint" style="font-size:.74rem">'+esc(S.p2.act)+' — من غير ما يتكلم</div></div></div>':'';
 const li=S.lastIn?'<div class="card"><b style="font-size:.84rem">آخر حاجة وصلتك:</b><p class="hint" style="color:var(--ink);font-size:.84rem;margin-top:3px">'+S.lastIn.icon+' "'+esc(S.lastIn.text)+'" '+ago(S.lastIn.t)+'</p></div>':'';
 return '<section><div class="scene-card">'+scene('you')+'</div>'+pair+on+'<div class="card"><h3>إحساسك دلوقتي؟</h3><p class="hint">اختاري من غير كلمة — وعالمك يتحول '+w('قدامه','قدامها')+'.</p><div class="moods" style="margin-top:10px">'+Object.keys(MOODS).map(k=>'<button class="mood'+(S.you.mood===k?' on':'')+'" data-a="mood" data-k="'+k+'"><i>'+MOODS[k].e+'</i><span>'+MOODS[k][FEM?'l':'m']+'</span></button>').join('')+'</div></div>'+li+'</section>'}
 function renderPartner(){const m=MOODS[S.p2.mood];
 return '<section><div class="scene-card">'+scene('partner')+'</div><div class="card" style="display:flex;gap:11px;align-items:center"><span class="dot'+(S.p2.online?' on':'')+'"></span><div>'+(S.p2.online?'<b style="font-size:.86rem">🧍 موجود دلوقتي</b><div class="hint" style="font-size:.74rem">'+esc(S.p2.act)+' — من غير Chat</div>':'<b style="font-size:.86rem">مش موجود دلوقتي</b><div class="hint" style="font-size:.74rem">ابعتيله حاجة صغيرة 🌸</div>')+'</div></div><div class="card"><h3>عالمه دلوقتي</h3><p class="hint" style="color:var(--ink);font-size:.86rem">'+m.d+'</p><p style="margin-top:8px;font-size:.84rem;color:var(--gold)">'+m.e+' '+pL(S.p2.mood)+'</p></div><div class="card"><h3>ابعتيله حاجة صغيرة</h3><p class="hint">حاجة تظهر جوه عالمه.</p><div class="tinies" style="margin-top:10px">'+TINY.map(t=>'<button class="tiny" data-a="tiny" data-k="'+t.k+'"><i>'+t.i+'</i><span>'+w(t.me,t.him)+'</span></button>').join('')+'</div>'+(S.lastOut?'<p class="hint" style="margin-top:10px">آخر حاجة وصلته: '+S.lastOut.icon+' "'+esc(S.lastOut.text)+'" '+ago(S.lastOut.t)+'</p>':'')+'</div></section>'}
 function renderWorld(){const ti=threadInfo();const lv=S.bridge>=70?'الجسر نوره قوي الليلة ✨':S.bridge>=40?'الجسر دافي ومتوهّج':'الجسر محتاج لمسة… ابعتيله حاجة 🌸';
-return '<section><div class="scene-card">'+scene2()+'</div><div style="display:flex;justify-content:space-between;color:var(--mu);font-size:.72rem;margin:-4px 4px 10px"><span>'+esc(S.you.name||'أنا')+' · '+MOODS[S.you.mood].e+' '+mL(S.you.mood)+'</span><span>'+MOODS[S.p2.mood].e+' '+pL(S.p2.mood)+' '+esc(S.p2.name)+'</span></div><div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><b style="font-size:.88rem">🌉 طاقة الجسر</b><span style="color:var(--gold);font-size:.74rem">'+S.bridge+'%</span></div><div class="bar"><i style="width:'+S.bridge+'%"></i></div><p class="hint" style="margin-top:8px">'+lv+' — كل هدية ورسالة بتزوّد نوره.</p></div><div class="card threadbox"><span class="sw" style="background:'+ti.c+';color:'+ti.c+'"></span><div><b style="font-size:.84rem">🧵 الخيط غير المرئي</b><p class="hint">'+ti.t+'</p></div></div><div class="card"><h3>🌱 جاي قريب</h3><p class="hint">الأحلام اللي بتتحول لجزر، لحظات التزامن، الحديقة السرية، ورحلتكم — كلها هترجع في التحديث الجاي أول ما نثبت الأساس 🤍</p></div></section>'}
+return '<section><div class="scene-card">'+scene2()+'</div><div style="display:flex;justify-content:space-between;color:var(--mu);font-size:.72rem;margin:-4px 4px 10px"><span>'+esc(S.you.name||'أنا')+' · '+MOODS[S.you.mood].e+' '+mL(S.you.mood)+'</span><span>'+MOODS[S.p2.mood].e+' '+pL(S.p2.mood)+' '+esc(S.p2.name)+'</span></div><div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><b style="font-size:.88rem">🌉 طاقة الجسر</b><span style="color:var(--gold);font-size:.74rem">'+S.bridge+'%</span></div><div class="bar"><i style="width:'+S.bridge+'%"></i></div><p class="hint" style="margin-top:8px">'+lv+' — كل هدية ورسالة بتزوّد نوره.</p></div><div class="card threadbox"><span class="sw" style="background:'+ti.c+';color:'+ti.c+'"></span><div><b style="font-size:.84rem">🧵 الخيط غير المرئي</b><p class="hint">'+ti.t+'</p></div></div></section>'}
 function msgHTML(m){const t='<time>'+fmt(m.t)+'</time>';
 if(m.kind==='voice')return '<div class="msg '+m.from+'"><div class="bub voice">'+(m.audio?'<audio controls preload="metadata" src="'+m.audio+'"></audio>':'')+'<small>🎙️ رسالة صوتية'+(m.dur?' · '+Math.max(1,Math.round(m.dur))+' ث':'')+'</small></div>'+t+'</div>';
 if(m.kind==='nw'){const n=NW.find(x=>x.k===m.nw);return '<div class="msg '+m.from+'"><div class="nwmsg"><i>'+n.i+'</i>'+esc(m.text)+'</div>'+t+'</div>'}
@@ -364,34 +352,23 @@ if(view==='chat')rc();
 else m.innerHTML=({home:renderHome,partner:renderPartner,world:renderWorld})[view]()}
 function rd(){if(view==='chat'){rh();rc()}else render()}
 
-function setMood(k){if(S.you.mood===k)return;S.you.mood=k;bx(2);toast(MOODS[k].e,'عالمك اتغيّر: '+MOODS[k].d);save();if(MODE==='net')pushMe({mood:k});render()}
-function fake(t){typing=true;rc();setTimeout(()=>{typing=false;S.chat.push({from:'him',text:t,t:Date.now(),id:'m'+Date.now()});S.msgs++;save();mkChat();rc();if(view!=='chat')toast('💬',(S.p2.name||'هو')+' رد عليك')},1300+Math.random()*1500)}
+function setMood(k){if(S.you.mood===k)return;S.you.mood=k;bx(2);toast(MOODS[k].e,'عالمك اتغيّر: '+MOODS[k].d);save();pushMe({mood:k});render()}
 function push(m){S.chat.push(m);S.msgs++;save();rc()}
 function send(m){m.id='m'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);m.t=Date.now();
-if(MODE!=='net'){push(m);return}
 seen.add(m.id);S.chat.push(m);S.msgs++;save();rc();
 if(S.msgs===1)toast('💬','أول رسالة في عالمكم 🤍');
-try{db.ref('unis/'+CODE+'/chat').push({id:m.id,from:mySlot,text:m.text||'',kind:m.kind||null,nw:m.nw||null,tag:m.tag||null,audio:m.audio||null,dur:m.dur||null,t:m.t}).catch(()=>toast('⚠️','الرسالة مبعتتش — شوفي النت أو إعدادات Firebase'))}catch(e){toast('⚠️','مش متصلة بالنت')}}
-function demoReply(t){
-if(/❤️|بحب/.test(t))return pick(REPL.love);
-if(/تعب|زهق|حزين|زعل|مش كويس|مضايق/.test(t))return pick(REPL.comfort);
-if(/نام|نوم|تصبح/.test(t))return pick(REPL.sleep);
-if(/مبسوط|فرح|ههه|😂/.test(t))return pick(REPL.happy);
-return pick(REPL.def)}
+try{db.ref(P('chat')).push({id:m.id,from:mySlot,text:m.text||'',kind:m.kind||null,nw:m.nw||null,tag:m.tag||null,audio:m.audio||null,dur:m.dur||null,t:m.t}).catch(()=>toast('⚠️','الرسالة مبعتتش — شوفي النت أو Rules'))}catch(e){toast('⚠️','مش متصلة بالنت')}}
 function sendText(){const ci=$('#ci');const t=(ci?ci.value:draft).trim();if(!t)return;draft='';if(ci)ci.value='';
 send({from:'you',text:t,tag:tag});tag=null;
-if(/❤️|بحب/.test(t)){S.gOut.push({kind:'heart',t:Date.now()});save();if(MODE==='net'&&db){try{db.ref('unis/'+CODE+'/gifts/'+oslot()).push({gid:'g'+Date.now(),kind:'heart',t:Date.now(),note:'❤️'})}catch(e){}}}
-if(MODE==='demo')fake(demoReply(t))}
+if(/❤️|بحب/.test(t)){S.gOut.push({kind:'heart',t:Date.now()});save();try{db.ref(P('gifts/'+oslot())).push({gid:'g'+Date.now(),kind:'heart',t:Date.now(),note:'❤️'})}catch(e){}}}
 function sendNW(k){const n=NW.find(x=>x.k===k);if(!n)return;
-send({from:'you',kind:'nw',nw:k,text:w(n.s,n.sm||n.s)});bx(3);toast(n.i,'وصلت من غير ولا كلمة');
-if(MODE==='demo')setTimeout(()=>fake(n.r),2200)}
+send({from:'you',kind:'nw',nw:k,text:w(n.s,n.sm||n.s)});bx(3);toast(n.i,'وصلت من غير ولا كلمة')}
 function sendTiny(k){const t=TINY.find(x=>x.k===k);if(!t)return;
 const mine=w(t.me,t.him),his=w(t.him,t.me);
 const kind=k==='sun'?'sunpop':k==='letter'?'letter':k==='song'?'notes':k;
 S.gOut.push({kind,t:Date.now()});S.lastOut={icon:t.i,text:mine,t:Date.now()};S.tiny++;bx(4);
 toast(t.i,'وصلت '+w('لعالمه','لعالمها')+'… "'+mine+'"');save();render();
-if(MODE==='net'){try{db.ref('unis/'+CODE+'/gifts/'+oslot()).push({gid:'g'+Date.now(),kind,t:Date.now(),note:his})}catch(e){}}
-else fake(pick(['وصلتني… أحلى حاجة في يومي ❤️','حسّيت بيها فعلاً 🤍','لقيتها في عالمي… مش مصدق 😊']))}
+try{db.ref(P('gifts/'+oslot())).push({gid:'g'+Date.now(),kind,t:Date.now(),note:his})}catch(e){}}
 async function voice(){
 if(!(typeof MediaRecorder!=='undefined'&&navigator.mediaDevices))return toast('🎙️','المتصفح مش بيدعم التسجيل — جربي كروم');
 if(rec){clearInterval(rec.tm);const s=rec;rec=null;rc();try{s.r.stop()}catch(e){}return}
@@ -404,72 +381,23 @@ r.onstop=()=>{st.getTracks().forEach(t=>t.stop());const d=(Date.now()-s.t0)/1000
 if(d<.8||!ch.length)return toast('🎙️','التسجيل قصير أوي');
 const fr=new FileReader();fr.onload=()=>{const u=fr.result;
 if(u.length>1400000)return toast('⚠️','الرسالة طويلة — أقصى حد دقيقة');
-send({from:'you',kind:'voice',audio:u,dur:d});
-if(MODE==='demo')setTimeout(()=>fake('وصلني صوتك… أحلى حاجة في يومي 🎙️❤️'),2000)};
+send({from:'you',kind:'voice',audio:u,dur:d})};
 fr.readAsDataURL(new Blob(ch,{type:r.mimeType||'audio/webm'}))};
 r.start();s.tm=setInterval(()=>{const e=Math.floor((Date.now()-s.t0)/1000);
 if(e>=60){if(rec===s){rec=null;rc()}try{r.stop()}catch(x){}}
 else{const el=$('#rt');if(el)el.textContent=e+' ث'}},400);
 rc()}
 
-function openPairing(){
-if(MODE==='net'){modal('<h3>🔗 الربط</h3><p class="hint">مربوطين ❤️ — الرسايل نص وصوت بتوصل فورًا بينكم.</p><div class="codebox">'+CODE+'</div><button class="btn g w" data-a="copycode" data-c="'+CODE+'">📋 نسخ كود الكون</button><div style="height:8px"></div><button class="btn p w" data-a="copyinv" data-l="'+invLink()+'">🔗 نسخ لينك الدعوة</button><div style="height:8px"></div><button class="btn g w" style="color:var(--rose);border-color:#e88a8a66" data-a="unlink">فك الربط</button>');return}
-if(netOK()){modal('<h3>🔗 ربط الموبايلين</h3><p class="hint">الإعدادات جاهزة على الموبايل ده ✅</p><button class="btn p w" style="margin-bottom:9px" data-a="pcreate">🌌 إنشاء كون (الموبايل ده)</button><button class="btn g w" data-a="pjoin">🔑 انضمام بكود (الموبايل التاني)</button><button class="back" data-a="cfg">تعديل إعدادات Firebase</button>');return}
-cfgForm()}
-function cfgForm(){modal('<h3>🔗 ربط الموبايلين مع بعض</h3><p class="hint">محتاجين Firebase مجاني — مرة واحدة في ٥ دقايق:</p><ol class="hint" style="padding-inline-start:18px;line-height:2"><li>افتحي <b style="color:var(--ink)">console.firebase.google.com</b> → Add project</li><li>من البحث: <b style="color:var(--ink)">Authentication</b> → Get started → <b style="color:var(--ink)">Anonymous</b> → Enable</li><li>من البحث: <b style="color:var(--ink)">Realtime Database</b> → Create → أي منطقة → <b style="color:var(--ink)">Start in test mode</b></li><li>تب Rules في الداتابيز: امسحي والصقي واعملي Publish:</li></ol><div style="direction:ltr;text-align:left;font-family:monospace;font-size:.62rem;background:var(--pn2);border:1px dashed #2c3d63;border-radius:10px;padding:9px;white-space:pre-wrap;color:var(--mu);user-select:all;margin:7px 0 11px">{ "rules": { "unis": { "$code": { ".read": "auth != null", ".write": "auth != null" } } } }</div><label>٥) ⚙️ Project Settings → زر الويب <b style="color:var(--ink)">&lt;/&gt;</b> → Register app → انسخي بلوكة firebaseConfig والصقيها:</label><textarea id="pccfg" rows="5" placeholder="const firebaseConfig = { apiKey: ... databaseURL: ... };" style="direction:ltr;font-size:.7rem"></textarea><div class="err"></div><button class="btn p w" data-a="savecfg">تسجيل وتفعيل 🔗</button><p class="hint" style="margin-top:10px">💡 لما تنشئي الكون هيظهرلك لينك دعوة — التاني يفتحه من غير ما يلزق أي حاجة.</p>')}
-function parseCfg(t){if(!t)return null;const m=t.match(/\{[\s\S]*\}/);if(!m)return null;const b=m[0].replace(/,\s*\}/g,'}');
-try{const o=JSON.parse(b);if(o&&o.apiKey)return o}catch(e){}
-const o={};const re=/["']?(\w+)["']?\s*:\s*["']([^"']+)["']/g;let r;while((r=re.exec(b)))o[r[1]]=r[2];return o.apiKey?o:null}
-function saveCfg(){const c=parseCfg($('#pccfg').value);
-if(!c)return err('مش لاقي الإعدادات — الصقي البلوكة زي ما هي');
-if(!c.databaseURL||!/^https/.test(c.databaseURL))return err('ناقص databaseURL — لازم Realtime Database مش Firestore');
-localStorage.setItem('fbcfg',JSON.stringify({apiKey:c.apiKey,authDomain:c.authDomain||(c.projectId?c.projectId+'.firebaseapp.com':''),databaseURL:c.databaseURL,projectId:c.projectId||''}));
-toast('✅','اتحفظت! جاري التفعيل…');setTimeout(()=>location.reload(),800)}
-function pCreateForm(){modal('<h3>🌌 إنشاء كون</h3><p class="hint">هيتولدلك كود من 6 حروف + لينك دعوة — الاتنين تبعتيلهم للتاني.</p><label>اسمك</label><input id="pcyou" maxlength="12" value="'+esc(S.you.name||'')+'"><label>اسم التاني</label><input id="pchim" maxlength="12" value="'+esc(S.p2.name||'')+'"><label>أول يوم ليكم</label><input id="pcdate" type="date" value="'+new Date(S.day).toISOString().slice(0,10)+'"><div class="err"></div><button class="btn p w" data-a="pcreatego">أنشئي الكون ✨</button><button class="back" data-a="pair">← رجوع</button>')}
-async function pCreateGo(){const y=$('#pcyou').value.trim(),h=$('#pchim').value.trim();
-if(!y||!h)return err('الاسمين مطلوبين 🌙');
-if(!initNet())return err('الإعدادات مش شغالة — راجعي شاشة الإعدادات');
-await waitAuth();
-let day=Date.now();const dv=$('#pcdate').value;if(dv){const dt=new Date(dv+'T12:00:00');if(!isNaN(dt))day=dt.getTime()}
-const c=code6();
-try{
-await db.ref('unis/'+c+'/meta').set({day:day,names:{A:y,B:h}});
-await db.ref('unis/'+c+'/users/A').set({name:y,fem:true,mood:S.you.mood||'peaceful',online:true,ls:Date.now(),act:pick(ACTF),owner:dev});
-await db.ref('unis/'+c+'/users/B').set({name:h,fem:false,mood:'happy',online:false,ls:0,act:'',owner:''});
-await db.ref('unis/'+c+'/shared').set({bridge:Math.max(S.bridge,30)});
-}catch(e){return err('تعذّر الإنشاء — راجعي الإعدادات والنت')}
-localStorage.setItem('pcode',c);localStorage.setItem('pslot','A');
-S.you.name=y;S.p2.name=h;S.day=day;S.setup=true;save();CODE=c;
-const inv=invLink();
-modal('<div style="text-align:center"><div style="font-size:3rem">🌌</div><h3>كونكم اتولد!</h3><p class="hint"><b style="color:var(--ink)">ابعتيه لينك الدعوة ده بس</b> — هيفتحه وهيلقى الكود جاهز وياخد اسمه على طول:</p><button class="btn p w" data-a="copyinv" data-l="'+inv+'">🔗 نسخ لينك الدعوة</button><div style="height:8px"></div><p class="hint">أو يدويًا — الكود:</p><div class="codebox">'+c+'</div><button class="btn g w" data-a="copycode" data-c="'+c+'">📋 نسخ الكود</button><div style="height:10px"></div><button class="btn p w" data-a="reload">ادخلي عالمكم ✨</button></div>')}
-function pJoinForm(){modal('<h3>🔑 انضمام بكود</h3><p class="hint">الكود جاهز لو جيتي من لينك الدعوة — دوس دخول وخلاص</p><input id="pjcode" maxlength="6" value="'+esc(localStorage.getItem('ucode')||'')+'" placeholder="K7M2XQ" style="text-align:center;direction:ltr;font-size:1.2rem;letter-spacing:.3em"><div class="err"></div><button class="btn p w" data-a="pjoingo">دخول للكون 🌉</button><button class="back" data-a="pair">← رجوع</button>')}
-async function pJoinGo(){const c=($('#pjcode').value||'').trim().toUpperCase();
-if(c.length<4)return err('الكود 6 حروف');
-if(!initNet())return err('الإعدادات مش شغالة');
-await waitAuth();
-let sn;try{sn=await db.ref('unis/'+c+'/meta').once('value')}catch(e){return err('مش قادر يوصل — النت أو الإعدادات')}
-if(!sn.exists())return err('مفيش كون بالكود ده… اتأكدي منه');
-window._m={c:c,names:sn.val().names||{},day:sn.val().day||Date.now()};
-modal('<h3>إنت مين؟ 🌠</h3><p class="hint">اختار اسمك:</p><div class="picknames"><button class="pname" data-a="ppick" data-slot="A">'+esc(window._m.names.A||'—')+'</button><button class="pname" data-a="ppick" data-slot="B">'+esc(window._m.names.B||'—')+'</button></div><div class="err"></div>')}
-async function pPick(sl){const m=window._m;
-try{const us=await db.ref('unis/'+m.c+'/users/'+sl).once('value');const v=us.val()||{};
-if(v.owner&&v.owner!==dev&&Date.now()-(v.ls||0)<2*864e5)return err('الاسم ده شغال على موبايل تاني');
-await db.ref('unis/'+m.c+'/users/'+sl).update({owner:dev,online:true,ls:Date.now()})}catch(e){return err('حصلت مشكلة… جرب تاني')}
-localStorage.setItem('pcode',m.c);localStorage.setItem('pslot',sl);
-S.setup=true;S.you.name=m.names[sl]||'';S.p2.name=m.names[sl==='A'?'B':'A']||'';S.day=m.day;save();
-toast('🌌','جاري الدخول لعالمكم…');setTimeout(()=>location.reload(),700)}
-function copyCode(c){c=c||CODE;if(!c)return;if(navigator.clipboard)navigator.clipboard.writeText(c).then(()=>toast('📋','الكود: '+c)).catch(()=>toast('🌙',c));else toast('🌙',c)}
-function unlink(){localStorage.removeItem('pcode');localStorage.removeItem('pslot');toast('👋','تم فك الربط');setTimeout(()=>location.reload(),800)}
-
-function netOb(){const o=$('#ob');o.hidden=false;o.innerHTML='<div class="obw">'+logo(100)+'<h1 class="en">OUR UNIVERSE</h1><p>عالمين… وجسر واحد بينهم.</p><button class="btn p w" style="margin-bottom:9px" data-a="pcreate">🌌 إنشاء كون (الموبايل الأول)</button><button class="btn g w" data-a="pjoin">🔑 انضمام بكود (الموبايل التاني)</button><button class="back" data-a="cfg">⚙️ إعدادات Firebase</button></div>'}
-function demoOb(){const o=$('#ob');o.hidden=false;o.innerHTML='<div class="obw">'+logo(100)+'<h1 class="en">OUR UNIVERSE</h1><p>عالمين… وجسر واحد بينهم.<br>ابدئي لوحدك دلوقتي، واربطي موبايله في أي وقت.</p><div class="obf"><label>اسمك</label><input id="oby" maxlength="12"><label>وهو؟</label><input id="obh" maxlength="12"><label>أول يوم ليكم</label><input id="obd" type="date" value="'+new Date().toISOString().slice(0,10)+'"><div class="err"></div><button class="btn p w" data-a="obgo">نبدأ 🌙</button><div style="height:9px"></div><button class="btn g w" data-a="pair">🔗 ربط الموبايلين مع بعض</button></div></div>'}
-function obGo(){const y=$('#oby').value.trim(),h=$('#obh').value.trim();
-if(!y||!h)return err('اكتبوا الاسمين 🌙');
-S.you.name=y;S.p2.name=h;const dv=$('#obd').value;if(dv){const dt=new Date(dv+'T12:00:00');if(!isNaN(dt))S.day=dt.getTime()}
-S.setup=true;save();enter();toast('🌌','أهلاً '+y+' — ده '+h+' (تجريبي)')}
+/* ═══ شاشة "إنت مين؟" ═══ */
+function whoAreYou(){const o=$('#ob');o.hidden=false;
+o.innerHTML='<div class="obw">'+logo(100)+'<h1 class="en">OUR UNIVERSE</h1><p>عالمكم جاهز 🌌<br>إنت مين على الموبايل ده؟</p><div class="picknames"><button class="pname" data-a="mk" data-slot="A">🌸 '+esc(NAMES.A)+'</button><button class="pname" data-a="mk" data-slot="B">'+esc(NAMES.B)+'</button></div><p class="hint">كل واحد يختار اسمه على موبايله — مرة واحدة</p></div>'}
+function mk(slot){localStorage.setItem('pslot',slot);toast('🌌','أهلاً '+NAMES[slot]+' — ثواني وندخل…');setTimeout(()=>location.reload(),600)}
+function rulesScreen(){const o=$('#ob');o.hidden=false;
+o.innerHTML='<div class="obw">'+logo(90)+'<h1 class="en">OUR UNIVERSE</h1><p>خطوة واحدة فاضلة 👇<br>افتحي <b style="color:var(--ink)">console.firebase.google.com</b> → مشروعك → <b style="color:var(--ink)">Realtime Database</b> → تب <b style="color:var(--ink)">Rules</b> — امسحي والصقي ده واعملي <b style="color:var(--ink)">Publish</b>:</p><div class="rulesbox">{ "rules": { "unis": { "$code": { ".read": true, ".write": true } } } }</div><button class="btn p w" data-a="retry">خلصت — جرّب تاني ✅</button></div>'}
 function enter(){$('#ob').hidden=true;$('#app').hidden=false;
+S.you.name=NAMES[mySlot];S.p2.name=NAMES[oslot()];
 S.you.act=S.you.act||pick(FEM?ACTF:ACTM);
-if(MODE==='net'){S.setup=true;save();bind();pushMe()}
+bind();pushMe();
 render()}
 
 document.addEventListener('input',e=>{if(e.target.id==='ci')draft=e.target.value});
@@ -483,19 +411,9 @@ case 'nw':sendNW(d.k);break;
 case 'send':sendText();break;
 case 'voice':voice();break;
 case 'tag':tag=tag===d.k?null:d.k;document.querySelectorAll('.tg').forEach(b=>b.classList.toggle('on',b.dataset.k===tag));break;
-case 'pair':openPairing();break;
-case 'cfg':cfgForm();break;
-case 'savecfg':saveCfg();break;
-case 'pcreate':pCreateForm();break;
-case 'pcreatego':pCreateGo();break;
-case 'pjoin':pJoinForm();break;
-case 'pjoingo':pJoinGo();break;
-case 'ppick':pPick(d.slot);break;
-case 'copycode':copyCode(d.c);break;
-case 'copyinv':copyTxt(d.l,'🔗 لينك الدعوة اتنسخ — ابعتيهوله واتساب');break;
-case 'unlink':unlink();break;
-case 'reload':location.reload();break;
-case 'obgo':obGo();break}});
+case 'mk':mk(d.slot);break;
+case 'switch':localStorage.removeItem('pslot');location.reload();break;
+case 'retry':location.reload();break}});
 
 function buildPWA(){try{
 const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');
@@ -510,26 +428,15 @@ const man={name:'OUR UNIVERSE — عالمنا',short_name:'OUR UNIVERSE',start_
 
 buildPWA();
 async function boot(){
-if(netOK()&&initNet()){
-await waitAuth();
-const c=localStorage.getItem('pcode'),s=localStorage.getItem('pslot');
-if(c&&s){try{const sn=await db.ref('unis/'+c+'/meta').once('value');
-if(sn.exists()){CODE=c;mySlot=s;FEM=s==='A';return enter()}}catch(e){}
-localStorage.removeItem('pcode');localStorage.removeItem('pslot')}
-netOb();
-if(localStorage.getItem('ucode'))setTimeout(pJoinForm,400);
-return}
-if(S.setup)return enter();
-demoOb()}
+if(typeof firebase!=='undefined'&&initNet()){
+try{await db.ref(P('meta')).once('value')}catch(e){return rulesScreen()}
+const s=localStorage.getItem('pslot');
+if(s==='A'||s==='B'){mySlot=s;FEM=(s==='A');return enter()}
+return whoAreYou()}
+MODE='demo';
+const o=$('#ob');o.hidden=false;
+o.innerHTML='<div class="obw">'+logo(100)+'<h1 class="en">OUR UNIVERSE</h1><p>مش قادر يوصل لعالمكم — اتأكدي من النت وافتحي تاني.</p></div>'}
 setTimeout(()=>{const sp=$('#splash');sp.classList.add('bye');setTimeout(()=>sp.remove(),650);boot()},1800);
-function tick(){if(MODE!=='demo'||!S.setup)return;const r=Math.random();
-if(r<.35){S.p2.mood=pick(['happy','happy','loving','excited','peaceful','peaceful','emotional','drained','annoyed']);S.p2.act=pick(ACTM);rd()}
-else if(r<.6){S.p2.online=!S.p2.online;rd()}
-else if(S.p2.online){const t=pick(TINY);const kind=t.k==='sun'?'sunpop':t.k==='letter'?'letter':t.k==='song'?'notes':t.k;
-S.gIn.push({kind:kind,t:Date.now()});S.lastIn={icon:t.i,text:t.him,t:Date.now()};bx(2);
-toast(t.i,(S.p2.name||'هو')+' بعتلك: "'+t.him+'" — ظهرت في عالمك');rd()}
-save()}
-setTimeout(tick,8000);setInterval(tick,16000);
 setInterval(()=>{if(MODE==='net'&&netOn)pushMe({ls:Date.now()})},30000);
 window.__ok=true;
 </script>
