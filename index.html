@@ -49,11 +49,11 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 .tinies{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .tiny{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 2px;background:var(--pn2);border:1px solid var(--ln);border-radius:13px;font-size:.66rem;color:var(--mu)}
 .tiny i{font-style:normal;font-size:1.3rem}
-#tabs{display:flex;background:#0a101f;border-top:1px solid var(--ln);padding:8px 6px calc(9px + env(safe-area-inset-bottom));flex:none}
-#tabs button{flex:1;color:#5f6c8d;font-size:.68rem;padding:6px 0;position:relative}
+#tabs{display:flex;background:#0a101f;border-top:1px solid var(--ln);padding:8px 4px calc(9px + env(safe-area-inset-bottom));flex:none}
+#tabs button{flex:1;color:#5f6c8d;font-size:.6rem;padding:6px 0;position:relative}
 #tabs button.on{color:var(--gold)}
-#tabs button.on::after{content:'';position:absolute;bottom:1px;right:28%;left:28%;height:2.5px;border-radius:3px;background:var(--gold)}
-.badge{position:absolute;top:0;right:24%;width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:0;font-style:normal}
+#tabs button.on::after{content:'';position:absolute;bottom:1px;right:22%;left:22%;height:2.5px;border-radius:3px;background:var(--gold)}
+.badge{position:absolute;top:0;right:22%;width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:0;font-style:normal}
 .badge.on{opacity:1;animation:ping 2s infinite}
 .cs{flex:1;overflow-y:auto;padding:14px 14px 6px;display:flex;flex-direction:column;gap:11px}
 .msg{display:flex;flex-direction:column;max-width:84%;animation:min .3s both}
@@ -73,7 +73,6 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 .nwmsg i{font-style:normal;font-size:1.3rem;display:block}
 .msg .tools{display:flex;gap:6px;margin-top:4px}
 .msg .tools button{font-size:.66rem;color:var(--mu);border:1px solid var(--ln);border-radius:9px;padding:3px 9px;background:var(--pn)}
-.msg .tools button:active{color:var(--gold);border-color:var(--gold)}
 .comp{flex:none;border-top:1px solid var(--ln);background:#0a101f;padding:8px 10px calc(9px + env(safe-area-inset-bottom))}
 .nwrow{display:flex;gap:6px;overflow-x:auto;padding-bottom:7px;scrollbar-width:none}
 .nwrow::-webkit-scrollbar{display:none}
@@ -99,6 +98,29 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 .dream b{font-size:.85rem;display:block}
 .dream small{color:var(--mu);font-size:.7rem;display:block;margin-top:2px;max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dream .go{margin-inline-start:auto;flex:none}
+.subnav{display:flex;gap:6px;margin-bottom:12px}
+.subnav button{flex:1;padding:9px 2px;border-radius:11px;border:1px solid var(--ln);background:var(--pn2);font-size:.66rem;color:var(--mu)}
+.subnav button.on{border-color:var(--gold);color:var(--gold);background:#f0c27410}
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--pn2);border:1px solid var(--ln);border-radius:14px;padding:12px 4px;text-align:center}
+.stat b{font-size:1.25rem;display:block;color:var(--gold)}
+.stat small{font-size:.62rem;color:var(--mu)}
+.qcard{background:var(--pn2);border:1px solid var(--ln);border-radius:14px;padding:12px;margin-bottom:9px}
+.dqopt{display:block;width:100%;text-align:right;padding:11px 13px;border-radius:12px;border:1px solid var(--ln);background:var(--pn);margin-top:8px;font-size:.88rem;color:var(--ink)}
+.dqopt:active{border-color:var(--gold)}
+#main textarea{width:100%;background:var(--pn2);border:1px solid #2c3d63;border-radius:13px;padding:11px 13px;font-size:.88rem;outline:none;margin:7px 0 9px;line-height:1.8;resize:vertical}
+#main textarea:focus{border-color:var(--gold)}
+.xob{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:1.7rem;background:var(--pn2);border:1px solid var(--ln);border-radius:12px;color:var(--ink)}
+.xob.my{color:var(--gold)}
+.xob.them{color:var(--rose)}
+.bkitem{display:flex;align-items:center;gap:10px;background:var(--pn2);border:1px solid var(--ln);border-radius:13px;padding:10px 12px;margin-bottom:7px}
+.bkitem.done{border-color:#8fce7a66}
+.bkitem button{font-size:1.05rem;flex:none}
+.bkitem b{font-size:.84rem;font-weight:400}
+#main input:not(#ci){width:100%;background:var(--pn2);border:1px solid #2c3d63;border-radius:13px;padding:10px 13px;font-size:.88rem;outline:none;margin:7px 0 8px}
+#main input:not(#ci):focus{border-color:var(--gold)}
+.tlitem{display:flex;gap:11px;padding:9px 0;border-bottom:1px dashed var(--ln)}
+.tlitem:last-child{border:none}
 .syncbtn{width:100%;padding:16px;border-radius:16px;border:1px solid var(--ln);background:var(--pn2);display:flex;align-items:center;gap:12px;margin-bottom:10px;text-align:right}
 .syncbtn:active{transform:scale(.97)}
 .syncbtn i{font-style:normal;font-size:1.6rem;flex:none}
@@ -114,7 +136,6 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 .colors{display:flex;gap:13px;justify-content:center;margin:18px 0;flex-wrap:wrap}
 .csw{width:44px;height:44px;border-radius:50%;border:3px solid transparent}
 .csw.sel{border-color:#fff}
-.result{font-size:2.6rem;animation:pi .6s cubic-bezier(.2,1.4,.4,1) both;display:block}
 #invitebar{position:fixed;top:12px;left:50%;transform:translate(-50%,-140%);z-index:95;display:flex;align-items:center;gap:10px;background:#1a2440;border:1px solid #3a4c7a;border-radius:16px;padding:10px 12px;box-shadow:0 16px 40px #000b;transition:transform .5s cubic-bezier(.2,1.2,.4,1);max-width:92vw}
 #invitebar.in{transform:translate(-50%,0)}
 #invitebar i{font-style:normal;font-size:1.3rem;flex:none}
@@ -178,11 +199,11 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 
 <div id="splash"><div class="in">
 <svg viewBox="0 0 512 512" width="120" height="120"><rect width="512" height="512" rx="118" fill="#070b16"/><circle cx="256" cy="256" r="150" fill="#f0c274" opacity=".07"/><circle cx="256" cy="256" r="128" fill="#f0c274"/><circle cx="192" cy="250" r="104" fill="#070b16"/><circle class="tw" cx="112" cy="132" r="7" fill="#f2ead8"/><circle class="tw" cx="398" cy="118" r="6" fill="#f0c274" style="animation-delay:1.1s"/><circle class="tw" cx="424" cy="252" r="5" fill="#f2ead8" style="animation-delay:.6s"/><circle class="tw" cx="98" cy="316" r="5" fill="#f0c274" style="animation-delay:1.7s"/><path class="tw" d="M196 202l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="#f0c274" style="animation-delay:.9s"/></svg>
-<h1 class="en">OUR UNIVERSE</h1><small>عالمنا · L8</small>
+<h1 class="en">OUR UNIVERSE</h1><small>عالمنا · L9</small>
 </div></div>
 
 <script>
-setTimeout(function(){if(!window.__ok){var s=document.getElementById('splash');if(s)s.innerHTML='<div style="padding:28px;text-align:center;font-size:.85rem;line-height:2.1">⚠️ الملف وصل ناقص<br>امسحي index.html والصقيه تاني كامل<br>وامسحي دوس Commit changes الأخضر تحت خالص</div>'}},9000);
+setTimeout(function(){if(!window.__ok){var s=document.getElementById('splash');if(s)s.innerHTML='<div style="padding:28px;text-align:center;font-size:.85rem;line-height:2.1">⚠️ الملف وصل ناقص<br>امسحي index.html والصقيه تاني كامل<br>ودوسي Commit changes الأخضر تحت خالص</div>'}},9000);
 </script>
 
 <div id="app" hidden>
@@ -192,7 +213,8 @@ setTimeout(function(){if(!window.__ok){var s=document.getElementById('splash');i
 <button data-go="home">🌍 عالمي</button>
 <button data-go="partner">🪐 عالمه</button>
 <button data-go="world">🌉 عالمنا</button>
-<button data-go="chat">💬 الحديث<i class="badge" id="bc"></i></button>
+<button data-go="chat">💬 حديث</button>
+<button data-go="us">❤️ إحنا</button>
 </nav>
 </div>
 
@@ -219,7 +241,8 @@ const pick=a=>a[Math.floor(Math.random()*a.length)];
 const ago=t=>{const m=Math.floor((Date.now()-t)/6e4);if(m<1)return'الآن';if(m<60)return'منذ '+m+' دقيقة';const h=Math.floor(m/60);return h<24?'منذ '+h+' ساعة':'منذ '+Math.floor(h/24)+' يوم'};
 const fmt=t=>new Date(t).toLocaleTimeString('ar-EG',{hour:'numeric',minute:'2-digit'});
 
-let MODE='net',db=null,mySlot=null,FEM=true,netOn=false,fbReady=false,typing=false,rec=null,view='home',draft='',tag=null,p2Joined=false,notifOK=false,photoPick=null;
+let MODE='net',db=null,mySlot=null,FEM=true,netOn=false,fbReady=false,rec=null,view='home',draft='',tag=null,p2Joined=false,photoPick=null;
+let usView='us',daily=null,quiz=null,xo=null,bucket=[],quizStep=0,myQuizAns=[],lastQuizT=0;
 const seen=new Set(),finished=new Set();
 let dev=localStorage.getItem('dev');if(!dev){dev='d'+Math.random().toString(36).slice(2,9);localStorage.setItem('dev',dev)}
 const oslot=()=>mySlot==='A'?'B':'A';
@@ -228,6 +251,7 @@ const mL=k=>MOODS[k][FEM?'l':'m'];
 const pL=k=>MOODS[k][FEM?'m':'l'];
 const P=p=>'unis/'+CODE+'/'+p;
 const SVTS=()=>{try{return firebase.database.ServerValue.TIMESTAMP}catch(e){return Date.now()}};
+const todayKey=()=>new Date().toISOString().slice(0,10);
 
 const MOODS={
 happy:{e:'😊',l:'مبسوطة',m:'مبسوط',d:'الشمس طالعة والتلال دافية ☀️',sky:['#47739c','#1c3153'],h:['#2f6b46','#1f4f33','#163a26'],orb:'sun',g:'#ffd98a',fam:'warm',st:16},
@@ -260,11 +284,42 @@ const SYNCN={moon:{i:'🌙',t:'شوفوا القمر',d:'في نفس اللحظ�
 const CNAMES={'#e88a8a':'الوردي','#f0c274':'الدهبي','#a8d8a0':'الأخضر','#7ec8c3':'الفيروزي','#a07ad4':'البنفسجي'};
 const COLORS=['#e88a8a','#f0c274','#a8d8a0','#7ec8c3','#a07ad4'];
 const DREAM_SPOTS=[[70,70],[330,60],[200,42],[130,100],[290,105]];
+const DAILY_QS=[
+'إيه أكتر حاجة بتحبها في التاني؟',
+'إيه أجمل ذكرى مع بعض لحد دلوقتي؟',
+'لو يوم واحد مع بعض من غير أي التزامات — تعملوا إيه؟',
+'إيه الحاجة اللي التاني بيعملها وبتخليكي تبتسمي فورًا؟',
+'أول انطباع اتعمل عندك عن التاني كان إيه؟',
+'إيه الحلم المشترك اللي نفسكم تحققوه السنة دي؟',
+'إيه أجمل صفة في التاني مكنتش متوقعتها؟',
+'لو وصفتي التاني بكلمة واحدة — تكون إيه؟',
+'إيه الحاجة اللي اتعلمتيها من التاني؟',
+'إيه أكتر لحظة اشتقتي فيها للتاني؟',
+'إيه الحاجة اللي نفسك التاني يبطل يعملها؟ 😅',
+'إيه أكتر هدية معناها بالنسبة ليك من التاني؟',
+'لو التاني ريس في مطعم — يعمل إيه؟',
+'إيه اللي كان ناقص يومك لحد ما كلمتي التاني؟',
+'لو رحتم مكان جديد مع بعض — نفسك يكون فين؟'];
+const QUIZ_QS=[
+'مين بيقفل عينه الأول بالليل؟',
+'مين أكتر واحد بيتأخر في الرد؟',
+'مين بياخد القرارات المهمة؟',
+'مين أكتر واحد بيحب الحلويات؟',
+'مين أكتر واحد بيغضب بسرعة؟',
+'مين بيقول "أنا آسف" الأول بعد خلاف؟',
+'مين أكتر واحد بيحب السهر؟',
+'مين بيصحى الأول الصبح؟',
+'مين بيتزن لما يجوع؟',
+'مين بيتاه في السوبر ماركت؟',
+'مين بيختار الفيلم دايمًا؟',
+'مين بيبعت رسايل أطول؟',
+'مين أكتر واحد بياخد صور؟',
+'مين بيطلب الأكل البارد وال annat سخن؟',
+'مين بيتكلم في النوم؟ 😅'];
 
 const KEY='uni-l1';
 const DEF=()=>({setup:false,you:{name:'',mood:'peaceful',act:''},p2:{name:'',mood:'happy',online:false,act:'…'},day:Date.now(),bridge:40,gIn:[],gOut:[],chat:[],dreams:[],lastIn:null,lastOut:null,tiny:0,msgs:0,syncs:0});
 let S;try{S=Object.assign(DEF(),JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){S=DEF()}
-/* حفظ ذكي: لو المساحة خلصت بنمسح الصور والصوتيات القديمة ونحاول تاني */
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){
  try{
   const c=JSON.parse(JSON.stringify(S));
@@ -363,6 +418,7 @@ function bx(n){S.bridge=Math.max(5,Math.min(100,S.bridge+n));save();if(db){try{d
 function pushMe(x){if(!db||!mySlot)return;try{db.ref(P('users/'+mySlot)).update(Object.assign({name:NAMES[mySlot],mood:S.you.mood,fem:FEM,online:true,ls:Date.now(),act:S.you.act},x||{}))}catch(e){}}
 const mkChat=()=>{if(view!=='chat'){const b=$('#bc');if(b)b.classList.add('on')}};
 const mkWorld=()=>{toast('🌉','في حاجة جديدة في عالمنا — افتحي تب "عالمنا"')};
+
 function bind(){
 S.chat.forEach(m=>seen.add(m.id));
 S.dreams.forEach(d=>seen.add(d.id));
@@ -409,7 +465,24 @@ notifyMe(SYNCN[v.type].i+' لحظة تزامن!',(S.p2.name||'التاني')+' �
 if(navigator.vibrate)navigator.vibrate([80,60,80]);
 clearTimeout(bar._t);bar._t=setTimeout(()=>{bar.classList.remove('in');bar.innerHTML=''},60000)});
 db.ref('.info/connected').on('value',s=>{netOn=!!s.val();rh();
-if(netOn){const me=db.ref(P('users/'+mySlot));me.onDisconnect().update({online:false,ls:Date.now()}).then(()=>pushMe()).catch(()=>{})}})}
+if(netOn){const me=db.ref(P('users/'+mySlot));me.onDisconnect().update({online:false,ls:Date.now()}).then(()=>pushMe()).catch(()=>{})}});
+bindUs()}
+
+/* ═══ ربط قسم إحنا ═══ */
+function bindUs(){
+db.ref(P('daily/'+todayKey())).on('value',s=>{daily=s.val()||{};if(view==='us')rd()});
+db.ref(P('quiz')).on('value',s=>{const v=s.val();
+if(v&&(v.t!==lastQuizT)){lastQuizT=v.t;quizStep=0;myQuizAns=[]}
+quiz=v;if(view==='us')rd()});
+db.ref(P('xo')).on('value',s=>{xo=s.val();if(view==='us')rd()});
+db.ref(P('bucket')).on('child_added',s=>{const v=s.val();if(!v)return;
+const ex=bucket.find(b=>b.key===s.key);
+if(ex)Object.assign(ex,v);else bucket.push(Object.assign({key:s.key},v));
+if(view==='us')rd()});
+db.ref(P('bucket')).on('child_changed',s=>{const v=s.val();
+const ex=bucket.find(b=>b.key===s.key);
+if(ex)Object.assign(ex,v);
+if(view==='us')rd()});}
 
 function headHTML(){const st=MODE==='net'?(p2Joined&&netOn?'<span class="chip" style="color:#a8d8a0">❤️ مع بعض</span>':netOn?'<span class="chip" style="color:#f0c274">⏳ مستنياه…</span>':'<span class="chip">📡…</span>'):'<span class="chip">تجريبي 🧪</span>';
 return '<div class="brand">'+logo(34)+'<div><b class="en">OUR UNIVERSE</b><small>اليوم '+dayN()+' مع بعض 🤍</small></div></div>'+st+'<button class="chip" data-go="partner"><span class="dot'+(S.p2.online?' on':'')+'"></span>'+esc(S.p2.name||'…')+'</button>'}
@@ -417,7 +490,7 @@ const rh=()=>{$('#top').innerHTML=headHTML()};
 function tabsUp(){document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.go===view))}
 function renderHome(){
 const pair=MODE==='net'
-?'<div class="card" style="border-color:#8fce7a55"><b>🔗 عالمكم متوصل'+(netOn?' ✅':' — بانتظار النت…')+'</b><p class="hint">'+(p2Joined?'كل حاجة بينكم حقيقية: رسايل، صوتيات، صور، مودات، تزامنات، وأحلام بتتحول لجزر.':'مستنيّاه يفتح اللينق ويختار اسمه — أول ما يدخل هتعرفي فورًا.')+'</p><button class="btn g" style="margin-top:8px" data-a="switch">🔄 تبديل المستخدم على الموبايل ده</button></div>'
+?'<div class="card" style="border-color:#8fce7a55"><b>🔗 عالمكم متوصل'+(netOn?' ✅':' — بانتظار النت…')+'</b><p class="hint">'+(p2Joined?'كل حاجة بينكم حقيقية: رسايل، صور، صوتيات، مودات، تزامنات، ألعاب، وأحلام.':'مستنيّاه يفتح اللينق ويختار اسمه — أول ما يدخل هتعرفي فورًا.')+'</p><button class="btn g" style="margin-top:8px" data-a="switch">🔄 تبديل المستخدم على الموبايل ده</button></div>'
 :'<div class="card" style="border-color:#5a4a1f;background:#1a1608"><h3>📡 مش قادر يوصل لعالمكم</h3><p class="hint">اتأكدي من النت، وإن Rules في Firebase متغيرة.</p></div>';
 const on=S.p2.online?'<div class="card" style="display:flex;gap:11px;align-items:center"><span class="dot on"></span><div><b style="font-size:.86rem">🧍 '+esc(S.p2.name)+' موجود في عالمك</b><div class="hint" style="font-size:.74rem">'+esc(S.p2.act)+' — من غير ما يتكلم</div></div></div>':'';
 const li=S.lastIn?'<div class="card"><b style="font-size:.84rem">آخر حاجة وصلتك:</b><p class="hint" style="color:var(--ink);font-size:.84rem;margin-top:3px">'+S.lastIn.icon+' "'+esc(S.lastIn.text)+'" '+ago(S.lastIn.t)+'</p></div>':'';
@@ -427,13 +500,111 @@ return '<section><div class="scene-card">'+scene('partner')+'</div><div class="c
 function renderWorld(){const ti=threadInfo();const lv=S.bridge>=70?'الجسر نوره قوي الليلة ✨':S.bridge>=40?'الجسر دافي ومتوهّج':'الجسر محتاج لمسة… ابعتيله حاجة 🌸';
 const dreams=(S.dreams&&S.dreams.length)?S.dreams.map((d,i)=>'<div class="dream"><span style="font-size:1.4rem">'+(d.done?'⭐':'🪐')+'</span><div><b>'+esc(d.name)+(d.done?' — تحقق ⭐':'')+'</b><small>"'+esc((d.quote||'').slice(0,40))+'"</small></div>'+(d.done?'':'<button class="btn g go" data-a="ddone" data-i="'+i+'">حققناه 🎉</button>')+'</div>').join(''):'<p class="hint">لسه مفيش أحلام… من الحديث، اضغطوا ✈️ جنب أي رسالة أو صورة وخلّوها حلم يعيش فوق الجسر.</p>';
 return '<section><div class="scene-card">'+scene2()+'</div><div style="display:flex;justify-content:space-between;color:var(--mu);font-size:.72rem;margin:-4px 4px 10px"><span>'+esc(S.you.name||'أنا')+' · '+MOODS[S.you.mood].e+' '+mL(S.you.mood)+'</span><span>'+MOODS[S.p2.mood].e+' '+pL(S.p2.mood)+' '+esc(S.p2.name)+'</span></div><div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><b style="font-size:.88rem">🌉 طاقة الجسر</b><span style="color:var(--gold);font-size:.74rem">'+S.bridge+'%</span></div><div class="bar"><i style="width:'+S.bridge+'%"></i></div><p class="hint" style="margin-top:8px">'+lv+' — كل هدية ورسالة وتزامن وحلم بيكبّر نوره.</p></div><div class="card threadbox"><span class="sw" style="background:'+ti.c+';color:'+ti.c+'"></span><div><b style="font-size:.84rem">🧵 الخيط غير المرئي</b><p class="hint">'+ti.t+'</p></div></div><div class="card"><h3>✨ لحظات التزامن</h3><p class="hint">حاجات بتعملوها مع بعض في نفس اللحظة.</p><button class="btn p w" style="margin-top:10px" data-a="sync">✨ ابدئي لحظة تزامن</button><p class="hint" style="margin-top:8px">لحد دلوقتي حققتوا <b style="color:var(--gold)">'+(S.syncs||0)+'</b> تزامن 🤍</p></div><div class="card"><h3>✈️ أحلامكم</h3>'+dreams+'</div></section>'}
+
+/* ═══ قسم إحنا ═══ */
+function usSubnav(){return '<div class="subnav">'
++'<button data-a="usview" data-v="us" class="'+(usView==='us'?'on':'')+'">❤️ إحنا</button>'
++'<button data-a="usview" data-v="play" class="'+(usView==='play'?'on':'')+'">🎮 لعب</button>'
++'<button data-a="usview" data-v="together" class="'+(usView==='together'?'on':'')+'">🌟 مع بعض</button>'
++'<button data-a="usview" data-v="story" class="'+(usView==='story'?'on':'')+'">📖 قصتنا</button></div>'}
+function stat(v,l){return '<div class="stat"><b>'+v+'</b><small>'+l+'</small></div>'}
+function dqCard(){
+const q=DAILY_QS[Math.floor(Date.now()/864e5)%DAILY_QS.length];
+const mine=daily&&daily[mySlot],theirs=daily&&daily[oslot()];
+if(mine&&theirs&&mine.text&&theirs.text){
+return '<p class="hint" style="color:var(--ink);font-size:.86rem">'+q+'</p>'
++'<div class="qcard"><b>🌸 '+NAMES[mySlot]+'</b><p class="hint" style="color:var(--ink)">'+esc(mine.text)+'</p></div>'
++'<div class="qcard"><b>💙 '+NAMES[oslot()]+'</b><p class="hint" style="color:var(--ink)">'+esc(theirs.text)+'</p></div>';}
+if(mine&&mine.text)return '<p class="hint">'+q+'</p><div class="qcard" style="text-align:center">✅ جاوبتي — مستنيين '+esc(NAMES[oslot()])+' يجاوب عشان تشوفوا الإجابات مع بعض 🤍</div>';
+return '<p class="hint">'+q+'</p><textarea id="dqin" rows="3" placeholder="اكتبي إجابتك لوحدك… محدش هيشوفها غير لما الاتنين يخلصوا"></textarea><button class="btn p w" data-a="dqSave">سجّلي إجابتي 🤫</button>'}
+function quizCard(){
+if(!quiz||!quiz.qs){
+return '<p class="hint">٥ أسئلة سريعة عن بعض — كل واحد يجاوب لوحده، وفي الآخر تشوفوا نسبة توافقكم.</p><button class="btn p w" data-a="quizNew">ابدئوا كويز جديد 🧩</button>';}
+const me=quiz[mySlot],them=quiz[oslot()];
+if(me&&me.done&&them&&them.done){
+let m=0;
+const rows=quiz.qs.map((qi,i)=>{
+const a=me.ans[i],b=them.ans[i];
+const match=(a!=null&&a===b);if(match)m++;
+return '<div class="qcard"><p class="hint" style="color:var(--ink)">'+QUIZ_QS[qi]+'</p>'
++'<div class="hint">🌸 '+NAMES[mySlot]+': <b style="color:var(--ink)">'+(a===0?NAMES.A:NAMES.B)+'</b></div>'
++'<div class="hint">💙 '+NAMES[oslot()]+': <b style="color:var(--ink)">'+(b===0?NAMES.A:NAMES.B)+'</b></div>'
++(match?'<small style="color:#a8d8a0">✓ متوافقين</small>':'<small style="color:var(--rose)">✗ مختلفين</small>')+'</div>'}).join('');
+const pct=Math.round(m/quiz.qs.length*100);
+return '<div style="text-align:center;margin-bottom:9px"><b style="font-size:1.7rem;color:var(--gold)">'+pct+'%</b><p class="hint">'+(pct>=80?'قلب واحد فعلًا ❤️':pct>=50?'قريبين ومتفاهمين 🤍':'كل واحد عالمه الجميل 🌙')+'</p></div>'+rows
++'<button class="btn g w" data-a="quizNew" style="margin-top:6px">كويز جديد 🔁</button>';}
+if(me&&me.done)return '<p class="hint">خلصتي إجاباتك ✅ — مستنيين '+esc(NAMES[oslot()])+' يخلص عشان تظهر النتيجة.</p>';
+const step=Math.min(quizStep,quiz.qs.length-1);
+const qi=quiz.qs[step];
+return '<p class="hint">سؤال '+(step+1)+' من '+quiz.qs.length+' — جاوبي لوحدك 🤫</p>'
++'<div class="qcard"><p style="color:var(--ink);font-size:.92rem">'+QUIZ_QS[qi]+'</p></div>'
++'<button class="dqopt" data-a="quizAns" data-v="0">🌸 '+NAMES.A+'</button>'
++'<button class="dqopt" data-a="quizAns" data-v="1">💙 '+NAMES.B+'</button>';}
+function xoCard(){
+if(!xo||!xo.b){
+return '<p class="hint">لعبة إكس أو بينكم — دوره بدور، والفائز بيكسب نقطة.</p><button class="btn p w" data-a="xoNew">ابدئوا لعبة ⭕</button>';}
+const mark=v=>v===0?'':(v===1?'⭕':'❌');
+const myv=mySlot==='A'?1:2;
+const cls=v=>v===0?'':(v===myv?' my':' them');
+const board='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;max-width:250px;margin:10px auto">'
++xo.b.map((v,i)=>'<button class="xob'+cls(v)+'" data-a="xoCell" data-i="'+i+'">'+mark(v)+'</button>').join('')+'</div>';
+const scores='<div style="display:flex;justify-content:center;gap:14px" class="hint">⭕ '+esc(NAMES.A)+': '+(xo.sA||0)+' — ❌ '+esc(NAMES.B)+': '+(xo.sB||0)+'</div>';
+let status='';
+if(xo.w==='D')status='<p style="text-align:center;color:var(--gold);font-size:.9rem">تعادلو! 🤍</p>';
+else if(xo.w)status='<p style="text-align:center;color:var(--gold);font-size:.9rem">🏆 '+esc(NAMES[xo.w])+' كسب الجولة!</p>';
+else status='<p class="hint" style="text-align:center">دور: <b style="color:var(--ink)">'+(xo.t===mySlot?w('أنتِ ✨','أنت ✨'):esc(NAMES[xo.t]||''))+'</b></p>';
+return scores+status+board+'<button class="btn g w" data-a="xoNew" style="margin-top:8px">جولة جديدة 🔁</button>';}
+function renderUsUs(){
+let pc=0,vc=0;S.chat.forEach(m=>{if(m.kind==='photo')pc++;if(m.kind==='voice')vc++});
+const bkd=bucket.filter(b=>b.done).length;
+const love=S.bridge>=80?'متعشقين خالص 💞':S.bridge>=55?'متحابين ومرتاحين ❤️':S.bridge>=30?'بتبنوا حاجة حلوة 🌱':'الجسر محتاج لمسة 🌸';
+return usSubnav()
++'<div class="card" style="text-align:center;border-color:#e88a8a44"><div style="font-size:2.2rem">❤️</div><b style="font-size:1rem">'+love+'</b><p class="hint">طاقة الجسر: '+S.bridge+'% — كل تفاعل بينكم بيزودها</p></div>'
++'<div class="card"><h3>إحصائيات عالمكم</h3><div class="statgrid">'
++stat(dayN(),'يوم مع بعض')+stat(S.msgs,'رسالة')+stat(pc,'صورة')
++stat(vc,'صوتية')+stat(S.syncs||0,'تزامن')+stat((S.dreams||[]).length,'حلم')
++stat(bkd,'إنجاز مع بعض')+stat(bucket.length,'حلم مستقبلي')+stat(S.tiny||0,'هدية صغيرة')
++'</div></div>'}
+function renderUsPlay(){
+return usSubnav()
++'<div class="card"><h3>💭 سؤال النهاردة</h3>'+dqCard()+'</div>'
++'<div class="card"><h3>🧩 كويز التوافق</h3>'+quizCard()+'</div>'
++'<div class="card"><h3>⭕ إكس أو</h3>'+xoCard()+'</div>'}
+function renderUsTogether(){
+const done=bucket.filter(b=>b.done).length;
+return usSubnav()
++'<div class="card"><h3>🌟 حاجات نفسكم تعملوها مع بعض</h3>'
++'<p class="hint">قائمتكم المشتركة — كل حاجة تعملوها علّموها هنا ⭐ (والجسر بيكبر مع كل إنجاز!)</p>'
++(bucket.length?bucket.map(b=>'<div class="bkitem'+(b.done?' done':'')+'"><button data-a="bkToggle" data-id="'+b.key+'" data-done="'+(b.done?1:0)+'">'+(b.done?'⭐':'○')+'</button><b>'+esc(b.text)+'</b></div>').join(''):'<p class="hint">لسه فاضية — اكتبي أول حاجة نفسك تعمليها معاه سوا!</p>')
++'<input id="bkin" placeholder="حاجة جديدة نفسك تعمليها معاه…" style="margin-top:9px"><button class="btn p w" data-a="bkAdd" style="margin-top:2px">ضيفيها للقائمة 🌟</button>'
++'</div>'
++'<div class="card"><h3>📊 تقدمكم</h3><div class="bar"><i style="width:'+(bucket.length?Math.round(done/bucket.length*100):0)+'%"></i></div><p class="hint" style="margin-top:7px">'+done+' من '+bucket.length+' — كمّلوا! 🤍</p></div>'}
+function storyItems(){
+const items=[{t:S.day,i:'🌌',x:'بداية عالمكم'}];
+(S.dreams||[]).forEach(d=>items.push({t:d.t,i:d.done?'⭐':'🪐',x:(d.done?'تحقق حلمكم: ':'حلم اتسجل: ')+d.name}));
+bucket.forEach(b=>{if(b.done)items.push({t:b.t||Date.now(),i:'🌟',x:'حققتوا مع بعض: '+b.text})});
+if(S.syncs)items.push({t:Date.now(),i:'✨',x:'حققتوا '+S.syncs+' لحظة تزامن'});
+return items.sort((a,b)=>a.t-b.t)}
+function renderUsStory(){
+const items=storyItems().slice().reverse();
+return usSubnav()
++'<div class="card"><h3>📖 قصتكم لحد دلوقتي</h3>'
++(items.length?items.map(it=>'<div class="tlitem"><span style="font-size:1.15rem">'+it.i+'</span><div><b style="font-size:.84rem;font-weight:400">'+esc(it.x)+'</b><small style="display:block;color:#5f6c8d;font-size:.64rem">'+new Date(it.t).toLocaleDateString('ar-EG')+'</small></div></div>').join(''):'<p class="hint">كل أول مرة هتتسجل هنا…</p>')
++'</div>'}
+function renderUs(){
+let h='';
+if(usView==='play')h=renderUsPlay();
+else if(usView==='together')h=renderUsTogether();
+else if(usView==='story')h=renderUsStory();
+else h=renderUsUs();
+return '<section>'+h+'</section>'}
+
 function msgHTML(m){const t='<time>'+fmt(m.t)+'</time>';
-if(m.kind==='photo')return '<div class="msg '+m.from+'"><div class="bub photo">'+(m.photo?'<img src="'+m.photo+'" alt="صورة" loading="lazy">':'<small>📸 صورة</small>')+'</div>'+t+(m.from==='you'?'<div class="tools"><button data-a="dsave" data-id="'+m.id+'">✈️ كحلم</button></div>':'')+'</div>';
-if(m.kind==='voice')return '<div class="msg '+m.from+'"><div class="bub voice">'+(m.audio?'<audio controls preload="metadata" src="'+m.audio+'"></audio>':'<small>🎙️ رسالة صوتية</small>')+'<small>🎙️ رسالة صوتية'+(m.dur?' · '+Math.max(1,Math.round(m.dur))+' ث':'')+'</small></div>'+t+(m.from==='you'?'<div class="tools"><button data-a="dsave" data-id="'+m.id+'">✈️ كحلم</button></div>':'')+'</div>';
+if(m.kind==='photo')return '<div class="msg '+m.from+'"><div class="bub photo">'+(m.photo?'<img src="'+m.photo+'" alt="صورة" loading="lazy">':'')+'</div>'+t+(m.from==='you'?'<div class="tools"><button data-a="dsave" data-id="'+m.id+'">✈️ كحلم</button></div>':'')+'</div>';
+if(m.kind==='voice')return '<div class="msg '+m.from+'"><div class="bub voice">'+(m.audio?'<audio controls preload="metadata" src="'+m.audio+'"></audio>':'')+'<small>🎙️ رسالة صوتية'+(m.dur?' · '+Math.max(1,Math.round(m.dur))+' ث':'')+'</small></div>'+t+(m.from==='you'?'<div class="tools"><button data-a="dsave" data-id="'+m.id+'">✈️ كحلم</button></div>':'')+'</div>';
 if(m.kind==='nw'){const n=NW.find(x=>x.k===m.nw);return '<div class="msg '+m.from+'"><div class="nwmsg"><i>'+n.i+'</i>'+esc(m.text)+'</div>'+t+'</div>'}
 const tg=m.tag?'<small style="display:block;font-size:.68rem;color:var(--gold);margin-top:4px;border-top:1px dashed #f0c27433;padding-top:3px">'+TAGS[m.tag].i+' '+TAGS[m.tag].l+'</small>':'';
 return '<div class="msg '+m.from+'"><div class="bub">'+esc(m.text)+tg+'</div>'+t+(m.from==='you'?'<div class="tools"><button data-a="dsave" data-id="'+m.id+'">✈️ كحلم</button></div>':'')+'</div>'}
-const typHTML='<div class="msg him typing"><div class="bub" style="display:flex;gap:5px"><i class="td"></i><i class="td" style="animation-delay:.15s"></i><i class="td" style="animation-delay:.3s"></i></div></div>';
 function chatHTML(){
 const pbtn='<button class="mic" data-a="photo">📷</button>';
 const mic=(typeof MediaRecorder!=='undefined'&&navigator.mediaDevices)?'<button class="mic'+(rec?' rec':'')+'" data-a="voice">'+(rec?'⏹':'🎙️')+'</button>':'';
@@ -449,7 +620,7 @@ const cl=$('#cl');if(cl)cl.scrollTop=cl.scrollHeight;
 const b=$('#bc');if(b)b.classList.remove('on')}
 function render(){rh();tabsUp();const m=$('#main');m.className='';
 if(view==='chat')rc();
-else m.innerHTML=({home:renderHome,partner:renderPartner,world:renderWorld})[view]()}
+else m.innerHTML=({home:renderHome,partner:renderPartner,world:renderWorld,us:renderUs})[view]()}
 function rd(){if(view==='chat'){rh();rc()}else render()}
 
 function setMood(k){if(S.you.mood===k)return;S.you.mood=k;bx(2);toast(MOODS[k].e,'عالمك اتغيّر: '+MOODS[k].d);save();pushMe({mood:k});render()}
@@ -588,17 +759,17 @@ if(v[oslot()]!=null){const el=$('#him-st');if(el){el.textContent=(S.p2.name||'ا
 if(v.A!=null&&v.B!=null){
 const diff=Math.abs((v.A||0)-(v.B||0));
 const perfect=diff<3000;
-finishChallenge(key,'🌟',perfect,'حصل التزامن!',perfect?'في نفس اللحظة بالظبط… توقيع قلب واحد ❤️':'كان بينكم '+(diff/1000).toFixed(1)+' ثانية — وعالمنا كبر برضو 🤍','القمر 🌙',perfect)}}
+finishChallenge(key,'🌟',perfect,'حصل التزامن!',perfect?'في نفس اللحظة بالظبط… توقيع قلب واحد ❤️':'كان بينكم '+(diff/1000).toFixed(1)+' ثانية — وعالمنا كبر برضو 🤍',perfect)}}
 if(type==='color'&&v.A&&v.B){
 const same=v.A===v.B;
 if(same){try{db.ref(P('shared/rainbow')).set(Date.now()+30000)}catch(e){}}
-finishChallenge(key,same?'🌈':'🤍',same,'نفس اللون!',same?'قوس قزح لمع على الجسر بينكم 🌈':'قريبين أكتر مما تتخيلوا 🤍','اللون: '+CNAMES[v.A],same)}
+finishChallenge(key,same?'🌈':'🤍',same,'نفس اللون!',same?'قوس قزح لمع على الجسر بينكم 🌈':'قريبين أكتر مما تتخيلوا 🤍',same)}
 if(type==='touch'){
 const A=v.A||{},B=v.B||{};
 if(A.s==null||B.s==null)return;
 const end=Math.min(A.e||Date.now(),B.e||Date.now());
 const ov=end-Math.max(A.s,B.s);
-if(ov>=800){finishChallenge(key,'🤍',true,'لمستوا نفس اللحظة!','المساتكم مشيت على الجسر في نفس الثانية ❤️','اللمسة المتزامنة',true)}
+if(ov>=800){finishChallenge(key,'🤍',true,'لمستوا نفس اللحظة!','المساتكم مشيت على الجسر في نفس الثانية ❤️',true)}
 else if(A.e!=null&&B.e!=null&&!finished.has(key)){
 finished.add(key);
 modal('<div class="syncbox"><span class="big">🤍</span><h3>قربتوا!</h3><p class="hint">جربوا تاني… المرة الجاية هتلمسوا نفس اللحظة</p><button class="btn p" data-a="close">تمام</button></div>');
@@ -614,7 +785,7 @@ const up=()=>{if(!hold)return;hold=false;tp.classList.remove('hold');
 const el=$('#you-st');if(el){el.textContent=w('أنتِ سايبة','أنت سايب');el.classList.remove('ok')}
 try{db.ref(P('sync/'+key+'/'+mySlot+'/e')).set(SVTS())}catch(e){}};
 tp.addEventListener('pointerup',up);tp.addEventListener('pointerleave',up);tp.addEventListener('pointercancel',up)}
-function finishChallenge(key,icon,perfect,heading,sub,detail,bigReward){
+function finishChallenge(key,icon,perfect,heading,sub,bigReward){
 if(finished.has(key))return;finished.add(key);
 modal('<div class="syncbox"><span class="big">'+icon+'</span><h3>'+heading+'</h3><p style="color:var(--gold);margin:8px 0">'+sub+'</p><p class="hint">الجسر نوّر واتمدد — وعالمنا كبر 💛</p><button class="btn p" data-a="close">جميل 🤍</button></div>');
 celebrate();
@@ -622,6 +793,37 @@ S.syncs=(S.syncs||0)+1;save();rd();
 try{db.ref(P('sync/'+key+'/done')).transaction(cur=>cur===true?undefined:true).then(r=>{
 if(r.committed){bx(perfect?10:7);toast('🌉','الجسر كبر — عالمنا بيكبر بكم')}}).catch(()=>{});
 db.ref(P('invite')).remove()}catch(e){}}
+
+/* ═══ سؤال اليوم + كويز + XO + القائمة ═══ */
+function dqSave(){const el=$('#dqin');if(!el)return;const t=el.value.trim();if(!t)return toast('✍️','اكتبي حاجة الأول');
+try{db.ref(P('daily/'+todayKey()+'/'+mySlot)).set({text:t,t:Date.now()});toast('💭','اتسجلت — مستنيين '+NAMES[oslot()]);rd()}catch(e){toast('⚠️','مش متصلة بالنت')}}
+function quizNew(){
+const pool=QUIZ_QS.map((_,i)=>i);const qs=[];
+while(qs.length<Math.min(5,QUIZ_QS.length)&&pool.length){qs.push(pool.splice(Math.floor(Math.random()*pool.length),1)[0])}
+try{db.ref(P('quiz')).set({qs:qs,A:{ans:[],done:false},B:{ans:[],done:false},t:Date.now()});toast('🧩','كويز جديد — العبوا!')}catch(e){toast('⚠️','مش متصلة بالنت')}}
+function quizAns(v){if(!quiz)return;
+myQuizAns.push(v);
+if(myQuizAns.length>=quiz.qs.length){
+try{db.ref(P('quiz/'+mySlot)).set({ans:myQuizAns,done:true});toast('🧩','جاوبتي الكل — مستنيين '+NAMES[oslot()])}catch(e){}}
+else{quizStep++;rd()}}
+function xoNew(){
+try{db.ref(P('xo')).set({b:[0,0,0,0,0,0,0,0,0],t:(xo&&xo.w==='A')?'B':(xo&&xo.w==='B')?'A':'A',w:0,sA:(xo?xo.sA||0:0),sB:(xo?xo.sB||0:0)})}catch(e){toast('⚠️','مش متصلة بالنت')}}
+function xoWin(b){const L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+for(const l of L){if(b[l[0]]&&b[l[0]]===b[l[1]]&&b[l[1]]===b[l[2]])return b[l[0]]===1?'A':'B'}return 0}
+function xoCell(i){if(!xo||!xo.b)return;
+if(xo.w)return;
+if(xo.t!==mySlot)return toast('⏳','دور '+NAMES[oslot()]);
+if(xo.b[i])return;
+const nb=xo.b.slice();nb[i]=mySlot==='A'?1:2;
+const wn=xoWin(nb);
+const upd={b:nb,t:xo.t==='A'?'B':'A',w:wn||0,sA:xo.sA||0,sB:xo.sB||0};
+if(wn==='A')upd.sA++;
+if(wn==='B')upd.sB++;
+if(!wn&&nb.every(x=>x))upd.w='D';
+try{db.ref(P('xo')).set(upd)}catch(e){}}
+function bkAdd(){const el=$('#bkin');if(!el)return;const t=el.value.trim();if(!t)return;
+try{db.ref(P('bucket')).push({text:t,done:false,by:mySlot,t:Date.now()});el.value='';toast('🌟','اتضافت لقائمتكم')}catch(e){toast('⚠️','مش متصلة بالنت')}}
+function bkToggle(id,done){try{db.ref(P('bucket/'+id)).update({done:!done});if(!done){bx(3);toast('⭐','إنجاز جديد مع بعض!')}}catch(e){}}
 
 /* ═══ شاشة "إنت مين؟" ═══ */
 function whoAreYou(){const o=$('#ob');o.hidden=false;
@@ -633,7 +835,7 @@ function enter(){$('#ob').hidden=true;$('#app').hidden=false;
 S.you.name=NAMES[mySlot];S.p2.name=NAMES[oslot()];
 S.you.act=S.you.act||pick(FEM?ACTF:ACTM);
 bind();pushMe();
-document.addEventListener('click',function once(){document.removeEventListener('click',once);try{if('Notification' in window&&Notification.permission==='default'){Notification.requestPermission().then(p=>{notifOK=(p==='granted');if(p==='granted')toast('🔔','تمام — هتيجيلك إشعارات التزامن والرسايل')})}}catch(e){}},{once:true});
+document.addEventListener('click',function once(){document.removeEventListener('click',once);try{if('Notification' in window&&Notification.permission==='default'){Notification.requestPermission().then(p=>{if(p==='granted')toast('🔔','تمام — هتيجيلك إشعارات التزامن والرسايل')})}}catch(e){}},{once:true});
 render()}
 
 document.addEventListener('input',e=>{if(e.target.id==='ci')draft=e.target.value});
@@ -659,6 +861,14 @@ case 'sready':try{db.ref(P('sync/'+d.key+'/'+mySlot)).set(SVTS())}catch(err){}br
 case 'scolor':try{db.ref(P('sync/'+d.key+'/'+mySlot)).set(d.c);document.querySelectorAll('.csw').forEach(b=>b.classList.toggle('sel',b.dataset.c===d.c));const st=$('#color-st');if(st)st.textContent='اتسجل اختيارك… مستنين اختياره 🤍'}catch(err){}break;
 case 'invjoin':$('#invitebar').classList.remove('in');$('#invitebar').innerHTML='';openChallenge(d.type,d.key);break;
 case 'invno':$('#invitebar').classList.remove('in');$('#invitebar').innerHTML='';break;
+case 'usview':usView=d.v;render();break;
+case 'dqSave':dqSave();break;
+case 'quizNew':quizNew();break;
+case 'quizAns':quizAns(+d.v);break;
+case 'xoNew':xoNew();break;
+case 'xoCell':xoCell(+d.i);break;
+case 'bkAdd':bkAdd();break;
+case 'bkToggle':bkToggle(d.id,d.done==='1');break;
 case 'close':cmodal();break;
 case 'mk':mk(d.slot);break;
 case 'switch':localStorage.removeItem('pslot');location.reload();break;
