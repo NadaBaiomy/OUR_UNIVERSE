@@ -65,7 +65,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 .msg time{font-size:.6rem;color:#5f6c8d;margin:3px 5px 0}
 .bub.voice{direction:ltr;min-width:215px}
 .bub.voice audio{width:100%;height:36px}
-.bub.voice small{display:block;color:var(--mu);font-size:.66rem;margin-top:4px;direction:rtl}
+.bub.voice small{display:block;color:var(--mu);font="font-size:.66rem";margin-top:4px;direction:rtl}
 .nwmsg{background:#e88a8a14;border:1px solid #e88a8a55;border-radius:17px 17px 5px 17px;padding:9px 14px;text-align:center;font-size:.85rem}
 .nwmsg i{font-style:normal;font-size:1.3rem;display:block}
 .comp{flex:none;border-top:1px solid var(--ln);background:#0a101f;padding:8px 10px calc(9px + env(safe-area-inset-bottom))}
@@ -107,6 +107,33 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 .pname:active{transform:scale(.95)}
 .back{display:block;margin:14px auto 0;color:var(--mu);font-size:.76rem}
 .rulesbox{direction:ltr;text-align:left;font-family:monospace;font-size:.64rem;background:var(--pn2);border:1px dashed #2c3d63;border-radius:10px;padding:10px;white-space:pre-wrap;color:var(--mu);margin:8px 0 12px;user-select:all}
+.syncbtn{width:100%;padding:16px;border-radius:16px;border:1px solid var(--ln);background:var(--pn2);display:flex;align-items:center;gap:12px;margin-bottom:10px;text-align:right}
+.syncbtn:active{transform:scale(.97)}
+.syncbtn i{font-style:normal;font-size:1.6rem;flex:none}
+.syncbtn b{display:block;font-size:.9rem}
+.syncbtn small{color:var(--mu);font-size:.7rem}
+.syncbox{text-align:center}
+.syncbox .big{font-size:3rem;display:block;margin-bottom:4px}
+.sync-status{display:flex;justify-content:center;gap:10px;margin:14px 0;font-size:.8rem;flex-wrap:wrap}
+.sync-status span{background:var(--pn2);border:1px solid var(--ln);border-radius:99px;padding:7px 14px;color:var(--mu)}
+.sync-status span.ok{border-color:#8fce7a;color:#a8d8a0}
+.touchpad{width:170px;height:170px;margin:20px auto;border-radius:50%;border:2px dashed #2c3d63;display:flex;align-items:center;justify-content:center;color:var(--mu);font-size:.82rem;transition:.25s;touch-action:none;user-select:none}
+.touchpad.hold{border-color:var(--gold);color:var(--gold);box-shadow:inset 0 0 40px #f0c27422,0 0 30px #f0c27422;transform:scale(.96)}
+.colors{display:flex;gap:13px;justify-content:center;margin:18px 0;flex-wrap:wrap}
+.csw{width:44px;height:44px;border-radius:50%;border:3px solid transparent}
+.csw.sel{border-color:#fff}
+.result{font-size:2.6rem;animation:pi .6s cubic-bezier(.2,1.4,.4,1) both;display:block}
+#invitebar{position:fixed;top:12px;left:50%;transform:translate(-50%,-140%);z-index:95;display:flex;align-items:center;gap:10px;background:#1a2440;border:1px solid #3a4c7a;border-radius:16px;padding:10px 12px;box-shadow:0 16px 40px #000b;transition:transform .5s cubic-bezier(.2,1.2,.4,1);max-width:92vw}
+#invitebar.in{transform:translate(-50%,0)}
+#invitebar i{font-style:normal;font-size:1.3rem;flex:none}
+#invitebar span{font-size:.78rem;flex:1}
+#invitebar .btn{padding:8px 14px;font-size:.78rem;flex:none}
+#invitebar .x{color:var(--mu);font-size:1.1rem;padding:4px;flex:none}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:70;overflow:hidden}
+.shoot{position:absolute;width:90px;height:2px;background:linear-gradient(90deg,transparent,#ffd98a);animation:shoot 1.25s ease-out both}
+@keyframes shoot{from{transform:translate(0,0) rotate(-24deg);opacity:1}to{transform:translate(340px,-170px) rotate(-24deg);opacity:0}}
+.moonburst{position:absolute;left:50%;top:38%;width:14px;height:14px;margin:-7px;border-radius:50%;background:#f3ecd8;box-shadow:0 0 44px 20px #ffe9b066;animation:burst 2.1s ease-out both}
+@keyframes burst{0%{transform:scale(.2);opacity:0}25%{opacity:1}100%{transform:scale(10);opacity:0}}
 #splash{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .6s}
 #splash.bye{opacity:0;pointer-events:none}
 #splash .in{text-align:center;animation:tin 1s .2s both}
@@ -141,7 +168,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;pad
 
 <div id="splash"><div class="in">
 <svg viewBox="0 0 512 512" width="120" height="120"><rect width="512" height="512" rx="118" fill="#070b16"/><circle cx="256" cy="256" r="150" fill="#f0c274" opacity=".07"/><circle cx="256" cy="256" r="128" fill="#f0c274"/><circle cx="192" cy="250" r="104" fill="#070b16"/><circle class="tw" cx="112" cy="132" r="7" fill="#f2ead8"/><circle class="tw" cx="398" cy="118" r="6" fill="#f0c274" style="animation-delay:1.1s"/><circle class="tw" cx="424" cy="252" r="5" fill="#f2ead8" style="animation-delay:.6s"/><circle class="tw" cx="98" cy="316" r="5" fill="#f0c274" style="animation-delay:1.7s"/><path class="tw" d="M196 202l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="#f0c274" style="animation-delay:.9s"/></svg>
-<h1 class="en">OUR UNIVERSE</h1><small>عالمنا · L5</small>
+<h1 class="en">OUR UNIVERSE</h1><small>عالمنا · L6</small>
 </div></div>
 
 <script>
@@ -160,22 +187,21 @@ setTimeout(function(){if(!window.__ok){var s=document.getElementById('splash');i
 </div>
 
 <div id="ob" hidden></div>
+<div id="invitebar"></div>
 <div id="toasts"></div>
 <div id="modals"></div>
+<div id="fx"></div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 <script>
 'use strict';
-/* ═══════════════════════════════════════════════════
-   الإعدادات — كل حاجة جاهزة، مش محتاجة تلزقي أي حاجة
-   (لو حبيتي تغيّري الأسماء يومًا: غيّري السطرين دول بس)
-   ═══════════════════════════════════════════════════ */
+/* ═══ الإعدادات — كل حاجة جاهزة ═══ */
 const NAMES={A:'Nada',B:'Youssef'};
 const DB_URL='https://our-universe-590e1-default-rtdb.firebaseio.com';
 const CODE='ny-7k3v9x';
-/* ═══════════════ نهاية الإعدادات ═══════════════ */
+/* ═════════════════════════════════ */
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -183,19 +209,20 @@ const pick=a=>a[Math.floor(Math.random()*a.length)];
 const ago=t=>{const m=Math.floor((Date.now()-t)/6e4);if(m<1)return'الآن';if(m<60)return'منذ '+m+' دقيقة';const h=Math.floor(m/60);return h<24?'منذ '+h+' ساعة':'منذ '+Math.floor(h/24)+' يوم'};
 const fmt=t=>new Date(t).toLocaleTimeString('ar-EG',{hour:'numeric',minute:'2-digit'});
 
-let MODE='net',db=null,mySlot=null,FEM=true,netOn=false,fbReady=false,typing=false,rec=null,view='home',draft='',tag=null;
-const seen=new Set();
+let MODE='net',db=null,mySlot=null,FEM=true,netOn=false,fbReady=false,typing=false,rec=null,view='home',draft='',tag=null,p2Joined=false,notifOK=false;
+const seen=new Set(),finished=new Set();
 let dev=localStorage.getItem('dev');if(!dev){dev='d'+Math.random().toString(36).slice(2,9);localStorage.setItem('dev',dev)}
 const oslot=()=>mySlot==='A'?'B':'A';
 const w=(f,m)=>FEM?f:m;
 const mL=k=>MOODS[k][FEM?'l':'m'];
 const pL=k=>MOODS[k][FEM?'m':'l'];
 const P=p=>'unis/'+CODE+'/'+p;
+const SVTS=()=>{try{return firebase.database.ServerValue.TIMESTAMP}catch(e){return Date.now()}};
 
 const MOODS={
 happy:{e:'😊',l:'مبسوطة',m:'مبسوط',d:'الشمس طالعة والتلال دافية ☀️',sky:['#47739c','#1c3153'],h:['#2f6b46','#1f4f33','#163a26'],orb:'sun',g:'#ffd98a',fam:'warm',st:16},
 peaceful:{e:'🤍',l:'مرتاحة',m:'مرتاح',d:'ليل صافي وقمر كبير ناعم',sky:['#15223f','#070d1c'],h:['#1d2f4e','#14223b','#0d182a'],orb:'moon',g:'#e9e2cc',fam:'warm',st:30},
-loving:{e:'❤️',l:'حب',m:'حب',d:'قلوب مليّانة السما ❤️',sky:['#3b2033','#190d17'],h:['#33203a','#241529','#170f1c'],orb:'pink',g:'#f3b8c0',fam:'warm',fx:'hearts',st:22},
+loving:{e:'❤️',l:'حب',m:'حب',d:'قلوب مليّانة السما ❤️',sky:['#3b2033','#190d17'],h:['#3a2030','#241529','#170f1c'],orb:'pink',g:'#f3b8c0',fam:'warm',fx:'hearts',st:22},
 excited:{e:'✨',l:'متحمسة',m:'متحمس',d:'شهب بتلمع في كل حتة',sky:['#2b4462','#101a2b'],h:['#22505a','#163741','#0f262e'],orb:'star',g:'#ffe9b0',fam:'warm',fx:'spark',st:34},
 emotional:{e:'🥹',l:'متأثرة',m:'متأثر',d:'مطر خفيف تحت قمر وردي',sky:['#3a2540','#190f20'],h:['#2c1e3c','#1e142a','#140d1b'],orb:'cres',g:'#e8b0c0',fam:'cold',fx:'rain',st:18},
 drained:{e:'😴',l:'منهكة',m:'منهك',d:'ليل عميق وقمر باهت — العالم نفسه تعبان',sky:['#0c1122','#04060e'],h:['#171d33','#101425','#0a0d19'],orb:'dim',g:'#8f98b8',fam:'cold',st:10},
@@ -215,14 +242,16 @@ const NW=[
 {k:'morning',i:'☀️',l:'صباح الخير',s:'☀️ صباح الخير'},
 {k:'need',i:'🥺',l:'محتاج/ةك',s:'🥺 محتاجاك',sm:'🥺 محتاجاكِ'},
 {k:'quiet',i:'🤍',l:'تمام بس ساكت/ة',s:'🤍 كويسة بس ساكتة',sm:'🤍 كويس بس ساكت'}];
-const REPL={love:['وأنا بحبك أكتر ❤️','بحبك… ولو مش شايفني بحس بيك ❤️'],comfort:['تعالي هنا… اطمّني قلبي عليكي 🫂','أنا معاكي على طول ❤️'],sleep:['نامي بالراحة… أنا هنا 🌙'],happy:['حاسّة بحماسك من هنا ✨','فرحتك وصلتني 😊'],def:['كلامك بيوصل لقلبي قبل موبايلي ❤️','وأنا كنت هبعتلك… سبقتيني 🤍']};
 const TAGS={comfort:{i:'🫂',l:'محتاجة احتواء'},happy:{i:'😊',l:'مبسوطة'},meh:{i:'😐',l:'زهقانة شوية'}};
 const ACTF=['بتتفرج على النجوم','قاعدة تذاكر','بتسمع أغاني هادية','بتفكر في التاني'];
 const ACTM=['بيتفرج على النجوم','قاعد يذاكر','بيسمع أغاني هادية','بيفكر في التاني','بيشوف الجسر بينكم'];
 const gi=k=>({flower:'🌸',sun:'☀️',hug:'🫂',letter:'💌',star:'⭐',song:'🎵',heart:'❤️',notes:'🎵',sunpop:'☀️',glow:'✨'})[k]||'🎁';
+const SYNCN={moon:{i:'🌙',t:'شوفوا القمر',d:'في نفس اللحظة بالظبط… لما تحسّوا إنكم جاهزين'},color:{i:'🎨',t:'اختاروا نفس اللون',d:'اختاروا في نفس الوقت… وشوفوا قلوبكم'},touch:{i:'👆',t:'لمسة في نفس اللحظة',d:'اضغطوا على الدايرة واستمروا ضاغطين مع بعض'}};
+const CNAMES={'#e88a8a':'الوردي','#f0c274':'الدهبي','#a8d8a0':'الأخضر','#7ec8c3':'الفيروزي','#a07ad4':'البنفسجي'};
+const COLORS=['#e88a8a','#f0c274','#a8d8a0','#7ec8c3','#a07ad4'];
 
 const KEY='uni-l1';
-const DEF=()=>({setup:false,you:{name:'',mood:'peaceful',act:''},p2:{name:'',mood:'happy',online:false,act:'…'},day:Date.now(),bridge:40,gIn:[],gOut:[],chat:[],lastIn:null,lastOut:null,tiny:0,msgs:0});
+const DEF=()=>({setup:false,you:{name:'',mood:'peaceful',act:''},p2:{name:'',mood:'happy',online:false,act:'…'},day:Date.now(),bridge:40,gIn:[],gOut:[],chat:[],lastIn:null,lastOut:null,tiny:0,msgs:0,syncs:0});
 let S;try{S=Object.assign(DEF(),JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){S=DEF()}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){try{const c=JSON.parse(JSON.stringify(S));c.chat=c.chat.slice(-40);c.chat.forEach(m=>{if(m.audio)m.audio=null});localStorage.setItem(KEY,JSON.stringify(c))}catch(e2){}}};
 const dayN=()=>Math.max(1,Math.floor((Date.now()-S.day)/864e5)+1);
@@ -271,25 +300,53 @@ if(me){if(S.p2.online)av+='<g transform="translate(322,266)">'+cr('h')+'</g>'}
 else av='<g transform="translate(72,266)">'+cr('h',!S.p2.online)+'</g><g transform="translate(330,268)">'+cr('y')+'</g>';
 const gifts=(me?S.gIn:S.gOut).slice(-11).map((g,i)=>giftMark(g,i)).join('');
 return '<svg class="scene" viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="s'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+m.sky[0]+'"/><stop offset="1" stop-color="'+m.sky[1]+'"/></linearGradient><radialGradient id="g'+id+'"><stop offset="0" stop-color="'+m.g+'" stop-opacity=".5"/><stop offset="1" stop-color="'+m.g+'" stop-opacity="0"/></radialGradient></defs><rect width="400" height="340" fill="url(#s'+id+')"/>'+stars(who+m.sky[0],m.st)+orb(m,id)+fx(m)+hills(m)+gifts+av+'</svg>'}
-function mini(mood,side){const m=MOODS[mood],L=side==='L';const x0=L?0:288,x1=L?112:400,ox=L?56:344;
+function mini(mood,side){const m=SEEN_M(mood),L=side==='L';const x0=L?0:288,x1=L?112:400,ox=L?56:344;
 let o='';if(m.orb==='sun')o='<circle cx="'+ox+'" cy="116" r="20" fill="#ffdd8f"/>';else if(m.orb)o='<circle cx="'+ox+'" cy="114" r="11" fill="'+(m.orb==='pink'?'#f3c3cd':'#f3ecd8')+'"/>';else o='<ellipse cx="'+ox+'" cy="112" rx="20" ry="6" fill="#0a0f1c"/>';
 return '<rect x="'+x0+'" y="40" width="114" height="140" fill="'+m.sky[0]+'"/><rect x="'+x0+'" y="180" width="114" height="190" fill="'+m.sky[1]+'"/><circle class="tw" cx="'+(ox-32)+'" cy="80" r="1.4" fill="#fff"/><circle class="tw" cx="'+(ox+12)+'" cy="62" r="1.2" fill="#fff" style="animation-delay:1s"/>'+o+'<path d="M'+x0+' 306 Q'+ox+' 282 '+x1+' 308 L'+x1+' 375 '+x0+' 375Z" fill="'+m.h[0]+'"/><path d="M'+x0+' 322 Q'+ox+' 300 '+x1+' 324 L'+x1+' 375 '+x0+' 375Z" fill="'+m.h[1]+'"/>'}
+function SEEN_M(k){return MOODS[k]||MOODS.peaceful}
 function scene2(){const id=++uid,p=S.bridge/100,ti=threadInfo();
 let posts='';for(let i=0;i<=12;i++){const t=i/12,u=1-t;const x=u*u*296+2*u*t*200+t*t*104,y=u*u*206+2*u*t*154+t*t*206;posts+='<line x1="'+x.toFixed(0)+'" y1="'+y.toFixed(0)+'" x2="'+x.toFixed(0)+'" y2="'+(y-13).toFixed(0)+'"/>'}
 let lant='';for(const t of[.28,.55]){const u=1-t;const x=u*u*296+2*u*t*200+t*t*104,y=u*u*206+2*u*t*154+t*t*206;lant+='<g class="lan"><circle cx="'+x.toFixed(0)+'" cy="'+(y-19).toFixed(0)+'" r="8" fill="#ffcf7a" opacity="'+(.15+.45*p).toFixed(2)+'"/><circle cx="'+x.toFixed(0)+'" cy="'+(y-19).toFixed(0)+'" r="2.8" fill="#ffe9b0"/></g>'}
-return '<svg class="scene" viewBox="0 0 400 340"><defs><clipPath id="ca'+id+'"><circle cx="-62" cy="215" r="166"/></clipPath><clipPath id="cb'+id+'"><circle cx="462" cy="215" r="166"/></clipPath></defs><g clip-path="url(#ca'+id+')">'+mini(S.p2.mood,'L')+'</g><g clip-path="url(#cb'+id+')">'+mini(S.you.mood,'R')+'</g><g transform="translate(348,288) scale(.8)">'+cr('y')+'</g><g transform="translate(54,288) scale(.8)">'+cr('h')+'</g><ellipse cx="200" cy="308" rx="54" ry="15" fill="#20362b"/><ellipse cx="200" cy="304" rx="54" ry="13" fill="#2a4636"/><g opacity="'+(.45+.55*p).toFixed(2)+'"><path d="M296 206 Q200 154 104 206" stroke="#77502f" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M296 206 Q200 154 104 206" stroke="#93683e" stroke-width="3" fill="none"/><path d="M296 192 Q200 140 104 192" stroke="#93683e" stroke-width="2.4" fill="none" opacity=".9"/><g stroke="#7d5738" stroke-width="2.4">'+posts+'</g>'+lant+'</g><path d="M344 118 Q200 84 56 118" stroke="'+ti.c+'" stroke-width="1" opacity=".3" fill="none"/><path class="thread" d="M344 118 Q200 84 56 118" stroke="'+ti.c+'" stroke-width="2.6" stroke-linecap="round" fill="none" stroke-dasharray="0.5 8"/></svg>'}
+return '<svg class="scene" viewBox="0 0 400 340"><defs><clipPath id="ca'+id+'"><circle cx="-62" cy="215" r="166"/></clipPath><clipPath id="cb'+id+'"><circle cx="462" cy="215" r="166"/></clipPath></defs><g clip-path="url(#ca'+id+')">'+mini(S.p2.mood,'L')+'</g><g clip-path="url(#cb'+id+')">'+mini(S.you.mood,'R')+'</g><g transform="translate(348,288) scale(.8)">'+cr('y')+'</g><g transform="translate(54,288) scale(0.8)">'+cr('h')+'</g><ellipse cx="200" cy="308" rx="54" ry="15" fill="#20362b"/><ellipse cx="200" cy="304" rx="54" ry="13" fill="#2a4636"/><g opacity="'+(.45+.55*p).toFixed(2)+'"><path d="M296 206 Q200 154 104 206" stroke="#77502f" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M296 206 Q200 154 104 206" stroke="#93683e" stroke-width="3" fill="none"/><path d="M296 192 Q200 140 104 192" stroke="#93683e" stroke-width="2.4" fill="none" opacity=".9"/><g stroke="#7d5738" stroke-width="2.4">'+posts+'</g>'+lant+'</g><path d="M344 118 Q200 84 56 118" stroke="'+ti.c+'" stroke-width="1" opacity=".3" fill="none"/><path class="thread" d="M344 118 Q200 84 56 118" stroke="'+ti.c+'" stroke-width="2.6" stroke-linecap="round" fill="none" stroke-dasharray="0.5 8"/></svg>'}
 const logo=s=>'<svg viewBox="0 0 512 512" width="'+s+'" height="'+s+'"><rect width="512" height="512" rx="118" fill="#070b16"/><circle cx="256" cy="256" r="128" fill="#f0c274"/><circle cx="192" cy="250" r="104" fill="#070b16"/><circle class="tw" cx="112" cy="132" r="7" fill="#f2ead8"/><circle class="tw" cx="398" cy="118" r="6" fill="#f0c274" style="animation-delay:1.1s"/><circle class="tw" cx="424" cy="252" r="5" fill="#f2ead8" style="animation-delay:.6s"/><circle class="tw" cx="98" cy="316" r="5" fill="#f0c274" style="animation-delay:1.7s"/><path class="tw" d="M196 202l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="#f0c274" style="animation-delay:.9s"/></svg>';
 
-function toast(i,t){const e=document.createElement('div');e.className='toast';e.innerHTML='<i>'+i+'</i><span>'+t+'</span>';$('#toasts').appendChild(e);setTimeout(()=>{e.classList.add('out');setTimeout(()=>e.remove(),400)},3200)}
+function toast(i,t){const e=document.createElement('div');e.className='toast';e.innerHTML='<i>'+i+'</i><span>'+t+'</span>';$('#toasts').appendChild(e);setTimeout(()=>{e.classList.add('out');setTimeout(()=>e.remove(),400)},3400)}
 function modal(h){$('#modals').innerHTML='<div class="sheet">'+h+'</div>'}
 function cmodal(){$('#modals').innerHTML=''}
  $('#modals').addEventListener('click',e=>{if(e.target.id==='modals')cmodal()});
+function celebrate(){const fx=$('#fx');fx.innerHTML=Array.from({length:12},()=>'<i class="shoot" style="left:'+(Math.random()*100)+'%;top:'+(Math.random()*65)+'%;animation-delay:'+(Math.random()*.6).toFixed(2)+'s"></i>').join('')+'<div class="moonburst"></div>';setTimeout(()=>fx.innerHTML='',2400);if(navigator.vibrate)navigator.vibrate(70)}
+
+/* ═══ الإشعارات الحقيقية (أندرويد) ═══ */
+async function askNotif(){
+if(!('serviceWorker' in navigator)||!('PushManager' in window))return;
+try{const reg=await navigator.serviceWorker.ready;
+if(Notification.permission==='granted'){notifOK=true;return}
+}catch(e){}
+}
+async function notify(title,body){
+try{
+if(!('Notification' in window))return;
+if(Notification.permission==='granted'){
+const n=new Notification(title,{body:body,icon:undefined,tag:'uni-sync',silent:false});
+setTimeout(()=>n.close(),20000);
+}
+}catch(e){}
+}
+function notifyMe(title,body){
+if('Notification' in window){
+if(Notification.permission==='granted')return notify(title,body);
+if(Notification.permission!=='denied'){
+Notification.requestPermission().then(p=>{if(p==='granted')notify(title,body)});
+}
+}
+}
 
 function initNet(){if(fbReady){MODE='net';return true}
 try{firebase.initializeApp({databaseURL:DB_URL});db=firebase.database();MODE='net';fbReady=true;return true}catch(e){return false}}
 function bx(n){S.bridge=Math.max(5,Math.min(100,S.bridge+n));save();if(db){try{db.ref(P('shared/bridge')).transaction(v=>Math.max(5,Math.min(100,(v||0)+n)))}catch(e){}}}
 function pushMe(x){if(!db||!mySlot)return;try{db.ref(P('users/'+mySlot)).update(Object.assign({name:NAMES[mySlot],mood:S.you.mood,fem:FEM,online:true,ls:Date.now(),act:S.you.act},x||{}))}catch(e){}}
 const mkChat=()=>{if(view!=='chat'){const b=$('#bc');if(b)b.classList.add('on')}};
+const mkWorld=()=>{if(view!=='world'){const b=$('#badge-world');if(b)b.classList.add('on')}};
 function bind(){
 S.chat.forEach(m=>seen.add(m.id));
 db.ref(P('meta')).once('value').then(s=>{const v=s.val();
@@ -298,6 +355,7 @@ else if(v.day){S.day=v.day;save();rd()}}).catch(()=>{});
 let first=true,ls='';
 db.ref(P('users/'+oslot())).on('value',s=>{const v=s.val();if(!v)return;
 S.p2.name=v.name||S.p2.name;S.p2.mood=v.mood||S.p2.mood;S.p2.act=v.act||'…';S.p2.online=!!v.online&&(Date.now()-(v.ls||0)<90000);
+if(v.name&&!p2Joined&&v.ls&&v.ls>10000){p2Joined=true;toast('❤️',(S.p2.name||'التاني')+' معاكي في العالم — دلوقتي كل حاجة بينكم حقيقية');celebrate()}
 const sig=[S.p2.name,S.p2.mood,S.p2.online].join('|');
 if(first){first=false;ls=sig;rd();return}
 if(sig!==ls){const mc=ls.split('|')[1]!==S.p2.mood;ls=sig;save();
@@ -306,29 +364,42 @@ db.ref(P('shared/bridge')).on('value',s=>{const v=s.val();if(typeof v==='number'
 db.ref(P('chat')).on('child_added',s=>{const m=s.val();if(!m)return;
 if(seen.has(m.id)){const l=S.chat.find(x=>x.id===m.id);if(l&&m.audio&&!l.audio){l.audio=m.audio;l.dur=m.dur;save();rc()}return}
 seen.add(m.id);m.from=m.from===mySlot?'you':'him';S.chat.push(m);S.msgs++;save();
-if(m.from==='him'){mkChat();toast(m.kind==='voice'?'🎙️':'💬',(S.p2.name||'هو')+(m.kind==='voice'?' بعتلك رسالة صوتية':' كتبلك'))}
+if(m.from==='him'){mkChat();toast(m.kind==='voice'?'🎙️':'💬',(S.p2.name||'هو')+(m.kind==='voice'?' بعتلك رسالة صوتية':' كتبلك'));
+if(document.hidden)notifyMe('💬 '+(S.p2.name||'التاني'),'كتبلك رسالة')}
 rc()});
 db.ref(P('gifts/'+mySlot)).on('child_added',s=>{const g=s.val();if(!g||seen.has(g.gid))return;seen.add(g.gid);
 S.gIn.push({kind:g.kind,t:g.t||Date.now()});S.lastIn={icon:gi(g.kind),text:g.note||'هدية',t:g.t||Date.now()};bx(2);save();
-toast(gi(g.kind),(S.p2.name||'هو')+' بعتلك: "'+(g.note||'')+'" — ظهرت في عالمك');rd()});
+toast(gi(g.kind),(S.p2.name||'هو')+' بعتلك: "'+(g.note||'')+'" — ظهرت في عالمك');
+if(document.hidden)notifyMe(gi(g.kind)+' '+(S.p2.name||'التاني'),'بعتلك هدية');
+rd()});
+/* دعوات التزامن — بتوصل إشعار فوري */
+db.ref(P('invite')).on('value',s=>{const v=s.val();if(!v||v.from===mySlot)return;
+if(Date.now()-(v.t||0)>60000)return;
+if(seen.has('inv'+v.key))return;seen.add('inv'+v.key);
+const bar=$('#invitebar');
+bar.innerHTML='<i>'+SYNCN[v.type].i+'</i><span>'+esc(S.p2.name||'التاني')+' بدأ'+((p2Joined)?'':'')+' لحظة تزامن! انضمّي</span><button class="btn p" data-a="invjoin" data-type="'+v.type+'" data-key="'+v.key+'">انضم 🤍</button><button class="x" data-a="invno">×</button>';
+requestAnimationFrame(()=>bar.classList.add('in'));
+notifyMe(SYNCN[v.type].i+' لحظة تزامن!',(S.p2.name||'التاني')+' بيستناك تنضم — افتحي عالمنا');
+if(navigator.vibrate)navigator.vibrate([80,60,80]);
+clearTimeout(bar._t);bar._t=setTimeout(()=>{bar.classList.remove('in');bar.innerHTML=''},60000)});
 db.ref('.info/connected').on('value',s=>{netOn=!!s.val();rh();
 if(netOn){const me=db.ref(P('users/'+mySlot));me.onDisconnect().update({online:false,ls:Date.now()}).then(()=>pushMe()).catch(()=>{})}})}
 
-function headHTML(){const st=MODE==='net'?(netOn?'<span class="chip" style="color:#a8d8a0">🔗 متصلين</span>':'<span class="chip">📡…</span>'):'<span class="chip">تجريبي 🧪</span>';
+function headHTML(){const st=MODE==='net'?(p2Joined&&netOn?'<span class="chip" style="color:#a8d8a0">❤️ مع بعض</span>':netOn?'<span class="chip" style="color:#f0c274">⏳ مستنياه…</span>':'<span class="chip">📡…</span>'):'<span class="chip">تجريبي 🧪</span>';
 return '<div class="brand">'+logo(34)+'<div><b class="en">OUR UNIVERSE</b><small>اليوم '+dayN()+' مع بعض 🤍</small></div></div>'+st+'<button class="chip" data-go="partner"><span class="dot'+(S.p2.online?' on':'')+'"></span>'+esc(S.p2.name||'…')+'</button>'}
 const rh=()=>{$('#top').innerHTML=headHTML()};
 function tabsUp(){document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.go===view))}
 function renderHome(){
 const pair=MODE==='net'
-?'<div class="card" style="border-color:#8fce7a55"><b>🔗 عالمكم متوصل'+(netOn?' — متصلين الآن ✅':' — بانتظار النت…')+'</b><p class="hint">التاني يفتح نفس اللينك واختار اسمه — من غير أي أكواد. لو بدّلتي الموبايلات يومًا: زرار التبديل تحت.</p><button class="btn g" style="margin-top:8px" data-a="switch">🔄 تبديل المستخدم على الموبايل ده</button></div>'
-:'<div class="card" style="border-color:#5a4a1f;background:#1a1608"><h3>📡 مش قادر يوصل لعالمكم</h3><p class="hint">اتأكدي من النت، وإن Rules في Firebase متغيرة (الخطوة ١).</p></div>';
+?'<div class="card" style="border-color:#8fce7a55"><b>🔗 عالمكم متوصل'+(netOn?' ✅':' — بانتظار النت…')+'</b><p class="hint">'+(p2Joined?'كل حاجة بينكم حقيقية: رسايل، صوتيات، مودات، وتزامنات.':'مستنيّاه يفتح اللينق ويختار اسمه — أول ما يدخل هتعرفي فورًا.')+'</p><button class="btn g" style="margin-top:8px" data-a="switch">🔄 تبديل المستخدم على الموبايل ده</button></div>'
+:'<div class="card" style="border-color:#5a4a1f;background:#1a1608"><h3>📡 مش قادر يوصل لعالمكم</h3><p class="hint">اتأكدي من النت، وإن Rules في Firebase متغيرة.</p></div>';
 const on=S.p2.online?'<div class="card" style="display:flex;gap:11px;align-items:center"><span class="dot on"></span><div><b style="font-size:.86rem">🧍 '+esc(S.p2.name)+' موجود في عالمك</b><div class="hint" style="font-size:.74rem">'+esc(S.p2.act)+' — من غير ما يتكلم</div></div></div>':'';
 const li=S.lastIn?'<div class="card"><b style="font-size:.84rem">آخر حاجة وصلتك:</b><p class="hint" style="color:var(--ink);font-size:.84rem;margin-top:3px">'+S.lastIn.icon+' "'+esc(S.lastIn.text)+'" '+ago(S.lastIn.t)+'</p></div>':'';
 return '<section><div class="scene-card">'+scene('you')+'</div>'+pair+on+'<div class="card"><h3>إحساسك دلوقتي؟</h3><p class="hint">اختاري من غير كلمة — وعالمك يتحول '+w('قدامه','قدامها')+'.</p><div class="moods" style="margin-top:10px">'+Object.keys(MOODS).map(k=>'<button class="mood'+(S.you.mood===k?' on':'')+'" data-a="mood" data-k="'+k+'"><i>'+MOODS[k].e+'</i><span>'+MOODS[k][FEM?'l':'m']+'</span></button>').join('')+'</div></div>'+li+'</section>'}
 function renderPartner(){const m=MOODS[S.p2.mood];
 return '<section><div class="scene-card">'+scene('partner')+'</div><div class="card" style="display:flex;gap:11px;align-items:center"><span class="dot'+(S.p2.online?' on':'')+'"></span><div>'+(S.p2.online?'<b style="font-size:.86rem">🧍 موجود دلوقتي</b><div class="hint" style="font-size:.74rem">'+esc(S.p2.act)+' — من غير Chat</div>':'<b style="font-size:.86rem">مش موجود دلوقتي</b><div class="hint" style="font-size:.74rem">ابعتيله حاجة صغيرة 🌸</div>')+'</div></div><div class="card"><h3>عالمه دلوقتي</h3><p class="hint" style="color:var(--ink);font-size:.86rem">'+m.d+'</p><p style="margin-top:8px;font-size:.84rem;color:var(--gold)">'+m.e+' '+pL(S.p2.mood)+'</p></div><div class="card"><h3>ابعتيله حاجة صغيرة</h3><p class="hint">حاجة تظهر جوه عالمه.</p><div class="tinies" style="margin-top:10px">'+TINY.map(t=>'<button class="tiny" data-a="tiny" data-k="'+t.k+'"><i>'+t.i+'</i><span>'+w(t.me,t.him)+'</span></button>').join('')+'</div>'+(S.lastOut?'<p class="hint" style="margin-top:10px">آخر حاجة وصلته: '+S.lastOut.icon+' "'+esc(S.lastOut.text)+'" '+ago(S.lastOut.t)+'</p>':'')+'</div></section>'}
 function renderWorld(){const ti=threadInfo();const lv=S.bridge>=70?'الجسر نوره قوي الليلة ✨':S.bridge>=40?'الجسر دافي ومتوهّج':'الجسر محتاج لمسة… ابعتيله حاجة 🌸';
-return '<section><div class="scene-card">'+scene2()+'</div><div style="display:flex;justify-content:space-between;color:var(--mu);font-size:.72rem;margin:-4px 4px 10px"><span>'+esc(S.you.name||'أنا')+' · '+MOODS[S.you.mood].e+' '+mL(S.you.mood)+'</span><span>'+MOODS[S.p2.mood].e+' '+pL(S.p2.mood)+' '+esc(S.p2.name)+'</span></div><div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><b style="font-size:.88rem">🌉 طاقة الجسر</b><span style="color:var(--gold);font-size:.74rem">'+S.bridge+'%</span></div><div class="bar"><i style="width:'+S.bridge+'%"></i></div><p class="hint" style="margin-top:8px">'+lv+' — كل هدية ورسالة بتزوّد نوره.</p></div><div class="card threadbox"><span class="sw" style="background:'+ti.c+';color:'+ti.c+'"></span><div><b style="font-size:.84rem">🧵 الخيط غير المرئي</b><p class="hint">'+ti.t+'</p></div></div></section>'}
+return '<section><div class="scene-card">'+scene2()+'</div><div style="display:flex;justify-content:space-between;color:var(--mu);font-size:.72rem;margin:-4px 4px 10px"><span>'+esc(S.you.name||'أنا')+' · '+MOODS[S.you.mood].e+' '+mL(S.you.mood)+'</span><span>'+MOODS[S.p2.mood].e+' '+pL(S.p2.mood)+' '+esc(S.p2.name)+'</span></div><div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><b style="font-size:.88rem">🌉 طاقة الجسر</b><span style="color:var(--gold);font-size:.74rem">'+S.bridge+'%</span></div><div class="bar"><i style="width:'+S.bridge+'%"></i></div><p class="hint" style="margin-top:8px">'+lv+' — كل هدية ورسالة وتزامن بيكبّر نوره.</p></div><div class="card threadbox"><span class="sw" style="background:'+ti.c+';color:'+ti.c+'"></span><div><b style="font-size:.84rem">🧵 الخيط غير المرئي</b><p class="hint">'+ti.t+'</p></div></div><div class="card"><h3>✨ لحظات التزامن</h3><p class="hint">حاجات بتعملوها مع بعض في نفس اللحظة — والتزامن الحقيقي بيكبّر الجسر وبيعمل احتفال.</p><button class="btn p w" style="margin-top:10px" data-a="sync">✨ ابدئي لحظة تزامن</button><p class="hint" style="margin-top:8px">لحد دلوقتي حققتوا <b style="color:var(--gold)">'+(S.syncs||0)+'</b> تزامن 🤍</p></div></section>'}
 function msgHTML(m){const t='<time>'+fmt(m.t)+'</time>';
 if(m.kind==='voice')return '<div class="msg '+m.from+'"><div class="bub voice">'+(m.audio?'<audio controls preload="metadata" src="'+m.audio+'"></audio>':'')+'<small>🎙️ رسالة صوتية'+(m.dur?' · '+Math.max(1,Math.round(m.dur))+' ث':'')+'</small></div>'+t+'</div>';
 if(m.kind==='nw'){const n=NW.find(x=>x.k===m.nw);return '<div class="msg '+m.from+'"><div class="nwmsg"><i>'+n.i+'</i>'+esc(m.text)+'</div>'+t+'</div>'}
@@ -388,6 +459,84 @@ if(e>=60){if(rec===s){rec=null;rc()}try{r.stop()}catch(x){}}
 else{const el=$('#rt');if(el)el.textContent=e+' ث'}},400);
 rc()}
 
+/* ═══ لحظات التزامن الحقيقية ═══ */
+function openSync(){
+if(!p2Joined){toast('⏳','مستنيّاه يدخل الأول — لحظة التزامن محتاجة الاتنين');return}
+modal('<h3 style="text-align:center">✨ لحظة تزامن</h3><p class="hint" style="text-align:center">حاجة بتعملوها مع بعض في نفس اللحظة — وهو هيوصله إشعار فورًا.</p>'
++Object.keys(SYNCN).map(k=>'<button class="syncbtn" data-a="syncgo" data-t="'+k+'"><i>'+SYNCN[k].i+'</i><div><b>'+SYNCN[k].t+'</b><small>'+SYNCN[k].d+'</small></div></button>').join('')
++'<button class="back" data-a="close">إلغاء</button>')}
+function syncStart(type){
+if(!db)return;
+const key='sk'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+try{db.ref(P('invite')).set({type:type,from:mySlot,key:key,t:Date.now()});
+openChallenge(type,key);
+if(notifPermissionPending)notifyMe(SYNCN[type].i+' لحظة تزامن','بدأتي واحدة — بيستنى انضمامه');
+}catch(e){toast('⚠️','مش متصلة بالنت')}}
+function openChallenge(type,key){
+const n=SYNCN[type];
+let body='<div class="syncbox"><span class="big">'+n.i+'</span><h3>'+n.t+'</h3><p class="hint">'+n.d+'</p><div class="sync-status"><span id="you-st">'+w('أنتِ…','أنت…')+'</span><span id="him-st">'+esc(S.p2.name||'التاني')+'…</span></div>';
+if(type==='moon'){
+body+='<button class="btn p" data-a="sready" data-key="'+key+'">'+w('أنا جاهزة','أنا جاهز')+'</button></div>';
+}else if(type==='color'){
+body+='<div class="colors">'+COLORS.map(c=>'<button class="csw" style="background:'+c+'" data-a="scolor" data-c="'+c+'" data-key="'+key+'"></button>').join('')+'</div><p class="hint" id="color-st">&nbsp;</p></div>';
+}else{
+body+='<div class="touchpad" id="tp"><span>اضغط واستمر</span></div></div>';
+}
+modal(body);
+if(type==='touch')netTouch(key);
+watchChallenge(type,key)}
+function watchChallenge(type,key){
+db.ref(P('sync/'+key)).on('value',s=>{
+const v=s.val()||{};
+if(finished.has(key)){return}
+if(type==='moon'){
+if(v[mySlot]!=null){const el=$('#you-st');if(el){el.textContent=w('أنتِ جاهزة ✓','أنت جاهز ✓');el.classList.add('ok')}}
+if(v[oslot()]!=null){const el=$('#him-st');if(el){el.textContent=(S.p2.name||'التاني')+' جاهز ✓';el.classList.add('ok')}}
+if(v.A!=null&&v.B!=null){
+const diff=Math.abs((v.A||0)-(v.B||0));
+const perfect=diff<3000;
+finishChallenge(key,'🌟',perfect,'حصل التزامن!',perfect?'في نفس اللحظة بالظبط… توقيع قلب واحد ❤️':'كان بينكم '+(diff/1000).toFixed(1)+' ثانية — وعالمنا كبر برضو 🤍','القمر 🌙',perfect)}}
+if(type==='color'&&v.A&&v.B){
+const same=v.A===v.B;
+if(same){try{db.ref(P('shared/rainbow')).set(Date.now()+30000)}catch(e){}}
+finishChallenge(key,same?'🌈':'🤍',same,'نفس اللون!',same?'قوس قزح لمع على الجسر بينكم 🌈':'قريبين أكتر مما تتخيلوا 🤍','اللون: '+CNAMES[v.A],same)}
+if(type==='touch'){
+const A=v.A||{},B=v.B||{};
+if(A.s==null||B.s==null)return;
+const end=Math.min(A.e||Date.now(),B.e||Date.now());
+const ov=end-Math.max(A.s,B.s);
+if(ov>=800){finishChallenge(key,'🤍',true,'لمستوا نفس اللحظة!','المساتكم مشيت على الجسر في نفس الثانية ❤️','اللمسة المتزامنة',true)}
+else if(A.e!=null&&B.e!=null&&!finished.has(key)){
+finished.add(key);
+modal('<div class="syncbox"><span class="big">🤍</span><h3>قربتوا!</h3><p class="hint">جربوا تاني… المرة الجاية هتلمسوا نفس اللحظة</p><button class="btn p" data-a="close">تمام</button></div>');
+try{db.ref(P('invite')).remove()}catch(e){}}}
+})}
+function netTouch(key){
+const tp=$('#tp');if(!tp)return;
+let hold=false;
+tp.addEventListener('pointerdown',e=>{e.preventDefault();hold=true;tp.classList.add('hold');
+const el=$('#you-st');if(el){el.textContent=w('أنتِ ضاغطة ✓','أنت ضاغط ✓');el.classList.add('ok')}
+try{db.ref(P('sync/'+key+'/'+mySlot+'/s')).set(SVTS());db.ref(P('sync/'+key+'/'+mySlot+'/e')).remove()}catch(e){}});
+const up=()=>{if(!hold)return;hold=false;tp.classList.remove('hold');
+const el=$('#you-st');if(el){el.textContent=w('أنتِ سايبة','أنت سايب');el.classList.remove('ok')}
+try{db.ref(P('sync/'+key+'/'+mySlot+'/e')).set(SVTS())}catch(e){}};
+tp.addEventListener('pointerup',up);tp.addEventListener('pointerleave',up);tp.addEventListener('pointercancel',up)}
+function finishChallenge(key,icon,perfect,heading,sub,detail,bigReward){
+if(finished.has(key))return;finished.add(key);
+modal('<div class="syncbox"><span class="big">'+icon+'</span><h3>'+heading+'</h3><p style="color:var(--gold);margin:8px 0">'+sub+'</p><p class="hint">الجسر نوّر واتمدد — وعالمنا كبر 💛</p><button class="btn p" data-a="close">جميل 🤍</button></div>');
+celebrate();
+S.syncs=(S.syncs||0)+1;save();rd();
+try{db.ref(P('sync/'+key+'/done')).transaction(cur=>cur===true?undefined:true).then(r=>{
+if(r.committed){
+bx(perfect?10:7);
+toast('🌉','الجسر كبر — عالمنا بيكبر بكم');
+}}).catch(()=>{});
+db.ref(P('invite')).remove();
+db.ref(P('chat')).push({id:'sys'+key,from:'sys',kind:'nw',nw:'here',text:'✨ '+SYNCN[SYNCN_LAST||'moon'].t+' — حصل تزامن بينكم',t:Date.now()});
+}catch(e){}}
+let SYNCN_LAST='moon';
+let notifPermissionPending=false;
+
 /* ═══ شاشة "إنت مين؟" ═══ */
 function whoAreYou(){const o=$('#ob');o.hidden=false;
 o.innerHTML='<div class="obw">'+logo(100)+'<h1 class="en">OUR UNIVERSE</h1><p>عالمكم جاهز 🌌<br>إنت مين على الموبايل ده؟</p><div class="picknames"><button class="pname" data-a="mk" data-slot="A">🌸 '+esc(NAMES.A)+'</button><button class="pname" data-a="mk" data-slot="B">'+esc(NAMES.B)+'</button></div><p class="hint">كل واحد يختار اسمه على موبايله — مرة واحدة</p></div>'}
@@ -398,6 +547,9 @@ function enter(){$('#ob').hidden=true;$('#app').hidden=false;
 S.you.name=NAMES[mySlot];S.p2.name=NAMES[oslot()];
 S.you.act=S.you.act||pick(FEM?ACTF:ACTM);
 bind();pushMe();
+/* نطلب إذن الإشعارات من أول مرة يتفاعل مع التطبيق */
+document.addEventListener('click',function once(){document.removeEventListener('click',once);try{if('Notification' in window&&Notification.permission==='default'){Notification.requestPermission().then(p=>{notifOK=(p==='granted');if(p==='granted')toast('🔔','تمام — هتيجيلك إشعارات لحظات التزامن والرسايل')})}}catch(e){}},{once:true});
+askNotif();
 render()}
 
 document.addEventListener('input',e=>{if(e.target.id==='ci')draft=e.target.value});
@@ -410,7 +562,14 @@ case 'tiny':sendTiny(d.k);break;
 case 'nw':sendNW(d.k);break;
 case 'send':sendText();break;
 case 'voice':voice();break;
-case 'tag':tag=tag===d.k?null:d.k;document.querySelectorAll('.tg').forEach(b=>b.classList.toggle('on',b.dataset.k===tag));break;
+case 'tag':tag=tag===d.k?null:d.k;document.querySelectorAll('.tgc').forEach(b=>b.classList.toggle('on',b.dataset.k===tag));break;
+case 'sync':openSync();break;
+case 'syncgo':SYNCN_LAST=d.t;syncStart(d.t);break;
+case 'sready':try{db.ref(P('sync/'+d.key+'/'+mySlot)).set(SVTS())}catch(err){}break;
+case 'scolor':try{db.ref(P('sync/'+d.key+'/'+mySlot)).set(d.c);document.querySelectorAll('.csw').forEach(b=>b.classList.toggle('sel',b.dataset.c===d.c));const st=$('#color-st');if(st)st.textContent='اتسجل اختيارك… مستنين اختياره 🤍'}catch(err){}break;
+case 'invjoin':$('#invitebar').classList.remove('in');$('#invitebar').innerHTML='';SYNCN_LAST=($('#invitebar').dataset.type)||d.type;openChallenge(d.type,d.key);break;
+case 'invno':$('#invitebar').classList.remove('in');$('#invitebar').innerHTML='';break;
+case 'close':cmodal();break;
 case 'mk':mk(d.slot);break;
 case 'switch':localStorage.removeItem('pslot');location.reload();break;
 case 'retry':location.reload();break}});
